@@ -22,5 +22,5 @@ Route::post('/login', 'LoginController@login');
 Route::post('/logout', 'LoginController@logout')->name('logout');
 Route::prefix('/admin')->group(function(){
 	Route::get('/', 'AdminController@index');
-	Route::get('/cities', 'AdminController@cities');
+	Route::resource('/countries', 'CountriesController');
 });

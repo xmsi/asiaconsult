@@ -8,7 +8,7 @@ class Countries extends Model
 {
 	public $timestamps = false;
 	protected $fillable = [
-		'title', 'category', 'author','description', 'image', 'file'
+		'name', 'currency'
 	];
 
 	protected $table = 'countries';

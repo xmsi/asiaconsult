@@ -30,8 +30,8 @@
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="/admin/cities">
-          <i class="fas fa-fw fa-phone"></i>
+        <a class="nav-link" href="/admin/countries">
+          <i class="fas fa-globe-africa"></i>
           <span>Страны</span></a>
       </li>
 

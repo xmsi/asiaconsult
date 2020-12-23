@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class CountriesController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +18,9 @@ class CountriesController extends Controller
      */
     public function index()
     {
-        //
+        $countriess = Countries::get();
+
+        return view('admin.countries.index', compact('countriess'));
     }
 
     /**
@@ -24,7 +30,7 @@ class CountriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.countries.create');
     }
 
     /**
@@ -35,51 +41,49 @@ class CountriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'name' => 'required',
+            'currency' => 'required'
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Countries  $countries
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Countries $countries)
-    {
-        //
+        $country = new Countries();
+        $country->fill($request->except('btncreate'));
+        $country->save();
+
+        if($request->btncreate){
+            return redirect('/admin/countries/create');
+        }
+
+        return redirect('/admin/countries')->with('success', 'Успешно создана');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Countries  $countries
+     * @param  \App\country  $country
      * @return \Illuminate\Http\Response
      */
-    public function edit(Countries $countries)
+    public function edit(Countries $country)
     {
-        //
+        return view('admin.countries.edit', compact('country'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Countries  $countries
+     * @param  \App\country  $country
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Countries $countries)
+    public function update(Request $request, Countries $country)
     {
-        //
-    }
+        $request->validate([
+            'name' => 'required',
+            'currency' => 'required',
+        ]);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Countries  $countries
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Countries $countries)
-    {
-        //
+        $country->update($request->all());
+
+        return redirect('/admin/countries/')->with('success', 'изменен успешно');
     }
 }
