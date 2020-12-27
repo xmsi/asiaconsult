@@ -13,4 +13,8 @@ class Countries extends Model
 
 	protected $table = 'countries';
 
+	public function universities()
+	{
+		return $this->hasMany(University::class);
+	}
 }

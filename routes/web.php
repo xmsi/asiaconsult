@@ -17,10 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', function () {
+    return redirect('/admin');
+});
+
 Route::get('/login', 'LoginController@index');
-Route::post('/login', 'LoginController@login');
+Route::post('/login', 'LoginController@login')->name('login');
 Route::post('/logout', 'LoginController@logout')->name('logout');
 Route::prefix('/admin')->group(function(){
 	Route::get('/', 'AdminController@index');
 	Route::resource('/countries', 'CountriesController');
+	Route::resource('/universities', 'UniversityController');
 });

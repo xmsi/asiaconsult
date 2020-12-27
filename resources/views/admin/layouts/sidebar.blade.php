@@ -35,6 +35,12 @@
           <span>Страны</span></a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/universities">
+          <i class="fas fa-university"></i>
+          <span>Университеты</span></a>
+      </li>
+
       <!-- Nav Item - Tables -->
 
       <!-- Divider -->
