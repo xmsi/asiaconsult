@@ -41,6 +41,18 @@
           <span>Университеты</span></a>
       </li>
 
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/faculty">
+          <i class="fas fa-certificate"></i>
+          <span>Факультеты</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/speciality">
+          <i class="fas fa-briefcase"></i>
+          <span>Специальности</span></a>
+      </li>
+
       <!-- Nav Item - Tables -->
 
       <!-- Divider -->

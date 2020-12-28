@@ -28,4 +28,5 @@ Route::prefix('/admin')->group(function(){
 	Route::get('/', 'AdminController@index');
 	Route::resource('/countries', 'CountriesController');
 	Route::resource('/universities', 'UniversityController');
+	Route::resource('/faculty', 'FacultyController');
 });

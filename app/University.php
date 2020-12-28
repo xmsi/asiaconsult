@@ -15,13 +15,8 @@ class University extends Common
 		return $this->belongsTo(Countries::class);
 	}
 
-	public function getStatusnAttribute()
+	public function faculties()
 	{
-		$name = 'Прием Документов';
-		if (!$this->status) {
-			$name = 'Закрыт прием документов';
-		}
-
-		return $name;
+		return $this->hasMany(Faculty::class);
 	}
 }
