@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">{{ __('Изменить Книгу') }}</h1>
+<h1 class="h3 mb-2 text-gray-800">Изменить</h1>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
 	<div class="card-body">
@@ -50,7 +50,7 @@
 				<label for="image">Картинка</label><br>
 				<input type="file" name="image">
 			</div>
-			<button type="submit" class="btn btn-primary">{{ __('Изменить') }}</button>
+			<button type="submit" class="btn btn-primary">Изменить</button>
 		</form>
 	</div>
 </div>

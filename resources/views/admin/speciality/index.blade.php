@@ -5,12 +5,13 @@
 @endsection
 
 @section('content')
+@include('success')
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Университеты</h1>
+<h1 class="h3 mb-2 text-gray-800">Специальности</h1>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
 	<div class="card-header py-3">
-		<a href="/admin/universities/create" class="btn btn-sm btn-success">
+		<a href="/admin/speciality/create" class="btn btn-sm btn-success">
 			<span class="text">Создать</span>
 		</a>
 	</div>
@@ -20,34 +21,34 @@
 				<thead>
 					<tr>
 						<th>Название</th>
-						<th>Город</th>
-						<th>Срок</th>
-						<th>Статус</th>
+						<th>Вуз</th>
+						<th>Факультеты</th>
+						<th>Контракт</th>
 						<th></th>
 					</tr>
 				</thead>
 				<tfoot>
 					<tr>
 						<th>Название</th>
-						<th>Город</th>
-						<th>Срок</th>
-						<th>Статус</th>
+						<th>Вуз</th>
+						<th>Факультеты</th>
+						<th>Контракт</th>
 						<th></th>
 					</tr>
 				</tfoot>
 				<tbody>
-					@foreach($universitiess as $universities)
+					@foreach($specialitys as $speciality)
 					<tr>
-						<td>{{ $universities->name }}</td>
-						<td>{{ $universities->country->name }}</td>
-						<td>{{ $universities->normaldeadline }}</td>
-						<td>{{ $universities->statusn }}</td>
+						<td>{{ $speciality->name }}</td>
+						<td>{{ $speciality->faculty->university->name }}</td>
+						<td>{{ $speciality->faculty->name }}</td>
+						<td>{{ $speciality->contract }}</td>
 						<td width="120px">
-							<form action="{{ route('universities.destroy', $universities->id) }}" method="POST">
-							<a href="/admin/universities/{{ $universities->id }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация">
+							<form action="{{ route('speciality.destroy', $speciality->id) }}" method="POST">
+							<a href="/admin/speciality/{{ $speciality->id }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация">
                     			<i class="fas fa-info-circle"></i>
                   			</a>
-                  			<a href="/admin/universities/{{ $universities->id }}/edit" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Изменить">
+                  			<a href="/admin/speciality/{{ $speciality->id }}/edit" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Изменить">
                   				<i class="fas fa-pen"></i>
                   			</a>
                   			@csrf

@@ -6,12 +6,12 @@
 
 @section('content')
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">{{ __('Страны') }}</h1>
+<h1 class="h3 mb-2 text-gray-800">Страны</h1>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
 	<div class="card-header py-3">
 		<a href="/admin/countries/create" class="btn btn-sm btn-success">
-			<span class="text">{{ __('Создать') }}</span>
+			<span class="text">Создать</span>
 		</a>
 	</div>
 	<div class="card-body">
@@ -19,15 +19,15 @@
 			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 				<thead>
 					<tr>
-						<th>{{ __('Название') }}</th>
-						<th>{{ __('Валюта') }}</th>
+						<th>Название</th>
+						<th>Валюта</th>
 						<th></th>
 					</tr>
 				</thead>
 				<tfoot>
 					<tr>
-						<th>{{ __('Название') }}</th>
-						<th>{{ __('Валюта') }}</th>
+						<th>Название</th>
+						<th>Валюта</th>
 						<th></th>
 					</tr>
 				</tfoot>
@@ -37,7 +37,7 @@
 						<td>{{ $countries->name }}</td>
 						<td>{{ $countries->currency }}</td>
 						<td width="120px">
-                  			<a href="/admin/countries/{{ $countries->id }}/edit" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="{{ __('Изменить') }}">
+                  			<a href="/admin/countries/{{ $countries->id }}/edit" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Изменить">
                   				<i class="fas fa-pen"></i>
                   			</a>
                   		</td>

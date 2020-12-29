@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">{{ __('Информация о Книгах') }}</h1>
+<h1 class="h3 mb-2 text-gray-800">Информация</h1>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
 	<div class="card-header py-3">
@@ -26,23 +26,23 @@
 		<table class="table table-bordered">
 			<tbody>
 				<tr>
-					<th scope="row">{{ __('Название') }}</th>
+					<th scope="row">Название</th>
 					<td>{{ $book->title }}</td>
 				</tr>
 				<tr>
-					<th scope="row">{{ __('Автор') }}</th>
+					<th scope="row">Автор</th>
 					<td>{{ $book->author }}</td>
 				</tr>
 				<tr>
-					<th scope="row">{{ __('Категория') }}</th>
+					<th scope="row">Категория</th>
 					<td>{{ $book->categoryn }}</td>
 				</tr>
 				<tr>
-					<th scope="row">{{ __('Описание') }}</th>
+					<th scope="row">Описание</th>
 					<td>{!! nl2br($book->description) !!}</td>
 				</tr>
 				<tr>
-					<th scope="row">{{ __('Картинкa') }}</th>
+					<th scope="row">Картинкa</th>
 					<td>	
 						<img src="/images/{{ $book->image }}" style="max-width: 200px" alt="">
 					</td>

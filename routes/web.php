@@ -29,4 +29,6 @@ Route::prefix('/admin')->group(function(){
 	Route::resource('/countries', 'CountriesController');
 	Route::resource('/universities', 'UniversityController');
 	Route::resource('/faculty', 'FacultyController');
+	Route::resource('/speciality', 'SpecialityController');
+	Route::post('/speciality/faculty', 'SpecialityController@faculty');
 });
