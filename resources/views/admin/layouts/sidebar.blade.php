@@ -27,7 +27,7 @@
       </div>
 
 
-
+      @can('isSuperadmin')
       <!-- Nav Item - Charts -->
       <li class="nav-item">
         <a class="nav-link" href="/admin/countries">
@@ -52,6 +52,13 @@
           <i class="fas fa-briefcase"></i>
           <span>Специальности</span></a>
       </li>
+      @elsecan('isTranslator')
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/studentsT">
+          <i class="fas fa-users"></i>
+          <span>Студенты</span></a>
+      </li>
+      @endcan
 
       <!-- Nav Item - Tables -->
 

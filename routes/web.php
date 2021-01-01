@@ -31,4 +31,9 @@ Route::prefix('/admin')->group(function(){
 	Route::resource('/faculty', 'FacultyController');
 	Route::resource('/speciality', 'SpecialityController');
 	Route::post('/speciality/faculty', 'SpecialityController@faculty');
+	Route::prefix('/studentsT')->group(function(){
+		Route::get('/', 'StudentsTController@index');
+		Route::get('/{student}/edit', 'StudentsTController@edit');
+		Route::put('/{student}', 'StudentsTController@update')->name('studentsT.update');
+	});
 });

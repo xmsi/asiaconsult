@@ -10,6 +10,7 @@ class CountriesController extends Controller
 
     public function __construct(){
         $this->middleware('auth');
+        $this->middleware('role:superadmin');
     }
     /**
      * Display a listing of the resource.
