@@ -36,4 +36,10 @@ Route::prefix('/admin')->group(function(){
 		Route::get('/{student}/edit', 'StudentsTController@edit');
 		Route::put('/{student}', 'StudentsTController@update')->name('studentsT.update');
 	});
+	Route::prefix('/studentsU')->group(function(){
+		Route::get('/', 'StudentsUController@index');
+		Route::get('/{student}', 'StudentsUController@show');
+		Route::get('/{student}/edit', 'StudentsUController@edit');
+		Route::put('/{student}', 'StudentsUController@update')->name('studentsU.update');
+	});
 });

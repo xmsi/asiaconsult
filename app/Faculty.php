@@ -14,4 +14,9 @@ class Faculty extends Common
 	{
 		return $this->belongsTo(University::class);
 	}
+
+    public function students()
+    {
+        return $this->hasManyThrough(Student::class, Speciality::class);
+    }
 }

@@ -58,6 +58,12 @@
           <i class="fas fa-users"></i>
           <span>Студенты</span></a>
       </li>
+      @elsecan('isUniversity')
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/studentsU">
+          <i class="fas fa-users"></i>
+          <span>Студенты</span></a>
+      </li>
       @endcan
 
       <!-- Nav Item - Tables -->

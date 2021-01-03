@@ -20,7 +20,7 @@ class LoginController extends Controller
 	{
 		$this->validate($request, [
 			'name' => 'required',
-			'password' => 'required|min:6',
+			'password' => 'required',
 		]);
 
 		$user_data = array(

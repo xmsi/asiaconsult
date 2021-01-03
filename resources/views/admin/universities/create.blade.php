@@ -46,6 +46,14 @@
 				<input type="text" name="link" class="form-control">
 			</div>
 			<div class="form-group">
+				<label for="title">Логин (для админки вуза)</label>
+				<input type="text" name="login" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="title">Пароль (для админки вуза)</label>
+				<input type="password" name="password" class="form-control">
+			</div>
+			<div class="form-group">
 				<label for="image">Картинка</label><br>
 				<input type="file" name="image">
 			</div>

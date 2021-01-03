@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\University;
 use App\Countries;
+use App\User;
 use Carbon\Carbon;
 use File;
 use Illuminate\Http\Request;
@@ -80,6 +81,16 @@ class UniversityController extends Controller
         $university->deadline = $date;
         $university->save();
 
+        if($request->password && $request->login){
+            $user = new User();
+            $user->name = $request->login;
+            $user->password = bcrypt($request->password);
+            $user->university_id = $university->id;
+            $user->save();
+
+            $user->roles()->attach(3);
+        }
+
         if($request->btncreate){
             return redirect('/admin/universities/create');
         }
@@ -96,7 +107,9 @@ class UniversityController extends Controller
     public function edit(University $university)
     {
         $countries = Countries::pluck('name', 'id')->toArray(); 
-        return view('admin.universities.edit', compact('university', 'countries'));
+        $university_user = User::where('university_id', $university->id)->first();
+
+        return view('admin.universities.edit', compact('university', 'countries', 'university_user'));
     }
 
     /**
@@ -116,7 +129,7 @@ class UniversityController extends Controller
         ]);
 
 
-        $university->fill($request->except(['deadline', 'image']));
+        $university->fill($request->except(['deadline', 'image', 'login', 'password']));
 
         if ($request->hasFile('image')) {
             \File::delete(public_path().'/images/'.$university->image);
@@ -132,6 +145,29 @@ class UniversityController extends Controller
         }
 
         $university->save();
+
+        if($request->password || $request->login){
+            $user = User::firstOrCreate(
+                ['university_id' => $university->id],
+                [
+                    'name' => $request->login,
+                    'password' => bcrypt($request->password),
+                    'university_id' => $university->id
+                ]);
+
+            if($request->password) {
+                $user->password = bcrypt($request->password);
+            }
+            if($request->login) {
+                $user->name = $request->login;
+            }
+
+            $user->save();
+
+            if($user->roles->isEmpty()){
+                $user->roles()->attach(3);
+            }
+        }
 
         return redirect('/admin/universities/')->with('success', 'изменен успешно');
     }
