@@ -1,0 +1,1803 @@
+@import url(../fonts/Montserrat/Montserrat.css);
+*,
+ul,
+p {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  scroll-behavior: smooth;
+  outline: none;
+  font-family: "Gilroy", sans-serif;
+  outline: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+section {
+  overflow: hidden;
+}
+
+html {
+  min-width: 320px;
+}
+
+p {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+header {
+  background: #f6f6f6;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+header .logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+header .additions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 100%;
+}
+
+header .additions .online-pay {
+  background: rgba(197, 30, 30, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  padding: 0 35px;
+}
+
+header .additions .online-pay img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 5px;
+}
+
+header .additions .online-pay p {
+  font-size: 14px;
+  line-height: 150%;
+  color: #ffffff;
+}
+
+header .additions .account {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+header .additions .account img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 5px;
+}
+
+header .additions .account p {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+header .additions .logout {
+  width: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+}
+
+header .additions .logout img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 5px;
+}
+
+header .additions .logout p {
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.modal .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.modal .content .tabs-part {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 30px;
+}
+
+.modal .content .tabs-part .tab {
+  width: 100%;
+  height: 70px;
+  border-bottom: 2px solid #f2f2f2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.modal .content .tabs-part .tab.active-tab, .modal .content .tabs-part .tab:hover {
+  border-bottom: 2px solid #c51e1e;
+}
+
+.modal .content .tabs-part .tab p {
+  font-size: 20px;
+  line-height: 150%;
+  text-align: center;
+}
+
+.modal .content .content-part {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.modal .content .content-part .title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 20px;
+  line-height: 150%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  color: #131313;
+}
+
+.modal .content .content-part form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.modal .content .content-part form .input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.modal .content .content-part form .input span {
+  font-size: 16px;
+  line-height: 150%;
+  text-align: center;
+  color: #828282;
+  margin-bottom: 5px;
+}
+
+.modal .content .content-part form .input input {
+  width: 100%;
+  height: 50px;
+  background: none;
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  font-size: 16px;
+  line-height: 150%;
+  color: #131313;
+}
+
+.modal .content .content-part form .input input::-webkit-input-placeholder {
+  color: #131313;
+}
+
+.modal .content .content-part form .input input:-ms-input-placeholder {
+  color: #131313;
+}
+
+.modal .content .content-part form .input input::-ms-input-placeholder {
+  color: #131313;
+}
+
+.modal .content .content-part form .input input::placeholder {
+  color: #131313;
+}
+
+.modal .content .content-part form button {
+  width: 100%;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 150%;
+  color: #ffffff;
+  border: 0;
+  background: #c51e1e;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  margin-bottom: 30px;
+}
+
+.modal .content .content-part form button:hover {
+  background: #df3b3b;
+}
+
+.modal .content .content-part form .forgot-password {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.modal .content .content-part form .forgot-password:hover {
+  opacity: 0.7;
+}
+
+.modal .content .content-part form .code-resend {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.modal .content .content-part form .code-resend a {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+  margin: 0 5px;
+}
+
+.modal .content .content-part form .code-resend a:hover {
+  opacity: 0.7;
+}
+
+.signup.step-3 .content-part form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: unset;
+  -webkit-box-direction: unset;
+      -ms-flex-direction: unset;
+          flex-direction: unset;
+}
+
+.signup.step-3 .content-part form .input {
+  width: 100%;
+}
+
+.signup.step-3 .content-part form .input.w50 {
+  width: 48%;
+}
+
+.signup.step-3 .content-part form .camefrom {
+  width: 100%;
+}
+
+.signup.step-3 .content-part form .camefrom > p {
+  color: #828282;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 150%;
+  margin-bottom: 20px;
+}
+
+.signup.step-3 .content-part form .camefrom .checkboxes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.signup.step-3 .content-part form .camefrom .checkboxes label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin: 10px 0;
+  width: 20%;
+}
+
+.signup.step-3 .content-part form .camefrom .checkboxes label span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #828282;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 2px;
+  margin-right: 8px;
+}
+
+.signup.step-3 .content-part form .camefrom .checkboxes label p {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 150%;
+  color: #828282;
+}
+
+.signup.step-3 .content-part form .camefrom .checkboxes label input {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.signup.step-3 .content-part form .camefrom .checkboxes label input:checked ~ span {
+  border: 1px solid #c51e1e;
+  background: url(../icons/chevron.svg) no-repeat center center/contain;
+}
+
+.signup.step-4 .content-part h2 {
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 150%;
+  margin-bottom: 20px;
+}
+
+.signup.step-4 .content-part .line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 1px;
+  background: #f2f2f2;
+  margin-bottom: 20px;
+}
+
+.signup.step-4 .content-part > p {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 150%;
+  margin-bottom: 25px;
+  width: 60%;
+}
+
+.signup.step-4 .content-part form {
+  -webkit-box-orient: unset;
+  -webkit-box-direction: unset;
+      -ms-flex-direction: unset;
+          flex-direction: unset;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.signup.step-4 .content-part form .input.select {
+  height: 50px;
+  width: 100%;
+  border: 1px solid #828282;
+  padding: 0 15px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-orient: unset;
+  -webkit-box-direction: unset;
+      -ms-flex-direction: unset;
+          flex-direction: unset;
+}
+
+.signup.step-4 .content-part form .input.select::after {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  right: 15px;
+  width: 20px;
+  height: 20px;
+  background: url(../icons/arrow-dropdown.svg) no-repeat center center;
+  content: "";
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.signup.step-4 .content-part form .input.select p {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 150%;
+  margin: 0;
+  padding: 0;
+}
+
+.signup.step-4 .content-part form .input.select ul {
+  position: absolute;
+  z-index: 2;
+  top: 100%;
+  left: -1px;
+  right: -1px;
+  background: #ffffff;
+  border: 1px solid #828282;
+  border-top: 0;
+  display: none;
+}
+
+.signup.step-4 .content-part form .input.select ul li {
+  height: 50px;
+  padding: 0 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  cursor: pointer;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 150%;
+  margin: 0;
+}
+
+.signup.step-4 .content-part form .input.select ul li:hover {
+  background: #e4e4e4;
+}
+
+.signup.step-4 .content-part form .input.select.active ul {
+  display: block;
+}
+
+.signup.step-4 .content-part form .input.select.active::after {
+  -webkit-transform: translateY(-50%) rotate(180deg);
+      -ms-transform: translateY(-50%) rotate(180deg);
+          transform: translateY(-50%) rotate(180deg);
+}
+
+.signup.step-4 .content-part form .input.select.disabled {
+  opacity: 0.7;
+}
+
+.signup.step-4 .content-part form .input.select.disabled ul {
+  display: none;
+}
+
+.signup.step-4 .content-part form .input.select.disabled.active::after {
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.signup.step-4 .content-part form .input.select.w50 {
+  width: 48%;
+}
+
+.signup.step-4 .content-part form .informations {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-bottom: 30px;
+}
+
+.signup.step-4 .content-part form .informations div {
+  margin-right: 10%;
+}
+
+.signup.step-4 .content-part form .informations div p {
+  font-size: 16px;
+  line-height: 150%;
+  margin-bottom: 5px;
+}
+
+.signup.step-4 .content-part form .informations div p.title {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.choose-before-app {
+  padding: 15px 30px;
+}
+
+.choose-before-app .line {
+  width: 100%;
+  height: 1px;
+  background: #f2f2f2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.choose-before-app .payment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-bottom: 25px;
+}
+
+.choose-before-app .payment .description {
+  padding: 0;
+  padding-right: 50px;
+}
+
+.choose-before-app .payment .description h1 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+  margin-bottom: 5px;
+}
+
+.choose-before-app .payment .description > a {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 150%;
+  color: #828282;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.choose-before-app .payment .description p {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.choose-before-app .payment .description p a {
+  color: #c51e1e;
+  text-decoration: underline;
+}
+
+.choose-before-app .payment .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.choose-before-app .payment .buttons .download {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+.choose-before-app .payment .buttons .download img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: 5px;
+}
+
+.choose-before-app .payment .buttons .download p {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+  text-transform: uppercase;
+  color: #131313;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 150%;
+}
+
+.choose-before-app .payment .buttons .upload {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+.choose-before-app .payment .buttons .upload img {
+  margin-right: 5px;
+}
+
+.choose-before-app .payment .buttons .upload p {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+  text-transform: uppercase;
+  color: #131313;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 150%;
+}
+
+.choose-before-app .payment .buttons .upload input {
+  display: none;
+}
+
+.choose-before-app .payment .buttons button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 45px;
+  background: #c51e1e;
+  padding: 10px 50px;
+  border: 0;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 150%;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.choose-before-app .payment .buttons button:hover {
+  background: #df3b3b;
+}
+
+.choose-before-app .university {
+  margin-bottom: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.choose-before-app .university .informations {
+  padding: 0;
+}
+
+.choose-before-app .university .informations p.university-name {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  margin-bottom: 5px;
+}
+
+.choose-before-app .university .informations p.faculty {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 150%;
+  margin-bottom: 5px;
+}
+
+.choose-before-app .university .informations p {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 5px;
+  line-height: 150%;
+}
+
+.choose-before-app .university .informations p span {
+  color: #828282;
+}
+
+.choose-before-app .university .buttons .other-uni {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 150%;
+  color: #3d3d3d;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px 35px;
+  border: 1px solid #828282;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.choose-before-app .university .buttons .other-uni:hover {
+  opacity: 0.8;
+}
+
+.choose-before-app .documents .item > p {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #131313;
+  margin-bottom: 10px;
+}
+
+.choose-before-app .documents .item label {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+.choose-before-app .documents .item label img {
+  margin-right: 5px;
+}
+
+.choose-before-app .documents .item label p {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+  text-transform: uppercase;
+  color: #131313;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 150%;
+}
+
+.choose-before-app .documents .item label input {
+  display: none;
+}
+
+.choose-before-app .documents button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 45px;
+  background: #c51e1e;
+  padding: 10px 50px;
+  border: 0;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 150%;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.choose-before-app .documents button:hover {
+  background: #df3b3b;
+}
+
+.choose-before-app .documents button.disabled {
+  background: #828282;
+}
+
+.choose-after-app {
+  padding: 15px 30px;
+}
+
+.choose-after-app .line {
+  width: 100%;
+  height: 1px;
+  background: #f2f2f2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.choose-after-app .title h1 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 150%;
+  margin-bottom: 5px;
+}
+
+.choose-after-app .title > a {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 150%;
+  color: #828282;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.choose-after-app .university {
+  margin-bottom: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.choose-after-app .university .informations {
+  padding: 0;
+}
+
+.choose-after-app .university .informations p.university-name {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  margin-bottom: 5px;
+}
+
+.choose-after-app .university .informations p.faculty {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 150%;
+  margin-bottom: 5px;
+}
+
+.choose-after-app .university .informations p {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 5px;
+  line-height: 150%;
+}
+
+.choose-after-app .university .informations p span {
+  color: #828282;
+}
+
+.choose-after-app .university .buttons {
+  padding: 10px 0;
+}
+
+.choose-after-app .university .buttons .other-uni {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 150%;
+  color: #3d3d3d;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px 35px;
+  border: 1px solid #828282;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.choose-after-app .university .buttons .other-uni:hover {
+  opacity: 0.8;
+}
+
+.choose-after-app .items_row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.choose-after-app .items_row .item {
+  height: 150px;
+}
+
+.choose-after-app .items_row .item .content {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #e0e0e0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 10px;
+}
+
+.choose-after-app .items_row .item .content > p {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #131313;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.choose-after-app .items_row .item .content > a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.choose-after-app .items_row .item .content > a img {
+  margin-right: 5px;
+}
+
+.choose-after-app .items_row .item .content > a span {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  color: #828282;
+}
+
+.choose-after-app .items_row .item .content label {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+.choose-after-app .items_row .item .content label img {
+  margin-right: 5px;
+}
+
+.choose-after-app .items_row .item .content label p {
+  -webkit-text-decoration-line: underline;
+          text-decoration-line: underline;
+  text-transform: uppercase;
+  color: #131313;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 150%;
+}
+
+.choose-after-app .items_row .item .content label input {
+  display: none;
+}
+
+.choose-after-app .items_row .item button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 45px;
+  background: #c51e1e;
+  padding: 10px 50px;
+  border: 0;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 150%;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.choose-after-app .items_row .item button:hover {
+  background: #df3b3b;
+}
+
+.choose-after-app .documents {
+  padding: 20px 0;
+}
+
+.choose-after-app .documents .item > p {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #131313;
+  margin-bottom: 10px;
+}
+
+.choose-after-app .documents .item .uploaded {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+.choose-after-app .documents .item .uploaded img {
+  margin-right: 5px;
+}
+
+.choose-after-app .documents .item .uploaded p {
+  color: #828282;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.choose-after-app .documents .item .uploaded input {
+  display: none;
+}
+
+.onlinepay {
+  height: calc(100vh - 50px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.onlinepay .content .title {
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 150%;
+  margin-bottom: 20px;
+}
+
+.onlinepay .content .line {
+  width: 100%;
+  height: 1px;
+  background: #f2f2f2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.onlinepay .content form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.onlinepay .content form .input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.onlinepay .content form .input span {
+  font-size: 16px;
+  line-height: 150%;
+  text-align: center;
+  color: #828282;
+  margin-bottom: 5px;
+}
+
+.onlinepay .content form .input input {
+  width: 100%;
+  height: 50px;
+  background: none;
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  font-size: 16px;
+  line-height: 150%;
+  color: #131313;
+}
+
+.onlinepay .content form .input input::-webkit-input-placeholder {
+  color: #131313;
+}
+
+.onlinepay .content form .input input:-ms-input-placeholder {
+  color: #131313;
+}
+
+.onlinepay .content form .input input::-ms-input-placeholder {
+  color: #131313;
+}
+
+.onlinepay .content form .input input::placeholder {
+  color: #131313;
+}
+
+.onlinepay .content form .paymenttype {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.onlinepay .content form .paymenttype > p {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.onlinepay .content form .paymenttype .checkboxes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.onlinepay .content form .paymenttype .checkboxes label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin: 10px 30px 10px 0;
+}
+
+.onlinepay .content form .paymenttype .checkboxes label span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #828282;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 2px;
+  margin-right: 8px;
+}
+
+.onlinepay .content form .paymenttype .checkboxes label p {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 150%;
+  color: #3d3d3d;
+}
+
+.onlinepay .content form .paymenttype .checkboxes label input {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.onlinepay .content form .paymenttype .checkboxes label input:checked ~ span {
+  border: 1px solid #c51e1e;
+  background: url(../icons/chevron.svg) no-repeat center center/contain;
+}
+
+.onlinepay .content form button {
+  width: 100%;
+  height: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 150%;
+  color: #ffffff;
+  border: 0;
+  background: #c51e1e;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.onlinepay .content form button:hover {
+  background: #df3b3b;
+}
+
+.confirm {
+  background: #f7f7f7;
+}
+
+.confirm .content p {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 150%;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #3d3d3d;
+}
+
+.confirm .content .buttons {
+  margin: 10px auto;
+}
+
+.confirm .content .buttons button {
+  margin: 0 10px;
+  height: 50px;
+  background: #c51e1e;
+  width: 200px;
+  border: 0;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 150%;
+  cursor: pointer;
+  color: #ffffff;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.confirm .content .buttons button:hover {
+  background: #df3b3b;
+}
+
+.popup {
+  background: #f7f7f7;
+}
+
+.popup .modal-close {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  width: 50px;
+  height: 50px;
+  background: url(../icons/modal-close.svg) no-repeat center center;
+  cursor: pointer;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.popup .modal-close:hover {
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.popup .content h2 {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 150%;
+  text-align: center;
+  color: #3d3d3d;
+  margin-bottom: 15px;
+}
+
+.popup .content p {
+  font-size: 18px;
+  line-height: 150%;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.popup .content p.title {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 150%;
+  text-align: center;
+  color: #3d3d3d;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  header .additions .account {
+    display: none;
+  }
+  .modal {
+    padding: 0;
+  }
+  .modal .content {
+    padding: 0 10px;
+  }
+  .modal .content .tabs-part {
+    margin-bottom: 25px;
+  }
+  .modal .content .tabs-part .tab {
+    height: 50px;
+  }
+  .modal .content .tabs-part .tab p {
+    font-size: 14px;
+  }
+  .modal .content .content-part .title {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  .modal .content .content-part form .input span {
+    font-size: 14px;
+  }
+  .modal .content .content-part form .input input {
+    font-size: 14px;
+    height: 40px;
+  }
+  .modal .content .content-part form button {
+    height: 40px;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .modal .content .content-part form .forgot-password {
+    font-size: 14px;
+  }
+  .modal .content .content-part form .code-resend {
+    font-size: 14px;
+  }
+  .signup.step-3 .content-part form .input.w50 {
+    width: 100%;
+  }
+  .signup.step-3 .content-part form .camefrom > p {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  .signup.step-3 .content-part form .camefrom .checkboxes {
+    margin-bottom: 15px;
+  }
+  .signup.step-3 .content-part form .camefrom .checkboxes label {
+    width: 50%;
+    margin: 5px 0;
+  }
+  .signup.step-4 .content-part h2 {
+    font-size: 14px;
+    line-height: 150%;
+    margin-bottom: 15px;
+  }
+  .signup.step-4 .content-part .line {
+    margin-bottom: 15px;
+  }
+  .signup.step-4 .content-part > p {
+    width: 100%;
+    font-size: 14px;
+  }
+  .signup.step-4 .content-part form .input.select {
+    height: 40px;
+    margin-bottom: 20px;
+  }
+  .signup.step-4 .content-part form .input.select p {
+    font-size: 14px;
+    line-height: 150%;
+  }
+  .signup.step-4 .content-part form .input.select.w50 {
+    width: 100%;
+  }
+  .signup.step-4 .content-part form .informations {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  .signup.step-4 .content-part form .informations div {
+    width: 100%;
+    margin: 0;
+  }
+  .signup.step-4 .content-part form .informations div p {
+    font-size: 14px;
+    line-height: 150%;
+  }
+  .signup.step-4 .content-part form .informations div p.title {
+    font-size: 14px;
+    line-height: 150%;
+  }
+  .choose-after-app .items_row {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .choose-after-app .items_row .item {
+    padding: 0;
+    margin-bottom: 10px;
+  }
+  .popup .modal-close {
+    top: 20px;
+    right: 20px;
+  }
+  .popup .content h2 {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 150%;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .popup .content p {
+    font-size: 14px;
+    line-height: 150%;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  .popup .content p.title {
+    font-size: 14px;
+    line-height: 150%;
+    margin-bottom: 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  header .logo {
+    display: none;
+  }
+  header .additions {
+    padding: 0;
+  }
+  header .additions .online-pay {
+    padding: 0 20px;
+  }
+  header .additions .online-pay img {
+    display: none;
+  }
+  header .additions .logout {
+    margin: 0 auto;
+  }
+  .choose-before-app {
+    padding: 15px 10px;
+  }
+  .choose-before-app .payment {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    margin-bottom: 15px;
+  }
+  .choose-before-app .payment .description {
+    padding: 0;
+    margin-bottom: 15px;
+  }
+  .choose-before-app .payment .description h1 {
+    font-size: 14px;
+    line-height: 150%;
+    margin: 0;
+  }
+  .choose-before-app .payment .description > a {
+    font-size: 14px;
+    line-height: 150%;
+    margin: 0;
+  }
+  .choose-before-app .payment .description p {
+    font-size: 14px;
+  }
+  .choose-before-app .university {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .choose-before-app .university .informations {
+    padding: 0;
+  }
+  .choose-before-app .university .informations p.university-name {
+    font-size: 14px;
+    line-height: 150%;
+    margin: 0;
+  }
+  .choose-before-app .university .informations p.faculty {
+    font-size: 14px;
+    line-height: 150%;
+  }
+  .choose-before-app .university .informations p span {
+    white-space: nowrap;
+  }
+  .choose-after-app {
+    padding: 20px 10px;
+  }
+  .choose-after-app .title {
+    padding: 0;
+  }
+  .choose-after-app .title h1 {
+    font-size: 14px;
+    line-height: 150%;
+    margin: 0;
+  }
+  .choose-after-app .university {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .choose-after-app .university .informations {
+    padding: 0;
+  }
+  .choose-after-app .university .informations p.university-name {
+    font-size: 14px;
+    line-height: 150%;
+    margin: 0;
+  }
+  .choose-after-app .university .informations p.faculty {
+    font-size: 14px;
+    line-height: 150%;
+  }
+  .choose-after-app .university .informations p span {
+    white-space: nowrap;
+  }
+  .choose-after-app .items_row .item {
+    height: auto;
+  }
+  .choose-after-app .items_row .item .content {
+    padding: 20px 0;
+  }
+  .onlinepay {
+    padding: 0 10px;
+  }
+  .onlinepay .content {
+    padding: 0;
+  }
+  .onlinepay .content .title {
+    font-size: 14px;
+  }
+  .onlinepay .content form .input span {
+    font-size: 14px;
+  }
+  .onlinepay .content form .input input {
+    font-size: 14px;
+    height: 40px;
+  }
+  .onlinepay .content form .paymenttype > p {
+    font-size: 14px;
+  }
+  .onlinepay .content form button {
+    height: 40px;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  .confirm .content p {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 150%;
+  }
+  .confirm .content .buttons {
+    margin: 5px auto;
+    padding: 0 15px;
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .confirm .content .buttons button {
+    width: 48%;
+    height: 40px;
+    font-size: 14px;
+    margin: 0;
+  }
+  .popup .modal-close {
+    width: 25px;
+    height: 25px;
+    background-size: contain;
+  }
+}

@@ -43,3 +43,11 @@ Route::prefix('/admin')->group(function(){
 		Route::put('/{student}', 'StudentsUController@update')->name('studentsU.update');
 	});
 });
+
+// ------------------------------------------ Frontend Abitur panel -----------------------
+
+Route::get('/', 'AbiturController@phone');
+Route::get('/worksheet/{phone}', 'AbiturController@worksheet');
+Route::get('/sms/{phone}', 'AbiturController@sms');
+Route::post('/', 'AbiturController@phone_recieve');
+Route::post('/sms', 'AbiturController@sms_recieve');
