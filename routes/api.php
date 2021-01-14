@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/getu', 'ApiController@university');
+Route::post('/getf', 'ApiController@faculty');
+Route::post('/getd', 'ApiController@facultydata');

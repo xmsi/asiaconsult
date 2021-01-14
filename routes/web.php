@@ -47,7 +47,9 @@ Route::prefix('/admin')->group(function(){
 // ------------------------------------------ Frontend Abitur panel -----------------------
 
 Route::get('/', 'AbiturController@phone');
+Route::get('/university_select', 'AbiturController@university_select');
 Route::get('/worksheet/{phone}', 'AbiturController@worksheet');
 Route::get('/sms/{phone}', 'AbiturController@sms');
 Route::post('/', 'AbiturController@phone_recieve');
 Route::post('/sms', 'AbiturController@sms_recieve');
+Route::post('/worksheet', 'AbiturController@worksheet_receive');

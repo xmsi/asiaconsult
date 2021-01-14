@@ -31,11 +31,21 @@ $(document).ready(function () {
     });
     $(".inputselector").click(function () {
         var text = $(this).text();
+        var id = $(this).data('id');
 
         $(this).parent().siblings(".selected").text(text);
-        $(this).parent().siblings("input").val(text);
+        $(this).parent().siblings("input").val(id).trigger("changing");
         $(this).parent().parent(".input").next(".input").removeClass("disabled");
     });
+    $("ul").on('click', '.inputselector1', function(event) {
+        var text = $(this).text();
+        var id = $(this).data('id');
+
+        $(this).parent().siblings(".selected").text(text);
+        $(this).parent().siblings("input").val(id).trigger("changing");
+        $(this).parent().parent(".input").next(".input").removeClass("disabled");
+        /* Act on the event */
+    });;
 
     // MODAL OPEN
 

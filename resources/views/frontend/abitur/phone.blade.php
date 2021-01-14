@@ -3,6 +3,7 @@
 <section class="modal signup container-fluid">
 	<div class="content col-xl-6 col-lg-8 col-md-10 col-sm-12 col-12">
 		<x-modalbtn />
+		@include('error')
 		<div class="content-part">
 			<form action="/" method="POST" accept-charset="utf-8" enctype="multipart/form-data" id="phoneform">
 				@csrf
