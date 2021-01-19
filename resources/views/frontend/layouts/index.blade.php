@@ -12,6 +12,31 @@
 		<title>Asiaconsult</title>
 	</head>
 
+	@if(request()->is('cab*') && auth()->check())
+		<header>
+			<div class="logo col-xl-2 col-lg-2 col-md-3 col-sm-3">
+				<img src="/assets/icons/logo.svg" alt="logo" />
+			</div>
+			<div class="additions col-xl-6 col-lg-8 col-md-9 col-sm-9 col-12">
+				<a href="onlinepay.html" class="online-pay">
+					<img src="/assets/icons/card.svg" alt="card" />
+					<p>Онлайн - оплата услуг</p>
+				</a>
+				<div class="account">
+					<img src="/assets/icons/account.svg" alt="account" />
+					<p>{{ auth()->user()->student->name }}</p>
+				</div>
+				<div class="logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+					<img src="/assets/icons/logout.svg" alt="logout" />
+					<p>Выйти</p>
+				</div>
+				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+					{{ csrf_field() }}
+				</form>
+			</div>
+		</header>
+	@endif
+
 	<body>
 		<main>
 			@yield('content')

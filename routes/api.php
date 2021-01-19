@@ -21,3 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/getu', 'ApiController@university');
 Route::post('/getf', 'ApiController@faculty');
 Route::post('/getd', 'ApiController@facultydata');
+Route::post('/gets', 'ApiController@speciality');

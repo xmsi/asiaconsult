@@ -1,8 +1,8 @@
 <div class="tabs-part">
-	<a href="#!" class="tab">
+	<a href="/signin" class="tab @if(request()->path() == 'signin') active-tab @endif">
 		<p>Войти</p>
 	</a>
-	<a href="#!" class="tab active-tab">
+	<a href="/" class="tab @if(request()->path() == '/') active-tab @endif">
 		<p>Зарегистрироваться</p>
 	</a>
 </div>

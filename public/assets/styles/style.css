@@ -1,7 +1,7 @@
 @import url(../fonts/Gilroy/Gilroy.css);
-*,
-ul,
-p {
+html *,
+html ul,
+html p {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -13,37 +13,37 @@ p {
   outline: none;
 }
 
-a {
+html a {
   color: inherit;
   text-decoration: none;
 }
 
-a:hover {
+html a:hover {
   color: inherit;
   text-decoration: none;
 }
 
-section {
+html section {
   overflow: hidden;
 }
 
-html {
+html html {
   min-width: 320px;
 }
 
-p {
+html p {
   font-weight: normal;
   font-size: 14px;
   line-height: 150%;
 }
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+html input::-webkit-outer-spin-button,
+html input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-input[type="number"] {
+html input[type="number"] {
   -moz-appearance: textfield;
 }
 
@@ -199,6 +199,36 @@ header .additions .logout p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.modal .content .error {
+  background-color: rgba(197, 30, 30, 0.2);
+  width: 100%;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 5px 10px;
+}
+
+.modal .content .error.active {
+  display: none;
+}
+
+.modal .content .error p {
+  font-size: 14px;
+  color: #C51E1E;
+}
+
+.modal .content .error img {
+  padding-top: 5px;
+  cursor: pointer;
 }
 
 .modal .content .tabs-part {
@@ -394,6 +424,36 @@ header .additions .logout p {
 
 .modal .content .content-part form .code-resend a:hover {
   opacity: 0.7;
+}
+
+.signup.step-3 .content-part .error {
+  background-color: rgba(197, 30, 30, 0.2);
+  width: 100%;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 5px 10px;
+}
+
+.signup.step-3 .content-part .error.active {
+  display: none;
+}
+
+.signup.step-3 .content-part .error p {
+  font-size: 14px;
+  color: #C51E1E;
+}
+
+.signup.step-3 .content-part .error img {
+  padding-top: 5px;
+  cursor: pointer;
 }
 
 .signup.step-3 .content-part form {
@@ -1668,6 +1728,9 @@ header .additions .logout p {
   }
   header .additions .logout {
     margin: 0 auto;
+  }
+  .signup.step-3 .content-part .error p {
+    font-size: 12px;
   }
   .choose-before-app {
     padding: 15px 10px;

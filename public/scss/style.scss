@@ -1,52 +1,54 @@
 @import "variables";
 @import url(../fonts/Montserrat/Montserrat.css);
 
-*,
-ul,
-p {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	box-sizing: border-box;
-	scroll-behavior: smooth;
-	outline: none;
-	font-family: "Gilroy", sans-serif;
-	outline: none;
-	// color: $	;
-}
+html {
+	*,
+	ul,
+	p {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		box-sizing: border-box;
+		scroll-behavior: smooth;
+		outline: none;
+		font-family: "Gilroy", sans-serif;
+		outline: none;
+		// color: $	;
+	}
 
-a {
-	color: inherit;
-	text-decoration: none;
-
-	&:hover {
+	a {
 		color: inherit;
 		text-decoration: none;
+
+		&:hover {
+			color: inherit;
+			text-decoration: none;
+		}
 	}
-}
 
-section {
-	overflow: hidden;
-}
+	section {
+		overflow: hidden;
+	}
 
-html {
-	min-width: 320px;
-}
+	html {
+		min-width: 320px;
+	}
 
-p {
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 150%;
-}
+	p {
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 150%;
+	}
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
-}
+	input::-webkit-outer-spin-button,
+	input::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
 
-input[type="number"] {
-	-moz-appearance: textfield;
+	input[type="number"] {
+		-moz-appearance: textfield;
+	}
 }
 
 header {
@@ -142,6 +144,27 @@ header {
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+
+		.error {
+			background-color: rgba(197, 30, 30, 0.2);
+			width: 100%;
+			margin-bottom: 15px;
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			padding: 5px 10px;
+			&.active {
+				display: none;
+			}
+			p {
+				font-size: 14px;
+				color: #C51E1E;
+			}
+			img {
+				padding-top: 5px;
+				cursor: pointer;
+			}
+		}
 
 		.tabs-part {
 			width: 100%;
@@ -273,7 +296,29 @@ header {
 }
 
 .signup.step-3 {
+	
+
 	.content-part {
+		.error {
+			background-color: rgba(197, 30, 30, 0.2);
+			width: 100%;
+			margin-bottom: 15px;
+			display: flex;
+			justify-content: space-between;
+			align-items: flex-start;
+			padding: 5px 10px;
+			&.active {
+				display: none;
+			}
+			p {
+				font-size: 14px;
+				color: #C51E1E;
+			}
+			img {
+				padding-top: 5px;
+				cursor: pointer;
+			}
+		}
 		form {
 			display: flex;
 			flex-wrap: wrap;
@@ -1374,6 +1419,16 @@ header {
 
 			.logout {
 				margin: 0 auto;
+			}
+		}
+	}
+
+	.signup.step-3 {
+		.content-part {
+			.error {
+				p {
+					font-size: 12px;
+				}
 			}
 		}
 	}

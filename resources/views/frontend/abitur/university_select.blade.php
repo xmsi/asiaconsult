@@ -5,11 +5,13 @@
 					<div class="content-part">
 						<h2>Выберите университет</h2>
 						<span class="line"></span>
+						@include('frontend.error')
 						<p>
 							Заполните все необходимые поля ниже, чтобы узнать стоимость обучения, количество мест в университете и
 							подать документы*
 						</p>
-						<form action="" method="">
+						<form action="/university_selected" method="POST">
+							@csrf
 							<div class="input select">
 								<input class="country" type="hidden" name="country" id="country" value="Страна" required />
 								<p class="selected">Страна</p>
@@ -21,7 +23,7 @@
 							</div>
 							<div class="input select disabled">
 								<input type="hidden" name="university" id="university" value="Университет" required />
-								<p class="selected">Университет</p>
+								<p class="selected" id="universityp" data-name="Университет">Университет</p>
 								<ul id="universityul">
 									<li class="inputselector">University 1</li>
 									<li class="inputselector">University 2</li>
@@ -31,7 +33,7 @@
 							</div>
 							<div class="input select disabled w50">
 								<input type="hidden" name="faculty" id="faculty" value="Факультет" required />
-								<p class="selected">Факультет</p>
+								<p class="selected" data-name="Факультет">Факультет</p>
 								<ul id="facultyul">
 									<li class="inputselector">Faculty 1</li>
 									<li class="inputselector">Faculty 2</li>
@@ -40,8 +42,8 @@
 								</ul>
 							</div>
 							<div class="input select disabled w50">
-								<input type="hidden" name="speciality" id="speciality" value="Форма обучения" required />
-								<p class="selected">Специальность</p>
+								<input type="hidden" name="speciality" id="speciality" value="Специальность" required />
+								<p class="selected" data-name="Специальность">Специальность</p>
 								<ul id="specialityul">
 									<li class="inputselector">Eduform 1</li>
 									<li class="inputselector">Eduform 2</li>
@@ -51,9 +53,9 @@
 							</div>
 
 							<div class="input select disabled">
-								<input type="hidden" name="EDUFORM" value="Форма обучения" required />
-								<p class="selected">Форма обучения</p>
-								<ul>
+								<input type="hidden" name="formatype" id="formatype" value="Форма обучения" required />
+								<p class="selected" data-name="Форма обучения">Форма обучения</p>
+								<ul id="formatypeul">
 									<li class="inputselector">Eduform 1</li>
 									<li class="inputselector">Eduform 2</li>
 									<li class="inputselector">Eduform 3</li>
@@ -95,6 +97,10 @@
 				})
 				.done(function(data) {
 					$("#universityul").empty();
+					$("#universityul").prev().text(function(){
+						return $(this).data('name');
+					});
+
 					$.each(data, function(index, val) {
 						$("#universityul").append('<li class="inputselector1" data-id="'+ index +'">'+val+'</li>');
 					});
@@ -116,6 +122,9 @@
 				})
 				.done(function(data) {
 					$("#facultyul").empty();
+					$("#facultyul").prev().text(function(){
+						return $(this).data('name');
+					});
 					$.each(data, function(index, val) {
 						$("#facultyul").append('<li class="inputselector1" data-id="'+ index +'">'+val+'</li>');
 					});
@@ -137,10 +146,14 @@
 					},
 				})
 				.done(function(data) {
-					$('#volume').text(data[0].volume);
-					$.each(data, function(val){
-						$('#currency').text(val.currency);
-						$('#contract').text(val.contract);
+					$('#volume').text(data[0].faculty.volume);
+					console.log(data);
+					$("#specialityul").empty();
+					$("#specialityul").prev().text(function(){
+						return $(this).data('name');
+					});
+					$.each(data, function(index, val){
+						$("#specialityul").append('<li class="inputselector1" data-id="'+ val.id +'">'+val.name+'</li>');
 					});
 				})
 				.fail(function() {
@@ -148,7 +161,42 @@
 				})
 				
 			});
+
+			$("#speciality").bind('changing', function(event) {
+				$.ajax({
+					url: '/api/gets',
+					type: 'POST',
+					dataType: 'json',
+					data: {
+						_token: "{{ csrf_token() }}",
+						speciality_id: this.value
+					},
+				})
+				.done(function(data) {
+					$("#currency").text(data.faculty.university.country.currency);
+					$("#contract").text(data.contract);
+					$("#formatypeul").empty();
+					$("#formatypeul").prev().text(function(){
+						return $(this).data('name');
+					});
+					check_dropdown(data.online, 'Онлайн', 2);
+					check_dropdown(data.part_time, 'Заочное', 1);
+					check_dropdown(data.full_time, 'Очное', 0);
+
+
+				})
+				.fail(function() {
+					console.log("error");
+				})
+				
+			});
 			
+			function check_dropdown(status, name, orig){
+				if(status == 1){
+					$("#formatypeul").append('<li class="inputselector1" data-id="'+ orig +'">'+name+'</li>');
+				}
+			}
+
 		});
 	</script>
 @endsection

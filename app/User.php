@@ -40,6 +40,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\User');
     }
 
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
+
     /**
      * The attributes that should be cast to native types.
      *

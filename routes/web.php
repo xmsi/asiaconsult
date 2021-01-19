@@ -44,12 +44,22 @@ Route::prefix('/admin')->group(function(){
 	});
 });
 
+Route::prefix('/cab')->group(function(){
+	Route::get('/', 'AbiturController@main');
+	Route::get('/senddocs', 'AbiturController@senddocs');
+	Route::post('/docs_receive', 'AbiturController@docs_receive');
+});
+
 // ------------------------------------------ Frontend Abitur panel -----------------------
 
 Route::get('/', 'AbiturController@phone');
+Route::get('/signin', 'AbiturController@signin')->name('login');
 Route::get('/university_select', 'AbiturController@university_select');
+Route::post('/university_selected', 'AbiturController@university_selected');
 Route::get('/worksheet/{phone}', 'AbiturController@worksheet');
 Route::get('/sms/{phone}', 'AbiturController@sms');
 Route::post('/', 'AbiturController@phone_recieve');
 Route::post('/sms', 'AbiturController@sms_recieve');
 Route::post('/worksheet', 'AbiturController@worksheet_receive');
+Route::get('/docs_success', 'AbiturController@success');
+Route::get('/docs_error', 'AbiturController@error');

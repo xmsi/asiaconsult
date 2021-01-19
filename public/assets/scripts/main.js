@@ -47,6 +47,10 @@ $(document).ready(function () {
         /* Act on the event */
     });;
 
+    $(".x-close").click(function () {
+        $(".error").toggleClass("active");
+    });
+
     // MODAL OPEN
 
     // $(".leaveapp-modal-btn").click(function () {

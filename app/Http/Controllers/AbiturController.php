@@ -6,19 +6,26 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Phone;
 use App\User;
+use App\Speciality;
 use App\Student;
 use App\Countries;
+use Carbon\Carbon;
 
 class AbiturController extends Controller
 {
 	public function __construct()
 	{
-		$this->middleware('auth')->only('university_select');;
+		$this->middleware(['auth', 'role:abiturient'])->only(['university_select', 'university_selected', 'senddocs', 'docs_receive', 'success', 'error', 'main']);
 	}
 
 	public function phone()
 	{
 		return view('frontend.abitur.phone');
+	}
+
+	public function signin()
+	{
+		return view('frontend.abitur.signin');
 	}
 
 	public function phone_recieve(Request $request)
@@ -28,7 +35,7 @@ class AbiturController extends Controller
 		}
 		$phone = Phone::firstOrNew(['phone' => $request->phone]);
 		$phone->sms_code = rand(11112, 99998);
-		$sms = $phone->send_sms();
+		// $sms = $phone->send_sms();
 		$phone->save();
 
 		return redirect('/sms/'.$phone->id);
@@ -100,5 +107,83 @@ class AbiturController extends Controller
 		$country = Countries::pluck('name', 'id')->toArray();
 
 		return view('frontend.abitur.university_select', compact('country'));
+	}
+
+	public function university_selected(Request $request)
+	{
+		$this->validate($request, [
+			'speciality' => 'required|integer',
+			'formatype' => 'required|integer'
+		]);	
+		if(Speciality::find($request->speciality)->validateDocs()){
+			$user = Auth::user();
+			$user->student->update([
+				'speciality_id' => $request->speciality,
+				'type' => $request->formatype,
+			]);
+
+			return redirect('/cab/senddocs');
+		}
+
+		return redirect('/docs_error');
+	}
+
+	public function senddocs()
+	{
+		$student = getStudent();
+
+		return view('frontend.abitur.senddocs', compact('student'));
+	}
+
+	public function docs_receive(Request $request)
+	{
+		$validate = 'required|file|mimes:pdf,doc,docx,jpeg,jpg,png,bmp,gif,svg,webp';
+		$this->validate($request, [
+			'diplom' => $validate,
+			'passport' => $validate,
+		]);
+
+		if(getStudent()->validateDocs()){
+			if ($request->hasFile('diplom')) {
+				// \File::delete(public_path().'/stdocs/diplom/'.$request->diplom);
+				$diplom = $request->file('diplom');
+				$diplomName = $diplom->getClientOriginalName();
+				$diplomName = getStudent()->id . '__' . Carbon::now()->timestamp.$diplomName;
+				$diplom->move('stdocs/diplom/', $diplomName);
+			}
+
+			if ($request->hasFile('passport')) {
+				// \File::delete(public_path().'/stdocs/passport/'.$request->passport);
+				$passport = $request->file('passport');
+				$passportName = $passport->getClientOriginalName();
+				$passportName = getStudent()->id . '__' .Carbon::now()->timestamp.$passportName;
+				$passport->move('stdocs/passport/', $passportName);
+			}
+
+			getStudent()->update([
+				'diplom' => $diplomName,
+				'passport' => $passportName,
+				'docs_date' => Carbon::now()->timestamp
+			]);
+
+			return redirect('/docs_success');
+		}
+
+		return redirect('/docs_error');
+	}
+
+	public function success()
+	{
+		return view('frontend.abitur.success');
+	}
+
+	public function error()
+	{
+		return view('frontend.abitur.error');
+	}
+
+	public function main()
+	{
+		return view('frontend.abitur.main');
 	}
 }

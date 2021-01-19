@@ -6,7 +6,7 @@
 					<div class="content-part">
 						<form action="/worksheet" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
 							@csrf
-							@include('error')
+							@include('frontend.error')
 							<input type="hidden" name="phone", value="{{ $phone }}">
 							<div class="input w50">
 								<span>Имя</span>

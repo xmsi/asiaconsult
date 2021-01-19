@@ -15,27 +15,28 @@ class ApiController extends Controller
 {
 	public function university(Request $request)
 	{
-		$university = University::where('country_id', $request->country_id)->pluck('name', 'id');
+		$university = University::where(['country_id' => $request->country_id, 'status' => 1])->pluck('name', 'id');
 
 		return response($university->jsonSerialize(), Response::HTTP_OK);
 	}
 
 	public function faculty(Request $request)
 	{
-		$university = Faculty::where('university_id', $request->university_id)->pluck('name', 'id');
+		$university = Faculty::where(['university_id' => $request->university_id, 'status' => 1])->pluck('name', 'id');
 
 		return response($university->jsonSerialize(), Response::HTTP_OK);
 	}
 
 	public function facultydata(Request $request)
 	{
-		$faculty = Faculty::find($request->faculty_id);
-		$sp = Speciality::where('faculty_id', $request->faculty_id);
-		$speciality = $sp->get();
-		if ($sp->exists()) {
-			$speciality[0]->volume = $faculty->volume;
-			$speciality[0]->currency = $faculty->university->country->currency;
-		}
+		$speciality = Speciality::where(['faculty_id' => $request->faculty_id, 'status' => 1])->with('Faculty:id,volume')->get();
+
+		return response($speciality->jsonSerialize(), Response::HTTP_OK);
+	}
+
+	public function speciality(Request $request)
+	{
+		$speciality = Speciality::where(['id' => $request->speciality_id,'status' => 1])->with('faculty.university.country')->first();
 
 		return response($speciality->jsonSerialize(), Response::HTTP_OK);
 	}

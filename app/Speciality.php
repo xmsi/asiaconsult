@@ -35,4 +35,13 @@ class Speciality extends Common
         	$this->online = 1;
         }
 	}
+
+    public function validateDocs()
+    {
+        if ($this->faculty->university->status && $this->faculty->status && $this->status && $this->faculty->volume) {
+            return true;
+        }
+
+        return false;
+    }
 }
