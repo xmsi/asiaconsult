@@ -40,12 +40,12 @@
 						<td>{{ $student->second_name }}</td>
 						<td>{{ $student->father_name }}</td>
 						<td>							
-							<a href="/stdocs/{{ $student->passport }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
+							<a href="/stdocs/passport/{{ $student->passport }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
                     			<i class="fas fa-download"></i> Скачать
                   			</a>
                   		</td>
 						<td>							
-							<a href="/stdocs/{{ $student->diplom }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
+							<a href="/stdocs/diplom/{{ $student->diplom }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
                     			<i class="fas fa-download"></i> Скачать
                   			</a>
                   		</td>

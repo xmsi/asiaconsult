@@ -48,6 +48,14 @@
 				<input type="checkbox" name="part_time" class="form-check-input" id="exampleCheck3" value="1" @if($speciality->part_time) checked @endif>
 				<label class="form-check-label" for="exampleCheck3">Заочное</label>
 			</div>
+			<div class="form-check">
+				<input type="checkbox" name="weekend_time" class="form-check-input" id="exampleCheck4" value="1" @if($speciality->weekend_time) checked @endif>
+				<label class="form-check-label" for="exampleCheck4">По выходным</label>
+			</div>
+			<div class="form-check">
+				<input type="checkbox" name="night_time" class="form-check-input" id="exampleCheck5" value="1" @if($speciality->night_time) checked @endif>
+				<label class="form-check-label" for="exampleCheck5">Вечернее</label>
+			</div>
 			<br>
 			<div class="form-group">
 				<label for="status">Статус</label>

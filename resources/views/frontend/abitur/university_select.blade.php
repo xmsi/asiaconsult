@@ -179,6 +179,8 @@
 					$("#formatypeul").prev().text(function(){
 						return $(this).data('name');
 					});
+					check_dropdown(data.weekend_time, 'По выходным', 4);
+					check_dropdown(data.night_time, 'Вечернее', 3);
 					check_dropdown(data.online, 'Онлайн', 2);
 					check_dropdown(data.part_time, 'Заочное', 1);
 					check_dropdown(data.full_time, 'Очное', 0);

@@ -5,7 +5,7 @@ namespace App;
 class Speciality extends Common
 {
 	protected $fillable = [
-		'faculty_id', 'contract', 'service_sum', 'name', 'online', 'status', 'full_time', 'part_time'
+		'faculty_id', 'contract', 'service_sum', 'name', 'online', 'status', 'full_time', 'part_time', 'weekend_time', 'night_time'
 	];
 
 	protected $table = 'speciality';

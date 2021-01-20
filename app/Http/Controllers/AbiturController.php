@@ -16,6 +16,8 @@ class AbiturController extends Controller
 	public function __construct()
 	{
 		$this->middleware(['auth', 'role:abiturient'])->only(['university_select', 'university_selected', 'senddocs', 'docs_receive', 'success', 'error', 'main']);
+
+		$this->middleware('guest')->only(['signin', 'signin_receive', 'phone', 'phone_recieve', 'sms', 'sms_recieve']);
 	}
 
 	public function phone()
@@ -28,14 +30,40 @@ class AbiturController extends Controller
 		return view('frontend.abitur.signin');
 	}
 
+	public function signin_receive(Request $request)
+	{
+		$this->validate($request, [
+			'phone' => 'required|integer',
+			'password' => 'required'
+		]);
+
+		if(!Auth::check()){
+			$user_data = array(
+				'name' => $request->phone,
+				'password' => $request->password
+			);
+			if(Auth::attempt($user_data)){
+				return redirect('/cab/');
+			} else {
+				return redirect()->back()->withErrors(['Неправильно введены дынные']);
+			}
+		}
+
+		dd($request->all());
+	}
+
 	public function phone_recieve(Request $request)
 	{
+		$this->validate($request, [
+			'phone' => 'required|integer'
+		]);
+
 		if (Student::where('phone', $request->phone)->exists()) {
 			return redirect()->back()->withErrors(['Этот номер был зарегестрирован ранее']);
 		}
 		$phone = Phone::firstOrNew(['phone' => $request->phone]);
 		$phone->sms_code = rand(11112, 99998);
-		// $sms = $phone->send_sms();
+		$sms = $phone->send_sms();
 		$phone->save();
 
 		return redirect('/sms/'.$phone->id);

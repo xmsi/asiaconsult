@@ -52,8 +52,9 @@ Route::prefix('/cab')->group(function(){
 
 // ------------------------------------------ Frontend Abitur panel -----------------------
 
-Route::get('/', 'AbiturController@phone');
-Route::get('/signin', 'AbiturController@signin')->name('login');
+Route::get('/registration', 'AbiturController@phone');
+Route::get('/', 'AbiturController@signin')->name('login');
+Route::post('/signin', 'AbiturController@signin_receive');
 Route::get('/university_select', 'AbiturController@university_select');
 Route::post('/university_selected', 'AbiturController@university_selected');
 Route::get('/worksheet/{phone}', 'AbiturController@worksheet');
