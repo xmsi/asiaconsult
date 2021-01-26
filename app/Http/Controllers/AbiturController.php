@@ -17,7 +17,7 @@ class AbiturController extends Controller
 	{
 		$this->middleware(['auth', 'role:abiturient'])->only(['university_select', 'university_selected', 'senddocs', 'docs_receive', 'success', 'error', 'main']);
 
-		$this->middleware('guest')->only(['signin', 'signin_receive', 'phone', 'phone_recieve', 'sms', 'sms_recieve']);
+		$this->middleware('guest_manager:manager')->only(['signin', 'signin_receive', 'phone', 'phone_recieve', 'sms', 'sms_recieve']);
 	}
 
 	public function phone()
@@ -37,16 +37,15 @@ class AbiturController extends Controller
 			'password' => 'required'
 		]);
 
-		if(!Auth::check()){
-			$user_data = array(
-				'name' => $request->phone,
-				'password' => $request->password
-			);
-			if(Auth::attempt($user_data)){
-				return redirect('/cab/');
-			} else {
-				return redirect()->back()->withErrors(['Неправильно введены дынные']);
-			}
+		$user_data = array(
+			'name' => $request->phone,
+			'password' => $request->password
+		);
+
+		if(Auth::attempt($user_data)){
+			return redirect('/cab/');
+		} else {
+			return redirect()->back()->withErrors(['Неправильно введены дынные']);
 		}
 
 		dd($request->all());
@@ -115,16 +114,19 @@ class AbiturController extends Controller
         	$student->fill($request->except(['password_confirmation']));
         	$student->user_id = $user->id;
         	$student->created_date = time(); 
+        	$role = Auth::user()->roles->first()->name;
+        	if(Auth::check() ||  $role == 'manager' || $role == 'university'){
+        		$student->manager_id = Auth::id();
+        	}
+        	
         	$student->save();
         }
 
-        if(!Auth::check()){
-        	$user_data = array(
-        		'name' => $request->phone,
-        		'password' => $request->password
-        	);
-        	Auth::attempt($user_data);
-        }
+        $user_data = array(
+        	'name' => $request->phone,
+        	'password' => $request->password
+        );
+        Auth::attempt($user_data);
 
 
         return redirect('/university_select');

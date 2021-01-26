@@ -64,6 +64,19 @@
           <i class="fas fa-users"></i>
           <span>Студенты</span></a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/manager">
+          <i class="fas fa-user"></i>
+          <span>Менеджеры</span></a>
+      </li>
+      @elsecan('isManager')
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/studentsM">
+          <i class="fas fa-users"></i>
+          <span>Студенты</span></a>
+        </li>
+
       @endcan
 
       <!-- Nav Item - Tables -->

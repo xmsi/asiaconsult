@@ -3,8 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
-class CheckRole
+class GuestManager
 {
     /**
      * Handle an incoming request.
@@ -15,9 +16,10 @@ class CheckRole
      */
     public function handle($request, Closure $next, $role)
     {
-        if(!$request->user()->hasAnyRole(explode('|', $role))){
-            abort(401, 'This action is unauthorized');
+        if(!Auth::check() || $request->user()->hasRole($role)){
+            return $next($request);
         }
-        return $next($request);
+
+        abort(401, 'This action is unauthorized');
     }
 }

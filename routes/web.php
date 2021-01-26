@@ -26,9 +26,11 @@ Route::post('/login', 'LoginController@login')->name('login');
 Route::post('/logout', 'LoginController@logout')->name('logout');
 Route::prefix('/admin')->group(function(){
 	Route::get('/', 'AdminController@index');
+	Route::get('/studentsM', 'StudentsMController@index');
 	Route::resource('/countries', 'CountriesController');
 	Route::resource('/universities', 'UniversityController');
 	Route::resource('/faculty', 'FacultyController');
+	Route::resource('/manager', 'ManagerController');
 	Route::resource('/speciality', 'SpecialityController');
 	Route::post('/speciality/faculty', 'SpecialityController@faculty');
 	Route::prefix('/studentsT')->group(function(){
@@ -52,7 +54,7 @@ Route::prefix('/cab')->group(function(){
 
 // ------------------------------------------ Frontend Abitur panel -----------------------
 
-Route::get('/registration', 'AbiturController@phone');
+Route::get('/registration', 'AbiturController@phone')->name('reg');
 Route::get('/', 'AbiturController@signin')->name('login');
 Route::post('/signin', 'AbiturController@signin_receive');
 Route::get('/university_select', 'AbiturController@university_select');

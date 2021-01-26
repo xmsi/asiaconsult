@@ -34,15 +34,14 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Role');
     }
 
-
-    public function users()
-    {
-        return $this->belongsToMany('App\User');
-    }
-
     public function student()
     {
         return $this->hasOne(Student::class);
+    }
+
+    public function managerStudents()
+    {
+        return $this->hasOne(Student::class, 'manager_id');
     }
 
     /**
@@ -72,7 +71,7 @@ class User extends Authenticatable
                 }
             }
         } else {
-            if($this->hasRole($role)){
+            if($this->hasRole($roles)){
                 return true;
             }
         }  
