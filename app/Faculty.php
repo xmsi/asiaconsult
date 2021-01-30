@@ -19,4 +19,9 @@ class Faculty extends Common
     {
         return $this->hasManyThrough(Student::class, Speciality::class);
     }
+
+    public function specialities()
+    {
+    	return $this->hasMany(Speciality::class);
+    }
 }

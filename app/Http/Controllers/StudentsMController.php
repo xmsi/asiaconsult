@@ -19,7 +19,7 @@ class StudentsMController extends Controller
 
 	public function index()
 	{
-		$students = Student::where('manager_id', auth()->id())->get();
+		$students = Student::where('manager_id', auth()->user()->manager->id)->get();
 
 		return view('admin.studentsM.index', compact('students'));
 	}

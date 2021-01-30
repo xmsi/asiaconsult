@@ -43,12 +43,16 @@ class AbiturController extends Controller
 		);
 
 		if(Auth::attempt($user_data)){
+			if(!getStudent()->speciality_id){
+				return redirect('/university_select');
+			} elseif(!getStudent()->passport){
+				return redirect('/cab/senddocs');
+			}
+
 			return redirect('/cab/');
 		} else {
 			return redirect()->back()->withErrors(['Неправильно введены дынные']);
 		}
-
-		dd($request->all());
 	}
 
 	public function phone_recieve(Request $request)
@@ -62,7 +66,7 @@ class AbiturController extends Controller
 		}
 		$phone = Phone::firstOrNew(['phone' => $request->phone]);
 		$phone->sms_code = rand(11112, 99998);
-		$sms = $phone->send_sms();
+		// $sms = $phone->send_sms();
 		$phone->save();
 
 		return redirect('/sms/'.$phone->id);
@@ -114,9 +118,13 @@ class AbiturController extends Controller
         	$student->fill($request->except(['password_confirmation']));
         	$student->user_id = $user->id;
         	$student->created_date = time(); 
-        	$role = Auth::user()->roles->first()->name;
-        	if(Auth::check() ||  $role == 'manager' || $role == 'university'){
-        		$student->manager_id = Auth::id();
+        	if (Auth::check()) {
+        		$role = Auth::user()->roles->first()->name;
+        		if($role == 'manager'){
+        			$student->manager_id = Auth::user()->manager->id;
+        		} if ($role == 'university') {
+        			$student->manager_id = Auth::id();
+        		}
         	}
         	
         	$student->save();
@@ -195,6 +203,8 @@ class AbiturController extends Controller
 				'passport' => $passportName,
 				'docs_date' => Carbon::now()->timestamp
 			]);
+
+			// getStudent()->sendToTg();
 
 			return redirect('/docs_success');
 		}

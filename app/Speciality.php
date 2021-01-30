@@ -15,6 +15,11 @@ class Speciality extends Common
 		return $this->belongsTo(Faculty::class);
 	}
 
+    public function students()
+    {
+        return $this->hasMany(Student::class);
+    }
+
 	public function normaltype($request)
 	{
         if($request->full_time == null){

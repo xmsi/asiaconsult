@@ -34,9 +34,19 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Role');
     }
 
+    public function bossManager()
+    {
+        return $this->hasOne(BossManager::class);
+    }
+
     public function student()
     {
         return $this->hasOne(Student::class);
+    }
+
+    public function manager()
+    {
+        return $this->hasOne(Manager::class);
     }
 
     public function managerStudents()

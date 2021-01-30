@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
 	public function __construct()
 	{
-		$this->middleware('guest_manager:abiturient')->except('logout');
+		$this->middleware('guest_manager:abiturient,admin')->except('logout');
 	}
 
 	public function index()
@@ -28,7 +29,11 @@ class LoginController extends Controller
 			'password' => $request->get('password')
 		);
 
-		if(\Auth::attempt($user_data)){
+		if (!checkManagerStatus($user_data)) {
+			return back()->with('error', 'Доступ закрыт');
+		}
+
+		if(Auth::attempt($user_data)){
 			return redirect('/admin');
 		} else {
 			return back()->with('error', 'Неправильно введены данные');

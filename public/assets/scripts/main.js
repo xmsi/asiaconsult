@@ -10,8 +10,9 @@ $(document).ready(function () {
     });
 
     $('input[type="checkbox"]').on('change', function() {
-        $('input[name="camefrom"]').not(this).prop('checked', false);
+        $('input[name="from_where_info"]').not(this).prop('checked', false);
     });
+
 
     // LANGUAGE SELECT
 

@@ -7,12 +7,23 @@
 <div class="card shadow mb-4">
 	<div class="card-body">
 		@include('error')
-		<form action="/admin/manager" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+		<form action="/admin/bossManager" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 			@csrf
 			<div class="form-group">
-				<label for="title">ФИО</label>
+				<label for="title">Имя</label>
 				<input type="text" name="name" class="form-control" required>
 			</div>
+			<div class="form-group">
+				<label for="country">Филиал</label>
+				<div class="input-group mb-3">
+					<select name="filial_id" id="country" class="form-control" required>
+						<option value="">Выбрать филиал......</option>
+						@foreach($filials as $value => $key)
+							<option value="{{ $value }}">{{ $key }}</option>
+						@endforeach
+					</select>
+				</div>	
+			</div> 
 			<div class="form-group">
 				<label for="description">Описание</label>
 				<textarea name="description" class="form-control" id="" cols="10" rows="10"></textarea>

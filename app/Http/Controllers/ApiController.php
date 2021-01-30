@@ -29,14 +29,15 @@ class ApiController extends Controller
 
 	public function facultydata(Request $request)
 	{
-		$speciality = Speciality::where(['faculty_id' => $request->faculty_id, 'status' => 1])->with('Faculty:id,volume')->get();
+		$speciality = Speciality::where(['faculty_id' => $request->faculty_id, 'status' => 1])->with('Faculty:id,volume')->withCount('students')->get();
 
 		return response($speciality->jsonSerialize(), Response::HTTP_OK);
 	}
 
 	public function speciality(Request $request)
 	{
-		$speciality = Speciality::where(['id' => $request->speciality_id,'status' => 1])->with('faculty.university.country')->first();
+		$speciality = Speciality::where(['id' => $request->speciality_id,'status' => 1])->with('faculty.university.country')->first(); 
+		
 
 		return response($speciality->jsonSerialize(), Response::HTTP_OK);
 	}

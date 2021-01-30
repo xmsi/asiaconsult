@@ -66,8 +66,8 @@
 							<div class="informations">
 								<div class="price">
 									<p class="title">Стоимость контракта в год:</p>
-									<p><span id="contract">345</span> <span id="currency">USD</span></p>
-									<p><span id="contractsum">1 234 500</span> сум</p>
+									<p><span id="contract">---</span> <span id="currency">USD</span></p>
+									<p><span id="service">---</span> сум</p>
 								</div>
 								<div class="place">
 									<p class="title">Доступные места:</p>
@@ -146,15 +146,19 @@
 					},
 				})
 				.done(function(data) {
-					$('#volume').text(data[0].faculty.volume);
-					console.log(data);
 					$("#specialityul").empty();
 					$("#specialityul").prev().text(function(){
 						return $(this).data('name');
 					});
+					let countofst = 0;
 					$.each(data, function(index, val){
 						$("#specialityul").append('<li class="inputselector1" data-id="'+ val.id +'">'+val.name+'</li>');
+						if(val.students_count){
+							countofst += val.students_count;
+						}
 					});
+					const volume = data[0].faculty.volume - countofst;
+					$('#volume').text(volume);
 				})
 				.fail(function() {
 					console.log("error");
@@ -173,12 +177,7 @@
 					},
 				})
 				.done(function(data) {
-					$("#currency").text(data.faculty.university.country.currency);
-					$("#contract").text(data.contract);
-					$("#formatypeul").empty();
-					$("#formatypeul").prev().text(function(){
-						return $(this).data('name');
-					});
+					setdisp(data);
 					check_dropdown(data.weekend_time, 'По выходным', 4);
 					check_dropdown(data.night_time, 'Вечернее', 3);
 					check_dropdown(data.online, 'Онлайн', 2);
@@ -197,6 +196,17 @@
 				if(status == 1){
 					$("#formatypeul").append('<li class="inputselector1" data-id="'+ orig +'">'+name+'</li>');
 				}
+			}
+
+			function setdisp(data){
+				$("#currency").text(data.faculty.university.country.currency);
+				$("#contract").text(data.contract);
+				const service_sum = new Intl.NumberFormat('fr-FR').format(data.service_sum);
+				$("#service").text(service_sum);
+				$("#formatypeul").empty();
+				$("#formatypeul").prev().text(function(){
+					return $(this).data('name');
+				});
 			}
 
 		});

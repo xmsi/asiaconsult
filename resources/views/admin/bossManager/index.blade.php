@@ -7,11 +7,11 @@
 @section('content')
 @include('success')
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Менеджеры</h1>
+<h1 class="h3 mb-2 text-gray-800">Босс Менеджеров</h1>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
 	<div class="card-header py-3">
-		<a href="/admin/manager/create" class="btn btn-sm btn-success">
+		<a href="/admin/bossManager/create" class="btn btn-sm btn-success">
 			<span class="text">Создать</span>
 		</a>
 	</div>
@@ -20,35 +20,36 @@
 			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 				<thead>
 					<tr>
+						<th>Филиал</th>
 						<th>Имя</th>
-						<th>Кол-во</th>
+						<th>Описание</th>
+						<th>Статус</th>
 						<th></th>
 					</tr>
 				</thead>
 				<tfoot>
 					<tr>
+						<th>Филиал</th>
 						<th>Имя</th>
-						<th>Кол-во</th>
+						<th>Описание</th>
+						<th>Статус</th>
 						<th></th>
 					</tr>
 				</tfoot>
 				<tbody>
-					@foreach($managers as $manager)
+					@foreach($bossManagers as $bossManager)
 					<tr>
-						<td>{{ $manager->name }}</td>
-						<td>{{ $manager->students_count }}</td>
+						<td>{{ $bossManager->filial->full_name }}</td>
+						<td>{{ $bossManager->name }}</td>
+						<td>{{ $bossManager->description }}</td>
+						<td>{{ $bossManager->statusn }}</td>
 						<td width="120px">
-							<form action="{{ route('manager.destroy', $manager->id) }}" method="POST">
-							<a href="/admin/manager/{{ $manager->id }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация">
+							<a href="/admin/bossManager/{{ $bossManager->id }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация">
                     			<i class="fas fa-info-circle"></i>
                   			</a>
-                  			<a href="/admin/manager/{{ $manager->id }}/edit" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Изменить">
+                  			<a href="/admin/bossManager/{{ $bossManager->id }}/edit" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Изменить">
                   				<i class="fas fa-pen"></i>
                   			</a>
-                  			@csrf
-                  				@method('DELETE')
-                  				<button type="submit" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Удалить"><i class="fas fa-trash"></i></button>
-                  			</form>
                   		</td>
 					</tr>
 					@endforeach

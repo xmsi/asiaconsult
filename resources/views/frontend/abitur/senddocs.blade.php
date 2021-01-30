@@ -34,7 +34,7 @@
 					<x-univer />
 
 					<div class="buttons">
-						<a href="#!" class="other-uni">Выбрать другой</a>
+						<a href="/university_select" class="other-uni">Выбрать другой</a>
 					</div>
 				</div>
 

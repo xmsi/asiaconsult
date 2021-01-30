@@ -9,10 +9,10 @@
 		<span class="text">
 			<div class="row">
 				<div class="col-md-3">
-					<a href="/admin/faculty/{{ $faculty->id }}/edit"><button class="btn btn-sm btn-primary">Изменить</button></a>
+					<a href="/admin/manager/{{ $manager->id }}/edit"><button class="btn btn-sm btn-primary">Изменить</button></a>
 				</div>
 				<div class="col-md-2 offset-md-7" align="right">
-					<form action="{{ route('faculty.destroy', $faculty->id) }}" method="POST">
+					<form action="{{ route('manager.destroy', $manager->id) }}" method="POST">
 						@csrf
 						@method('DELETE')
 						<button type="submit" class="btn btn-danger btn-sm">Удалить</button>
@@ -26,30 +26,20 @@
 		<table class="table table-bordered">
 			<tbody>
 				<tr>
-					<th scope="row">Название</th>
-					<td>{{ $faculty->name }}</td>
+					<th scope="row">ФИО</th>
+					<td>{{ $manager->name }}</td>
 				</tr>
 				<tr>
-					<th scope="row">Университет</th>
-					<td>{{ $faculty->university->name }}</td>
-				</tr>
-				<tr>
-					<th scope="row">Кол-во</th>
-					<td>{{ $faculty->volume }}</td>
-				</tr>
-				<tr>
-					<th scope="row">Статус</th>
-					<td>{{ $faculty->statusn }}</td>
+					<th scope="row">Логин</th>
+					<td>{{ $manager->user->name }}</td>
 				</tr>
 				<tr>
 					<th scope="row">Описание</th>
-					<td>{!! nl2br($faculty->description) !!}</td>
+					<td>{!! nl2br($manager->description) !!}</td>
 				</tr>
 				<tr>
-					<th scope="row">Картинкa</th>
-					<td>	
-						<img src="/images/{{ $faculty->image }}" style="max-width: 200px" alt="">
-					</td>
+					<th scope="row">Статус</th>
+					<td>{{ $manager->statusn }}</td>
 				</tr>
 			</tbody>
 		</table>

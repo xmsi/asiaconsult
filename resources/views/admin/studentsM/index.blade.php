@@ -24,6 +24,7 @@
 						<th>Имя</th>
 						<th>Фамилия</th>
 						<th>Отчество</th>
+						<th>Университет</th>
 					</tr>
 				</thead>
 				<tfoot>
@@ -31,6 +32,7 @@
 						<th>Имя</th>
 						<th>Фамилия</th>
 						<th>Отчество</th>
+						<th>Университет</th>
 					</tr>
 				</tfoot>
 				<tbody>
@@ -39,6 +41,9 @@
 						<td>{{ $student->name }}</td>
 						<td>{{ $student->second_name }}</td>
 						<td>{{ $student->father_name }}</td>
+						<td>@if($student->speciality)
+							{{ $student->speciality->faculty->university->name }}@else Еще не выбрал @endif
+						</td>
 					</tr>
 					@endforeach
 				</tbody>

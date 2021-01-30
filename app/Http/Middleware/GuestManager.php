@@ -14,12 +14,16 @@ class GuestManager
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $role)
+    public function handle($request, Closure $next, $role, $who = 'abitur')
     {
         if(!Auth::check() || $request->user()->hasRole($role)){
             return $next($request);
         }
 
-        abort(401, 'This action is unauthorized');
+        if ($who == 'abitur') {
+            return redirect(route('abiturcab'));
+        } elseif($who == 'admin'){
+            return redirect('/admin');
+        }
     }
 }
