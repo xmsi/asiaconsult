@@ -15,6 +15,10 @@
 				<input type="text" name="name" value="{{ $manager->name }}" class="form-control" required>
 			</div>
 			<div class="form-group">
+				<label for="title">Номер телефона</label>
+				<input type="text" name="phone" class="form-control" placeholder="902839954" value="{{ $manager->phone }}">
+			</div>
+			<div class="form-group">
 				<label for="description">Описание</label>
 				<textarea name="description" class="form-control" id="" cols="10" rows="10">{{ $manager->description }}</textarea>
 			</div>

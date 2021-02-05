@@ -66,7 +66,7 @@ class AbiturController extends Controller
 		}
 		$phone = Phone::firstOrNew(['phone' => $request->phone]);
 		$phone->sms_code = rand(11112, 99998);
-		// $sms = $phone->send_sms();
+		$sms = $phone->send_sms();
 		$phone->save();
 
 		return redirect('/sms/'.$phone->id);
@@ -103,6 +103,9 @@ class AbiturController extends Controller
 		$this->validate($request, [
 			'name' => 'required',
 			'second_name' => 'required',
+			'passport_id' => 'required',
+			'passport_date' => 'required',
+			'passport_iib' => 'required',
 			'password' => 'required|confirmed|min:6',
 		]);
 

@@ -46,6 +46,10 @@
 					<td>{{ $speciality->service_sum }} сум</td>
 				</tr>
 				<tr>
+					<th scope="row">Консалтинговые услуги (словами)</th>
+					<td>{{ $speciality->service_sum_name }}</td>
+				</tr>
+				<tr>
 					<th scope="row">Типы</th>
 					<td>@if($speciality->online) Онлайн, @endif
 					@if($speciality->full_time) Очное, @endif

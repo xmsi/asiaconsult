@@ -35,6 +35,10 @@
 				<input type="text" name="service_sum" value="{{ $speciality->service_sum }}" class="form-control" required>
 				<small class="form-text text-muted">в суммах</small>
 			</div>
+			<div class="form-group">
+				<label for="title">Консалтинговые услуги (словами)</label>
+				<input type="text" value="{{ $speciality->service_sum_name }}" name="service_sum_name" class="form-control">
+			</div>
 			<h4>Какие типы обучения поддерживает специальность</h4>
 			<div class="form-check">
 				<input type="checkbox" name="online" class="form-check-input" id="exampleCheck1" value="1" @if($speciality->online) checked @endif>

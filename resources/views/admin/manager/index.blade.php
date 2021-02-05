@@ -21,6 +21,7 @@
 				<thead>
 					<tr>
 						<th>Имя</th>
+						<th>Номер телефона</th>
 						<th>Кол-во</th>
 						<th></th>
 					</tr>
@@ -28,6 +29,7 @@
 				<tfoot>
 					<tr>
 						<th>Имя</th>
+						<th>Номер телефона</th>
 						<th>Кол-во</th>
 						<th></th>
 					</tr>
@@ -36,6 +38,7 @@
 					@foreach($managers as $manager)
 					<tr>
 						<td>{{ $manager->name }}</td>
+						<td>{{ $manager->phone }}</td>
 						<td>{{ $manager->students_count }}</td>
 						<td width="120px">
 							<form action="{{ route('manager.destroy', $manager->id) }}" method="POST">

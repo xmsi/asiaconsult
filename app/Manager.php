@@ -5,7 +5,7 @@ namespace App;
 class Manager extends Common
 {
 	protected $fillable = [
-		'user_id', 'boss_manager_id', 'name', 'description', 'status'
+		'user_id', 'boss_manager_id', 'name', 'phone', 'description', 'status'
 	];
 
 	protected $statuses = [

@@ -9,9 +9,9 @@ LOG_CHANNEL=stack
 DB_CONNECTION=mysql
 DB_HOST=asiaconsult.uz
 DB_PORT=3306
-DB_DATABASE=asiacons_asiaconsult
-DB_USERNAME=asiacons_asiaconsult
-DB_PASSWORD=S&z]kTrh0*X+
+DB_DATABASE=asicon1_asiaconsult
+DB_USERNAME=asicon1_asiaconsult
+DB_PASSWORD=Ki{n$&nhk$wZ
 
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file

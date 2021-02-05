@@ -18,6 +18,10 @@
 				<textarea name="description" class="form-control" id="" cols="10" rows="10"></textarea>
 			</div>
 			<div class="form-group">
+				<label for="title">Номер телефона</label>
+				<input type="text" name="phone" class="form-control" placeholder="902839954">
+			</div>
+			<div class="form-group">
 				<label for="title">Логин</label>
 				<input type="text" name="login" class="form-control" required>
 			</div>

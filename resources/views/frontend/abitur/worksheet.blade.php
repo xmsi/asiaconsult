@@ -20,13 +20,25 @@
 								<span>Отчесво</span>
 								<input type="text" name="father_name" placeholder="Отчесво"/>
 							</div>
+							<div class="input">
+								<span>Паспорт серия, номер</span>
+								<input type="text" name="passport_id" placeholder="AB7777777" required/>
+							</div>
+							<div class="input">
+								<span>Дата выдачи паспорта</span>
+								<input type="text" name="passport_date" placeholder="01.12.2001" required/>
+							</div>
+							<div class="input">
+								<span>Место выдачи ИИБ паспорта</span>
+								<input type="text" name="passport_iib" placeholder="" required/>
+							</div>
 							<div class="input w50">
 								<span>Пароль</span>
-								<input type="password" name="password" required />
+								<input type="password" name="password" required autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" />
 							</div>
 							<div class="input w50">
 								<span>Повторите пароль</span>
-								<input type="password" name="password_confirmation" required />
+								<input type="password" name="password_confirmation" required autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" />
 							</div>
 
 							<div class="camefrom">
