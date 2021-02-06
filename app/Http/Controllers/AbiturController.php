@@ -66,7 +66,7 @@ class AbiturController extends Controller
 		}
 		$phone = Phone::firstOrNew(['phone' => $request->phone]);
 		$phone->sms_code = rand(11112, 99998);
-		$sms = $phone->send_sms();
+		// $sms = $phone->send_sms();
 		$phone->save();
 
 		return redirect('/sms/'.$phone->id);
@@ -228,5 +228,11 @@ class AbiturController extends Controller
 	public function main()
 	{
 		return view('frontend.abitur.main');
+	}
+
+	public function dogovor()
+	{
+		$pdf = \PDF::loadView('frontend.testing');
+		return $pdf->download('dogovor.pdf');
 	}
 }

@@ -68,3 +68,4 @@ Route::post('/sms', 'AbiturController@sms_recieve');
 Route::post('/worksheet', 'AbiturController@worksheet_receive');
 Route::get('/docs_success', 'AbiturController@success');
 Route::get('/docs_error', 'AbiturController@error');
+Route::get('/dogovor', 'AbiturController@dogovor');

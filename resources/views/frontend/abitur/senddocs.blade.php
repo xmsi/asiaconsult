@@ -15,7 +15,7 @@
 						</p>
 					</div>
 					<form action="" method="" class="buttons">
-						<a class="download" href="#!">
+						<a class="download" href="/dogovor">
 							<img src="/assets/icons/download.svg" alt="download" />
 							<p>Скачать Договор</p>
 						</a>
