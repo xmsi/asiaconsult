@@ -42,4 +42,8 @@ function volumeofplace()
 	return $result;
 }
 
+function getNormalPhone($phone){
+	return preg_replace('/(.{2})(.{3})(..)(..)/', '$1 $2 $3 $4', $phone);
+}
+
  ?>

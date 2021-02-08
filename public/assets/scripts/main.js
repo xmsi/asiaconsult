@@ -50,6 +50,7 @@ $(document).ready(function () {
 
     $(".x-close").click(function () {
         $(".error").toggleClass("active");
+        $(".successq").toggleClass("active");
     });
 
     // MODAL OPEN

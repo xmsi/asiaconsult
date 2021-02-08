@@ -65,6 +65,7 @@ Route::get('/worksheet/{phone}', 'AbiturController@worksheet');
 Route::get('/sms/{phone}', 'AbiturController@sms');
 Route::post('/', 'AbiturController@phone_recieve');
 Route::post('/sms', 'AbiturController@sms_recieve');
+Route::post('/service_contract_file', 'AbiturController@service_contract_file');
 Route::post('/worksheet', 'AbiturController@worksheet_receive');
 Route::get('/docs_success', 'AbiturController@success');
 Route::get('/docs_error', 'AbiturController@error');

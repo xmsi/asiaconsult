@@ -232,7 +232,33 @@ class AbiturController extends Controller
 
 	public function dogovor()
 	{
+		getStudent()->update(['service_date' => date('Y-m-d')]);
+
 		$pdf = \PDF::loadView('frontend.testing');
 		return $pdf->download('dogovor.pdf');
+
+		// return view('frontend.testing');
+	}
+
+	public function service_contract_file(Request $request)
+	{
+		$validate = 'required|file|mimes:pdf,doc,docx,jpeg,jpg,png,bmp,gif,svg,webp';
+		$this->validate($request, [
+			'service_contract_file' => $validate,
+		]);
+
+		$service_contract_file = $request->file('service_contract_file');
+		$service_contract_fileName = $service_contract_file->getClientOriginalName();
+		$service_contract_fileName = getStudent()->id . '__' . Carbon::now()->timestamp.$service_contract_fileName;
+		$service_contract_file->move('stdocs/service_contract_file/', $service_contract_fileName);
+
+		$a = getStudent()->update(['service_contract_file' => $service_contract_fileName]);
+
+		if($a){
+			return back()->with('success', 'Успешно принята');
+		} else {
+			return back()->withErrors(['Ошибка']);
+		}
+
 	}
 }

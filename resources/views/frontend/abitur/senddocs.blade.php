@@ -2,6 +2,8 @@
 @section('content')
  			<section class="cabinet choose-before-app container-fluid">
  				@include('frontend.error')
+ 				
+					@include('frontend.success')
 				<div class="payment">
 					<div class="description col-xl-6 col-lg-8 col-md-9 col-sm-8 col-12">
 						<h1>{{ $student->second_name }}  {{ $student->name }}</h1>
@@ -14,13 +16,14 @@
 							помощью <a href="#!">онлайн - платежа</a>
 						</p>
 					</div>
-					<form action="" method="" class="buttons">
+					<form action="/service_contract_file" method="POST" accept-charset="utf-8" enctype="multipart/form-data" class="buttons">
+						@csrf
 						<a class="download" href="/dogovor">
 							<img src="/assets/icons/download.svg" alt="download" />
 							<p>Скачать Договор</p>
 						</a>
 						<label class="upload" for="invoice" href="#!">
-							<input type="file" name="aaaaaaaaaa" id="invoice" />
+							<input type="file" name="service_contract_file" id="invoice" required/>
 							<img src="/assets/icons/upload.svg" alt="upload" />
 							<p>Загрузить Квитанцию об оплате</p>
 						</label>
@@ -33,9 +36,9 @@
 				<div class="university">
 					<x-univer />
 
-					<div class="buttons">
+<!-- 					<div class="buttons">
 						<a href="/university_select" class="other-uni">Выбрать другой</a>
-					</div>
+					</div> -->
 				</div>
 
 				<span class="line"></span>
