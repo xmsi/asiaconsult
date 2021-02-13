@@ -13,7 +13,7 @@ class AdminController extends Controller
 	public function __construct()
 	{
 		$this->middleware('auth');
-		$this->middleware('role:superadmin|manager|translator|university|managers_boss');
+		$this->middleware('role:superadmin|manager|translator|university|managers_boss|service_cheker');
 	}
 
 	public function index()

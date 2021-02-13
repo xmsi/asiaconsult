@@ -29,11 +29,12 @@ class LoginController extends Controller
 			'password' => $request->get('password')
 		);
 
-		if (!checkManagerStatus($user_data)) {
-			return back()->with('error', 'Доступ закрыт');
-		}
-
 		if(Auth::attempt($user_data)){
+			if (!checkManagerStatus()) {
+				Auth::logout();
+				return back()->with('error', 'Доступ закрыт');
+			}
+
 			return redirect('/admin');
 		} else {
 			return back()->with('error', 'Неправильно введены данные');

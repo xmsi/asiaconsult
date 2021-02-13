@@ -26,6 +26,8 @@ Route::post('/login', 'LoginController@login')->name('login');
 Route::post('/logout', 'LoginController@logout')->name('logout');
 Route::prefix('/admin')->group(function(){
 	Route::get('/', 'AdminController@index');
+	Route::get('/check', 'CheckServiceController@index');
+	Route::post('/check/contract_true', 'CheckServiceController@contract_true')->name('contract_true');
 	Route::get('/studentsM', 'StudentsMController@index');
 	Route::resource('/countries', 'CountriesController');
 	Route::resource('/universities', 'UniversityController');

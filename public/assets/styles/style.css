@@ -231,36 +231,6 @@ header .additions .logout p {
   cursor: pointer;
 }
 
-.successq {
-  background-color: #d4edda;
-  width: 100%;
-  margin-bottom: 15px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  padding: 5px 10px;
-}
-
-.successq.active {
-  display: none;
-}
-
-.successq {
-  font-size: 14px;
-  color: #548860;
-}
-
-.successq {
-  padding-top: 5px;
-  cursor: pointer;
-}
-
 .modal .content .tabs-part {
   width: 100%;
   display: -webkit-box;

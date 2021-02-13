@@ -8,6 +8,7 @@
 		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="/assets/libs/bootstrap-grid/bootstrap-grid.min.css" />
 		<link rel="stylesheet" href="/assets/styles/style.css" />
+		<link rel="stylesheet" href="/css/our.css" />
 
 		<title>Asiaconsult</title>
 	</head>

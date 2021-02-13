@@ -1,7 +1,9 @@
 @extends('frontend.layouts.index')
 @section('content')
  			<section class="cabinet choose-before-app container-fluid">
+ 				<div class="modal1">
  				@include('frontend.error')
+ 				</div>
  				
 					@include('frontend.success')
 				<div class="payment">

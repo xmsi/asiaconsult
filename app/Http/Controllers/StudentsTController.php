@@ -15,7 +15,7 @@ class StudentsTController extends Controller
 
     public function index()
     {
-    	$students = Student::get()->sortBy("perevod_status");
+    	$students = Student::where('service_contract_check', 1)->get()->sortByDesc("id");
 
     	return view('admin.studentsT.index', ['students' => $students]);
     }

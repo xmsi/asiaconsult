@@ -90,6 +90,13 @@
           <i class="fas fa-user"></i>
           <span>Менеджеры</span></a>
       </li>
+
+      @elsecan('isCheck')
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/check">
+          <i class="fas fa-file"></i>
+          <span>Квитанции</span></a>
+      </li>
       @endcan
 
       <!-- Nav Item - Tables -->

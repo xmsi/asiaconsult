@@ -7,8 +7,7 @@ function getStudent(){
 	return auth()->user()->student;
 }
 
-function checkManagerStatus($user_data){
-	Auth::once($user_data);
+function checkManagerStatus(){
 	$role = Auth::user()->roles->first()->name;
 
 	if ($role == 'manager') {

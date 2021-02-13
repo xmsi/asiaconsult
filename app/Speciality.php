@@ -55,7 +55,7 @@ class Speciality extends Common
 
     public function validateDocs()
     {
-        if ($this->faculty->university->status && $this->faculty->status && $this->status && $this->faculty->volume) {
+        if ($this->faculty->university->status && $this->faculty->status && $this->status && volumeofplace()) {
             return true;
         }
 

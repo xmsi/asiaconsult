@@ -1,0 +1,60 @@
+.successq {
+  background-color: #d4edda;
+  width: 100%;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 5px 10px;
+}
+
+.successq.active {
+  display: none;
+}
+
+.successq {
+  font-size: 14px;
+  color: #548860;
+}
+
+.successq {
+  padding-top: 5px;
+  cursor: pointer;
+}
+
+
+.modal1 .error {
+  background-color: rgba(197, 30, 30, 0.2);
+  width: 100%;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  padding: 5px 10px;
+}
+
+.modal1 .error.active {
+  display: none;
+}
+
+.modal1 .error p {
+  font-size: 14px;
+  color: #C51E1E;
+}
+
+.modal1 .error img {
+  padding-top: 5px;
+  cursor: pointer;
+}

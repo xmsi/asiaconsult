@@ -184,6 +184,10 @@ class AbiturController extends Controller
 			'passport' => $validate,
 		]);
 
+		if (!getStudent()->service_contract_file) {
+			return redirect()->back()->withErrors(['Пожалуйста загрузите квитанцию об оплате']);
+		}
+
 		if(getStudent()->validateDocs()){
 			if ($request->hasFile('diplom')) {
 				// \File::delete(public_path().'/stdocs/diplom/'.$request->diplom);
