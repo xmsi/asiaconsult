@@ -15,9 +15,9 @@ class AbiturController extends Controller
 {
 	public function __construct()
 	{
-		$this->middleware(['auth', 'role:abiturient'])->only(['university_select', 'university_selected', 'senddocs', 'docs_receive', 'success', 'error', 'main']);
+		$this->middleware(['auth', 'role:abiturient'])->only(['university_select', 'university_selected', 'senddocs', 'docs_receive', 'success', 'error','sms', 'sms_recieve', 'main']);
 
-		$this->middleware('guest_manager:manager')->only(['signin', 'signin_receive', 'phone', 'phone_recieve', 'sms', 'sms_recieve']);
+		$this->middleware('guest_manager:manager')->only(['signin', 'signin_receive', 'phone', 'phone_recieve']);
 	}
 
 	public function phone()
@@ -69,7 +69,7 @@ class AbiturController extends Controller
 		// $sms = $phone->send_sms();
 		$phone->save();
 
-		return redirect('/sms/'.$phone->id);
+		return redirect('/worksheet/'. \Crypt::encryptString($request->phone));
 	}
 
 	public function sms($phone)
@@ -84,7 +84,7 @@ class AbiturController extends Controller
 			$phone->status = 1;
 			$phone->save();
 
-			return redirect('/worksheet/'. \Crypt::encryptString($phone->phone));
+			return redirect('/cab/senddocs');
 		} else {
 			return redirect()->back()->withErrors(['Неправильно введен код']);
 		}
@@ -156,6 +156,7 @@ class AbiturController extends Controller
 			'speciality' => 'required|integer',
 			'formatype' => 'required|integer'
 		]);	
+
 		if(Speciality::find($request->speciality)->validateSelection()){
 			$user = Auth::user();
 			$user->student->update([
@@ -163,7 +164,9 @@ class AbiturController extends Controller
 				'type' => $request->formatype,
 			]);
 
-			return redirect('/cab/senddocs');
+			$phone = Phone::where('phone', $user->name)->first();
+
+			return redirect('/sms/'.$phone->id);
 		}
 
 		return redirect('/docs_error');
