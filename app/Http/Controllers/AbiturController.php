@@ -156,7 +156,7 @@ class AbiturController extends Controller
 			'speciality' => 'required|integer',
 			'formatype' => 'required|integer'
 		]);	
-		if(Speciality::find($request->speciality)->validateDocs()){
+		if(Speciality::find($request->speciality)->validateSelection()){
 			$user = Auth::user();
 			$user->student->update([
 				'speciality_id' => $request->speciality,
@@ -188,35 +188,32 @@ class AbiturController extends Controller
 			return redirect()->back()->withErrors(['Пожалуйста загрузите квитанцию об оплате']);
 		}
 
-		if(getStudent()->validateDocs()){
-			if ($request->hasFile('diplom')) {
+		if ($request->hasFile('diplom')) {
 				// \File::delete(public_path().'/stdocs/diplom/'.$request->diplom);
-				$diplom = $request->file('diplom');
-				$diplomName = $diplom->getClientOriginalName();
-				$diplomName = getStudent()->id . '__' . Carbon::now()->timestamp.$diplomName;
-				$diplom->move('stdocs/diplom/', $diplomName);
-			}
+			$diplom = $request->file('diplom');
+			$diplomName = $diplom->getClientOriginalName();
+			$diplomName = getStudent()->id . '__' . Carbon::now()->timestamp.$diplomName;
+			$diplom->move('stdocs/diplom/', $diplomName);
+		}
 
-			if ($request->hasFile('passport')) {
+		if ($request->hasFile('passport')) {
 				// \File::delete(public_path().'/stdocs/passport/'.$request->passport);
-				$passport = $request->file('passport');
-				$passportName = $passport->getClientOriginalName();
-				$passportName = getStudent()->id . '__' .Carbon::now()->timestamp.$passportName;
-				$passport->move('stdocs/passport/', $passportName);
-			}
+			$passport = $request->file('passport');
+			$passportName = $passport->getClientOriginalName();
+			$passportName = getStudent()->id . '__' .Carbon::now()->timestamp.$passportName;
+			$passport->move('stdocs/passport/', $passportName);
+		}
 
-			getStudent()->update([
-				'diplom' => $diplomName,
-				'passport' => $passportName,
-				'docs_date' => Carbon::now()->timestamp
-			]);
+		getStudent()->update([
+			'diplom' => $diplomName,
+			'passport' => $passportName,
+			'docs_date' => Carbon::now()->timestamp
+		]);
 
 			// getStudent()->sendToTg();
 
-			return redirect('/docs_success');
-		}
+		return redirect('/docs_success');
 
-		return redirect('/docs_error');
 	}
 
 	public function success()

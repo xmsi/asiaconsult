@@ -146,19 +146,15 @@
 					},
 				})
 				.done(function(data) {
+					console.log(data[0].volumeofspeciality);
 					$("#specialityul").empty();
 					$("#specialityul").prev().text(function(){
 						return $(this).data('name');
 					});
-					let countofst = 0;
 					$.each(data, function(index, val){
 						$("#specialityul").append('<li class="inputselector1" data-id="'+ val.id +'">'+val.name+'</li>');
-						if(val.students_count){
-							countofst += val.students_count;
-						}
 					});
-					const volume = data[0].faculty.volume - countofst;
-					$('#volume').text(volume);
+					$('#volume').text(data[0].volumeofspeciality);
 				})
 				.fail(function() {
 					console.log("error");

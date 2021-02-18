@@ -7,3 +7,14 @@
 				<div class="modal-close"></div>
 			</section>
 @endsection
+
+@section('extra_js')
+	<script>
+		jQuery(document).ready(function($) {
+			$('.modal-close').click(function() {
+				window.location.href = '/university_select';
+				return false;
+			});
+		});
+	</script>
+@endsection

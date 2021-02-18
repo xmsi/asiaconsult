@@ -9,7 +9,7 @@
 		<span class="text">
 			<div class="row">
 				<div class="col-md-3">
-					<a href="/admin/studentU/{{ $student->id }}/edit"><button class="btn btn-sm btn-primary">Изменить</button></a>
+					<a href="/admin/studentsU/{{ $student->id }}/edit"><button class="btn btn-sm btn-primary">Изменить</button></a>
 				</div>
 			</div>
 		</span>

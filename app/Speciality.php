@@ -61,4 +61,30 @@ class Speciality extends Common
 
         return false;
     }
+
+    public function validateSelection()
+    {
+        if ($this->faculty->university->status && $this->faculty->status && $this->status && $this->volumeofspeciality) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function getVolumeofspecialityAttribute()
+    {
+        $faculty = $this->faculty->load(['specialities' => function($q){
+            $q->withCount('students');
+        }]);
+
+        $volume = 0;
+
+        foreach ($faculty->specialities as $speciality) {
+            $volume += $speciality->students_count;
+        }
+
+        $result = $faculty->volume - $volume;
+
+        return $result;
+    }
 }

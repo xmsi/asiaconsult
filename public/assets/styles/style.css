@@ -23,10 +23,6 @@ html a:hover {
   text-decoration: none;
 }
 
-html section {
-  overflow: auto;
-}
-
 html html {
   min-width: 320px;
 }
@@ -169,11 +165,8 @@ header .additions .logout p {
 }
 
 .modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100vw;
+  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -183,6 +176,7 @@ header .additions .logout p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  z-index: 1000;
 }
 
 .modal .content {
@@ -223,7 +217,7 @@ header .additions .logout p {
 
 .modal .content .error p {
   font-size: 14px;
-  color: #C51E1E;
+  color: #c51e1e;
 }
 
 .modal .content .error img {
@@ -426,6 +420,10 @@ header .additions .logout p {
   opacity: 0.7;
 }
 
+.signup.step-3 {
+  height: 100%;
+}
+
 .signup.step-3 .content-part .error {
   background-color: rgba(197, 30, 30, 0.2);
   width: 100%;
@@ -448,7 +446,7 @@ header .additions .logout p {
 
 .signup.step-3 .content-part .error p {
   font-size: 14px;
-  color: #C51E1E;
+  color: #c51e1e;
 }
 
 .signup.step-3 .content-part .error img {
@@ -554,6 +552,10 @@ header .additions .logout p {
   background: url(../icons/chevron.svg) no-repeat center center/contain;
 }
 
+.signup.step-4 {
+  height: 100%;
+}
+
 .signup.step-4 .content-part h2 {
   font-weight: normal;
   font-size: 24px;
@@ -589,6 +591,7 @@ header .additions .logout p {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  height: 100%;
 }
 
 .signup.step-4 .content-part form .input.select {

@@ -29,7 +29,9 @@ class ApiController extends Controller
 
 	public function facultydata(Request $request)
 	{
-		$speciality = Speciality::where(['faculty_id' => $request->faculty_id, 'status' => 1])->with('Faculty:id,volume')->withCount('students')->get();
+		$speciality = Speciality::where(['faculty_id' => $request->faculty_id, 'status' => 1])->with('Faculty:id,volume')->get();
+
+		$speciality[0]->volumeofspeciality = $speciality[0]->volumeofspeciality;
 
 		return response($speciality->jsonSerialize(), Response::HTTP_OK);
 	}

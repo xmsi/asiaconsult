@@ -20,7 +20,7 @@
 					<div class="item col-xl-4 col-lg-4 col-md-4 col-sm-12">
 						<div class="content">
 							<p>Приказ о поступлении:</p>
-							<a href="#!">
+							<a href="/stdocs/{{ getStudent()->entrance_ref }}" download>
 								<img src="/assets/icons/download.svg" alt="download" />
 								<span>prikaz.docx</span>
 							</a>
