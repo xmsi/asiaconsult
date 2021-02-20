@@ -1,5 +1,9 @@
 @extends('frontend.layouts.index')
 @section('content')
+    <div id="loadiv" style="left: 50%;position: absolute;top: 50%;">
+        <img id="loading-image" src="img/5.gif" style="display:none;"/>
+    </div>
+
 			<section class="modal signup step-4 container-fluid">
 				<div class="content col-xl-8 col-lg-10 col-md-10 col-sm-12 col-12">
 					<div class="content-part">
@@ -71,7 +75,7 @@
 								</div>
 								<div class="place">
 									<p class="title">Доступные места:</p>
-									<p id="volume">24</p>
+									<p id="volume">--</p>
 								</div>
 							</div>
 
@@ -90,6 +94,10 @@
 					url: '/api/getu',
 					type: 'POST',
 					dataType: 'json',
+					beforeSend: function() {
+						$("#loading-image").show();
+						$("section").css('opacity', 0.5);
+					},
 					data: {
 						_token: "{{ csrf_token() }}",
 						country_id: this.value
@@ -104,6 +112,9 @@
 					$.each(data, function(index, val) {
 						$("#universityul").append('<li class="inputselector1" data-id="'+ index +'">'+val+'</li>');
 					});
+
+					$("#loading-image").hide();
+					$("section").css('opacity', 1);
 				})
 				.fail(function() {
 					console.log("error");
@@ -115,6 +126,10 @@
 					url: '/api/getf',
 					type: 'POST',
 					dataType: 'json',
+					beforeSend: function() {
+						$("#loading-image").show();
+						$("section").css('opacity', 0.5);
+					},
 					data: {
 						_token: "{{ csrf_token() }}",
 						university_id: this.value
@@ -128,6 +143,9 @@
 					$.each(data, function(index, val) {
 						$("#facultyul").append('<li class="inputselector1" data-id="'+ index +'">'+val+'</li>');
 					});
+
+					$("#loading-image").hide();
+					$("section").css('opacity', 1);
 				})
 				.fail(function() {
 					console.log("error");
@@ -140,6 +158,10 @@
 					url: '/api/getd',
 					type: 'POST',
 					dataType: 'json',
+					beforeSend: function() {
+						$("#loading-image").show();
+						$("section").css('opacity', 0.5);
+					},
 					data: {
 						_token: "{{ csrf_token() }}",
 						faculty_id: this.value
@@ -155,6 +177,9 @@
 						$("#specialityul").append('<li class="inputselector1" data-id="'+ val.id +'">'+val.name+'</li>');
 					});
 					$('#volume').text(data[0].volumeofspeciality);
+
+					$("#loading-image").hide();
+					$("section").css('opacity', 1);
 				})
 				.fail(function() {
 					console.log("error");
@@ -167,6 +192,10 @@
 					url: '/api/gets',
 					type: 'POST',
 					dataType: 'json',
+					beforeSend: function() {
+						$("#loading-image").show();
+						$("section").css('opacity', 0.5);
+					},
 					data: {
 						_token: "{{ csrf_token() }}",
 						speciality_id: this.value
@@ -180,7 +209,8 @@
 					check_dropdown(data.part_time, 'Заочное', 1);
 					check_dropdown(data.full_time, 'Очное', 0);
 
-
+					$("#loading-image").hide();
+					$("section").css('opacity', 1);
 				})
 				.fail(function() {
 					console.log("error");
