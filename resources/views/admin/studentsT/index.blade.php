@@ -18,8 +18,8 @@
 						<th>Имя</th>
 						<th>Фамилия</th>
 						<th>Отчество</th>
-						<th>Паспорт</th>
-						<th>Диплом</th>
+						<th>Номер Телефона</th>
+						<!-- <th>Диплом</th> -->
 						<th></th>
 					</tr>
 				</thead>
@@ -28,8 +28,8 @@
 						<th>Имя</th>
 						<th>Фамилия</th>
 						<th>Отчество</th>
-						<th>Паспорт</th>
-						<th>Диплом</th>
+						<th>Номер Телефона</th>
+						<!-- <th>Диплом</th> -->
 						<th></th>
 					</tr>
 				</tfoot>
@@ -39,17 +39,11 @@
 						<td>{{ $student->name }}</td>
 						<td>{{ $student->second_name }}</td>
 						<td>{{ $student->father_name }}</td>
-						<td>							
-							<a href="/stdocs/passport/{{ $student->passport }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
-                    			<i class="fas fa-download"></i> Скачать
-                  			</a>
-                  		</td>
-						<td>							
-							<a href="/stdocs/diplom/{{ $student->diplom }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
-                    			<i class="fas fa-download"></i> Скачать
-                  			</a>
-                  		</td>
+						<td>{{ '+998'. getNormalPhone($student->phone) }}</td>
 						<td >
+							<a href="/admin/studentsT/{{ $student->id }}/show" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация">
+                    			<i class="fas fa-info-circle"></i>
+                  			</a>
                   			<a href="/admin/studentsT/{{ $student->id }}/edit" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Изменить">
                   				<i class="fas fa-pen"></i>
                   			</a>

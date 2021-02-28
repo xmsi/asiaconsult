@@ -15,6 +15,11 @@
 				<input type="file" name="entrance_ref">
 			</div>
 			<br>
+			<div class="form-group">
+				<label for="university_contract">Контракт на оплату</label><br>
+				<input type="file" name="university_contract">
+			</div>
+			<br>
 			<button type="submit" class="btn btn-primary">Изменить</button>
 		</form>
 	</div>

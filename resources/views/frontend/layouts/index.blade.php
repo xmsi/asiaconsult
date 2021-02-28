@@ -21,15 +21,16 @@
 			<div class="additions col-xl-6 col-lg-8 col-md-9 col-sm-9 col-12">
 				<a href="onlinepay.html" class="online-pay">
 					<img src="/assets/icons/card.svg" alt="card" />
-					<p>Онлайн - оплата услуг</p>
+					<p>@lang('Онлайн - оплата услуг')</p>
 				</a>
 				<div class="account">
 					<img src="/assets/icons/account.svg" alt="account" />
 					<p>{{ auth()->user()->student->name }}</p>
 				</div>
+				<x-lang />
 				<div class="logout" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
 					<img src="/assets/icons/logout.svg" alt="logout" />
-					<p>Выйти</p>
+					<p>@lang('Выйти')</p>
 				</div>
 				<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 					{{ csrf_field() }}
@@ -42,6 +43,10 @@
 		<main>
 			@yield('content')
 		</main>
+
+		@if(!request()->is('cab*'))
+			<x-lang />
+		@endif
 
 		<script src="/assets/libs/jquery/jquery-3.5.1.min.js"></script>
 		<script src="/assets/libs/jquery_mask/jquery.mask.min.js"></script>

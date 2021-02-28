@@ -17,7 +17,7 @@ class AbiturController extends Controller
 	{
 		$this->middleware(['auth', 'role:abiturient'])->only(['university_select', 'university_selected', 'senddocs', 'docs_receive', 'success', 'error', 'main']);
 
-		$this->middleware('guest_manager:manager')->only(['signin', 'signin_receive', 'phone', 'phone_recieve', 'sms', 'sms_recieve']);
+		$this->middleware('guest_manager:manager')->only(['signin', 'signin_receive', 'phone', 'phone_recieve', 'sms', 'sms_recieve', 'passwordreset']);
 	}
 
 	public function phone()
@@ -27,6 +27,7 @@ class AbiturController extends Controller
 
 	public function signin()
 	{
+		// dd(app()->getLocale());
 		return view('frontend.abitur.signin');
 	}
 
@@ -53,6 +54,11 @@ class AbiturController extends Controller
 		} else {
 			return redirect()->back()->withErrors(['Неправильно введены дынные']);
 		}
+	}
+
+	public function passwordreset()
+	{
+		return view('frontend.abitur.passwordreset.phone');
 	}
 
 	public function phone_recieve(Request $request)
@@ -178,35 +184,34 @@ class AbiturController extends Controller
 
 	public function docs_receive(Request $request)
 	{
-		$validate = 'required|file|mimes:pdf,doc,docx,jpeg,jpg,png,bmp,gif,svg,webp';
+		$validate = '|file|mimes:pdf,doc,docx,jpeg,jpg,png,bmp,gif,svg,webp';
 		$this->validate($request, [
-			'diplom' => $validate,
-			'passport' => $validate,
+			'diplom' => 'required_without:attestat'.$validate,
+			'attestat' => 'required_without:diplom'.$validate,
+			'passport' => 'required'.$validate,
+			'image' => 'required'.$validate,
 		]);
 
 		if (!getStudent()->service_contract_file) {
 			return redirect()->back()->withErrors(['Пожалуйста загрузите квитанцию об оплате']);
 		}
 
-		if ($request->hasFile('diplom')) {
-				// \File::delete(public_path().'/stdocs/diplom/'.$request->diplom);
-			$diplom = $request->file('diplom');
-			$diplomName = $diplom->getClientOriginalName();
-			$diplomName = getStudent()->id . '__' . Carbon::now()->timestamp.$diplomName;
-			$diplom->move('stdocs/diplom/', $diplomName);
-		}
 
-		if ($request->hasFile('passport')) {
-				// \File::delete(public_path().'/stdocs/passport/'.$request->passport);
-			$passport = $request->file('passport');
-			$passportName = $passport->getClientOriginalName();
-			$passportName = getStudent()->id . '__' .Carbon::now()->timestamp.$passportName;
-			$passport->move('stdocs/passport/', $passportName);
-		}
+		$diplomName = documents_receive('diplom', $request);
+		$attestatName = documents_receive('attestat', $request);
+		$passportName = documents_receive('passport', $request);
+		$parent_passportName = documents_receive('parent_passport', $request);
+		$zagsName = documents_receive('zags', $request);
+		$imageName = documents_receive('image', $request);
+
 
 		getStudent()->update([
 			'diplom' => $diplomName,
 			'passport' => $passportName,
+			'parent_passport' => $parent_passportName,
+			'attestat' => $attestatName,
+			'zags' => $zagsName,
+			'image' => $imageName,
 			'docs_date' => Carbon::now()->timestamp
 		]);
 
@@ -261,5 +266,26 @@ class AbiturController extends Controller
 			return back()->withErrors(['Ошибка']);
 		}
 
+	}
+
+	public function universitycontract(Request $request)
+	{
+		$validate = 'required|file|mimes:pdf,doc,docx,jpeg,jpg,png,bmp,gif,svg,webp';
+		$this->validate($request, [
+			'university_pay' => $validate,
+		]);
+
+		$university_pay = $request->file('university_pay');
+		$university_payName = $university_pay->getClientOriginalName();
+		$university_payName = getStudent()->id . '__' . Carbon::now()->timestamp.$university_payName;
+		$university_pay->move('stdocs/university_pay/', $university_payName);
+
+		$a = getStudent()->update(['university_pay' => $university_payName]);
+
+		if($a){
+			return back()->with('success', 'Успешно принята');
+		} else {
+			return back()->withErrors(['Ошибка']);
+		}
 	}
 }

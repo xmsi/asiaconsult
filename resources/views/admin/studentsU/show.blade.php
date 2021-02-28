@@ -39,22 +39,116 @@
 					<td>{{ $student->speciality->name }}</td>
 				</tr>
 				<tr>
+					<th scope="row">Номер телефона</th>
+					<td>{{ '+998 '.getNormalPhone($student->phone) }}</td>
+				</tr>
+				<tr>
 					<th scope="row">Паспорт (перевод)</th>
 					<td>							
-						<a href="/stdocs/{{ $student->passport_per }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
+						<a href="/stdocs/passport_per/{{ $student->passport_per }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
                     			<i class="fas fa-download"></i> Скачать
                   			</a>
                   	</td>
-				</tr>				
+				</tr>
+				@if($student->diplom_per)				
 				<tr>
 					<th scope="row">Диплом (перевод)</th>
 					<td>							
-						<a href="/stdocs/{{ $student->diplom_per }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
+						<a href="/stdocs/diplom_per/{{ $student->diplom_per }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
                     			<i class="fas fa-download"></i> Скачать
                   			</a>
                   	</td>
-				</tr>				
+				</tr>
+				@endif		
+				@if($student->attestat_per)				
 				<tr>
+					<th scope="row">Аттестат (перевод)</th>
+					<td>							
+						<a href="/stdocs/attestat_per/{{ $student->attestat_per }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
+                    			<i class="fas fa-download"></i> Скачать
+                  			</a>
+                  	</td>
+				</tr>
+				@endif	
+				@if($student->zags_per)				
+				<tr>
+					<th scope="row">ЗАГС (перевод)</th>
+					<td>							
+						<a href="/stdocs/zags_per/{{ $student->zags_per }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
+                    			<i class="fas fa-download"></i> Скачать
+                  			</a>
+                  	</td>
+				</tr>
+				@endif	
+				@if($student->parent_passport_per)				
+				<tr>
+					<th scope="row">Паспорт родителей (перевод)</th>
+					<td>							
+						<a href="/stdocs/parent_passport_per/{{ $student->parent_passport_per }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
+                    			<i class="fas fa-download"></i> Скачать
+                  			</a>
+                  	</td>
+				</tr>
+				@endif	
+				@if($student->passport)				
+				<tr>
+					<th scope="row">Паспорт</th>
+					<td>							
+						<a href="/stdocs/passport/{{ $student->passport }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
+                    			<i class="fas fa-download"></i> Скачать
+                  			</a>
+                  	</td>
+				</tr>
+				@endif
+				@if($student->diplom)				
+				<tr>
+					<th scope="row">Диплом</th>
+					<td>							
+						<a href="/stdocs/diplom/{{ $student->diplom }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
+                    			<i class="fas fa-download"></i> Скачать
+                  			</a>
+                  	</td>
+				</tr>
+				@endif
+				@if($student->attestat)				
+				<tr>
+					<th scope="row">Аттестат</th>
+					<td>							
+						<a href="/stdocs/attestat/{{ $student->attestat }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
+                    			<i class="fas fa-download"></i> Скачать
+                  			</a>
+                  	</td>
+				</tr>
+				@endif
+				@if($student->zags)				
+				<tr>
+					<th scope="row">ЗАГС</th>
+					<td>							
+						<a href="/stdocs/zags/{{ $student->zags }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
+                    			<i class="fas fa-download"></i> Скачать
+                  			</a>
+                  	</td>
+				</tr>
+				@endif	
+				@if($student->parent_passport)				
+				<tr>
+					<th scope="row">Паспорт родителей</th>
+					<td>							
+						<a href="/stdocs/parent_passport/{{ $student->parent_passport }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
+                    			<i class="fas fa-download"></i> Скачать
+                  			</a>
+                  	</td>
+				</tr>
+				@endif		
+				@if($student->image)				
+				<tr>
+					<th scope="row">Фото</th>
+					<td>	
+						<img src="/stdocs/image/{{ $student->image }}" style="max-width: 200px" alt="">
+					</td>
+				</tr>
+				@endif		
+<!-- 				<tr>
 					<th scope="row">Паспорт (оригинал)</th>
 					<td>							
 						<a href="/stdocs/{{ $student->passport }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
@@ -69,7 +163,7 @@
                     			<i class="fas fa-download"></i> Скачать
                   			</a>
                   	</td>
-				</tr>
+				</tr> -->
 				@if($student->entrance_ref)
 				<tr>
 					<th scope="row">Справка о зачислении</th>

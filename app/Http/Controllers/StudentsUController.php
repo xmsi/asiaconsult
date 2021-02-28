@@ -38,15 +38,24 @@ class StudentsUController extends Controller
     public function update(Request $request, Student $student)
     {
         if ($request->hasFile('entrance_ref')) {
-            \File::delete(public_path().'/stdocs/'.$student->entrance_ref);
+            \File::delete(public_path().'/stdocs/entrance_ref/'.$student->entrance_ref);
             $image = $request->file('entrance_ref');
             $imageName = $image->getClientOriginalName();
             $imageName = $student->id.'entrance_ref_'.$imageName;
-            $image->move('stdocs/', $imageName);
+            $image->move('stdocs/entrance_ref/', $imageName);
             $student->entrance_ref = $imageName;
+            $student->entrance_date = Carbon::now()->timestamp;
         }
 
-        $student->entrance_date = Carbon::now()->timestamp;
+        if ($request->hasFile('university_contract')) {
+            \File::delete(public_path().'/stdocs/university_contract/'.$student->university_contract);
+            $image = $request->file('university_contract');
+            $imageName = $image->getClientOriginalName();
+            $imageName = $student->id.'university_contract_'.$imageName;
+            $image->move('stdocs/university_contract/', $imageName);
+            $student->university_contract = $imageName;
+        }
+
 
         $student->save();
 

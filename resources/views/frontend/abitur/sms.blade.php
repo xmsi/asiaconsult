@@ -8,14 +8,14 @@
 						<form action="/sms" method="POST" accept-charset="utf-8" enctype="multipart/form-data">
 							@csrf
 							<div class="input">
-								<span>Введите код из смс - сообщения</span>
+								<span>@lang('Введите код из смс - сообщения')</span>
 								<input type="hidden" name="id" value="{{ $phone }}">
 								<input type="number" name="sms_code" placeholder="12345" required />
 							</div>
-							<button type="submit" class="default-btn">Подтвердить</button>
+							<button type="submit" class="default-btn">@lang('Подтвердить')</button>
 							<div class="code-resend">
-								<span>Не пришел код?</span>
-								<a href="#!">Отправить еще раз</a>
+								<span>@lang('Не пришел код?')</span>
+								<a href="#!">@lang('Отправить еще раз')</a>
 							</div>
 						</form>
 					</div>

@@ -8,15 +8,15 @@
 						<form action="/signin" method="POST" id="phoneform">
 							@csrf
 							<div class="input">
-								<span>Номер телефона</span>
+								<span>@lang('Номер телефона')</span>
 								<input type="tel" class="phonenumber" name="phone" placeholder="+998 99 314 42 63" required />
 							</div>
 							<div class="input">
-								<span>Пароль</span>
-								<input type="password" name="password" placeholder="Пароль" required />
+								<span>@lang('Пароль')</span>
+								<input type="password" name="password" placeholder="@lang('Пароль')"required />
 							</div>
-							<button type="submit" class="default-btn">Войти</button>
-							<a class="forgot-password" href="#!">Забыли пароль?</a>
+							<button type="submit" class="default-btn">@lang('Войти')</button>
+							<a class="forgot-password" href="/passwordreset">@lang('Забыли пароль?')</a>
 						</form>
 					</div>
 				</div>

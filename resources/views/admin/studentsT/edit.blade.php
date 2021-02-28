@@ -19,6 +19,21 @@
 				<input type="file" name="diplom_per">
 			</div>
 			<br>
+			<div class="form-group">
+				<label for="attestat_per">Аттестат перевод</label><br>
+				<input type="file" name="attestat_per">
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="zags_per">ЗАГС перевод</label><br>
+				<input type="file" name="zags_per">
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="parent_passport_per">Паспорт родителей перевод</label><br>
+				<input type="file" name="parent_passport_per">
+			</div>
+			<br>
 			<button type="submit" class="btn btn-primary">Изменить</button>
 		</form>
 	</div>

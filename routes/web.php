@@ -40,6 +40,7 @@ Route::prefix('/admin')->group(function(){
 	Route::prefix('/studentsT')->group(function(){
 		Route::get('/', 'StudentsTController@index');
 		Route::get('/{student}/edit', 'StudentsTController@edit');
+		Route::get('/{student}/show', 'StudentsTController@show');
 		Route::put('/{student}', 'StudentsTController@update')->name('studentsT.update');
 	});
 	Route::prefix('/studentsU')->group(function(){
@@ -54,6 +55,7 @@ Route::prefix('/cab')->group(function(){
 	Route::get('/', 'AbiturController@main')->name('abiturcab');
 	Route::get('/senddocs', 'AbiturController@senddocs');
 	Route::post('/docs_receive', 'AbiturController@docs_receive');
+	Route::post('/universitycontract', 'AbiturController@universitycontract');
 });
 
 // ------------------------------------------ Frontend Abitur panel -----------------------
@@ -72,3 +74,5 @@ Route::post('/worksheet', 'AbiturController@worksheet_receive');
 Route::get('/docs_success', 'AbiturController@success');
 Route::get('/docs_error', 'AbiturController@error');
 Route::get('/dogovor', 'AbiturController@dogovor');
+Route::get('/passwordreset', 'AbiturController@passwordreset');
+Route::get('/lang/{lang}', 'LanguageController@index')->name('lang');

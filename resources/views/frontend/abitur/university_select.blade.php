@@ -7,18 +7,18 @@
 			<section class="modal signup step-4 container-fluid">
 				<div class="content col-xl-8 col-lg-10 col-md-10 col-sm-12 col-12">
 					<div class="content-part">
-						<h2>Выберите университет</h2>
+						<h2>@lang('Выберите университет')</h2>
 						<span class="line"></span>
 						@include('frontend.error')
 						<p>
-							Заполните все необходимые поля ниже, чтобы узнать стоимость обучения, количество мест в университете и
-							подать документы*
+							@lang('Заполните все необходимые поля ниже, чтобы узнать стоимость обучения, количество мест в университете и
+							подать документы*')
 						</p>
 						<form action="/university_selected" method="POST">
 							@csrf
 							<div class="input select">
 								<input class="country" type="hidden" name="country" id="country" value="Страна" required />
-								<p class="selected">Страна</p>
+								<p class="selected">@lang('Страна')</p>
 								<ul>
 									@foreach($country as $key => $value)
 									<li class="inputselector" data-id="{{ $key }}">{{ $value }}</li>
@@ -27,7 +27,7 @@
 							</div>
 							<div class="input select disabled">
 								<input type="hidden" name="university" id="university" value="Университет" required />
-								<p class="selected" id="universityp" data-name="Университет">Университет</p>
+								<p class="selected" id="universityp" data-name="Университет">@lang('Университет')</p>
 								<ul id="universityul">
 									<li class="inputselector">University 1</li>
 									<li class="inputselector">University 2</li>
@@ -37,7 +37,7 @@
 							</div>
 							<div class="input select disabled w50">
 								<input type="hidden" name="faculty" id="faculty" value="Факультет" required />
-								<p class="selected" data-name="Факультет">Факультет</p>
+								<p class="selected" data-name="Факультет">@lang('Факультет')</p>
 								<ul id="facultyul">
 									<li class="inputselector">Faculty 1</li>
 									<li class="inputselector">Faculty 2</li>
@@ -47,7 +47,7 @@
 							</div>
 							<div class="input select disabled w50">
 								<input type="hidden" name="speciality" id="speciality" value="Специальность" required />
-								<p class="selected" data-name="Специальность">Специальность</p>
+								<p class="selected" data-name="Специальность">@lang('Специальность')</p>
 								<ul id="specialityul">
 									<li class="inputselector">Eduform 1</li>
 									<li class="inputselector">Eduform 2</li>
@@ -58,7 +58,7 @@
 
 							<div class="input select disabled">
 								<input type="hidden" name="formatype" id="formatype" value="Форма обучения" required />
-								<p class="selected" data-name="Форма обучения">Форма обучения</p>
+								<p class="selected" data-name="Форма обучения">@lang('Форма обучения')</p>
 								<ul id="formatypeul">
 									<li class="inputselector">Eduform 1</li>
 									<li class="inputselector">Eduform 2</li>
@@ -69,17 +69,17 @@
 
 							<div class="informations">
 								<div class="price">
-									<p class="title">Стоимость контракта в год:</p>
+									<p class="title">@lang('Стоимость контракта в год:')</p>
 									<p><span id="contract">---</span> <span id="currency">USD</span></p>
 									<p><span id="service">---</span> сум</p>
 								</div>
 								<div class="place">
-									<p class="title">Доступные места:</p>
+									<p class="title">@lang('Доступные места:')</p>
 									<p id="volume">--</p>
 								</div>
 							</div>
 
-							<button type="submit" class="default-btn">Подать документы</button>
+							<button type="submit" class="default-btn">@lang('Подать документы')</button>
 						</form>
 					</div>
 				</div>

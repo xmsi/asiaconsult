@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
 	public $timestamps = false;
-	protected $fillable = [
-		'phone', 'name', 'second_name', 'father_name', 'from_where_info', 'speciality_id', 'type', 'passport', 'diplom', 'passport_per', 'diplom_per', 'perevod_status', 'passport_id', 'passport_date', 'passport_iib','entrance_ref', 'created_date', 'perevod_date', 'docs_date', 'entrance_date'  , 'service_date', 'service_contract_file', 'service_contract_check'
-	];
+
+    protected $guarded = ['password'];
 
     protected $universityIds = [
         2 => '-21322'

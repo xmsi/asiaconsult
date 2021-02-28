@@ -58,3 +58,36 @@
   padding-top: 5px;
   cursor: pointer;
 }
+
+.lang-box button {
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: red;
+  width: 60px;
+  height: 35px;
+  -webkit-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.lang-box button:hover {
+  color: white;
+  -webkit-filter: brightness(2);
+          filter: brightness(2);
+}
+
+.popup .modal-close {
+    left: 40px;
+    right: 0px;
+}

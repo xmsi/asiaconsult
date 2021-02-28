@@ -80,6 +80,7 @@ header .additions {
       -ms-flex-pack: justify;
           justify-content: space-between;
   height: 100%;
+  max-width: 1000px;
 }
 
 header .additions .online-pay {
@@ -112,7 +113,16 @@ header .additions .online-pay p {
   color: #ffffff;
 }
 
-header .additions .account {
+header .additions .added {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+}
+
+header .additions .added .account {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -122,20 +132,23 @@ header .additions .account {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 100%;
 }
 
-header .additions .account img {
+header .additions .added .account img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin-right: 5px;
 }
 
-header .additions .account p {
+header .additions .added .account p {
   font-weight: bold;
   font-size: 16px;
   line-height: 150%;
+}
+
+header .additions .lang-box {
+  position: static;
 }
 
 header .additions .logout {
@@ -734,6 +747,28 @@ header .additions .logout p {
   margin-bottom: 5px;
 }
 
+.progressBar {
+  width: 150px;
+  height: 15px;
+  padding: 1px;
+  border: 1px solid #282828;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.progressBar .active {
+  width: 5px;
+  height: 100%;
+  background: red;
+  border-radius: 5px;
+  -webkit-transition: 3s;
+  -o-transition: 3s;
+  transition: 3s;
+}
+
 .choose-before-app {
   padding: 15px 30px;
 }
@@ -869,6 +904,11 @@ header .additions .logout p {
   line-height: 150%;
 }
 
+.choose-before-app .payment .buttons .upload #close-it-invoice {
+  margin-left: 10px;
+  display: none;
+}
+
 .choose-before-app .payment .buttons .upload input {
   display: none;
 }
@@ -987,11 +1027,21 @@ header .additions .logout p {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .choose-before-app .documents .item label img {
   margin-right: 5px;
+}
+
+.choose-before-app .documents .item label #close-it-diploma {
+  margin-left: 10px;
+  display: none;
+}
+
+.choose-before-app .documents .item label #close-it-passport {
+  margin-left: 10px;
+  display: none;
 }
 
 .choose-before-app .documents .item label p {
@@ -1238,6 +1288,11 @@ header .additions .logout p {
   font-weight: 600;
   font-size: 12px;
   line-height: 150%;
+}
+
+.choose-after-app .items_row .item .content label #close-it-invoice {
+  margin-left: 10px;
+  display: none;
 }
 
 .choose-after-app .items_row .item .content label input {
@@ -1588,8 +1643,51 @@ header .additions .logout p {
   margin: 0;
 }
 
+.lang-box {
+  position: fixed;
+  top: 50px;
+  right: 50px;
+}
+
+.lang-box a {
+  border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: red;
+  width: 60px;
+  height: 35px;
+  -webkit-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.lang-box a:hover {
+  color: white;
+  -webkit-filter: brightness(2);
+          filter: brightness(2);
+}
+
+@media (max-width: 992px) {
+  header .additions .online-pay {
+    padding: 0 15px;
+  }
+}
+
 @media (max-width: 768px) {
   header .additions .account {
+    display: none;
+  }
+  header .logo {
     display: none;
   }
   .modal {
@@ -1729,8 +1827,18 @@ header .additions .logout p {
   header .additions .online-pay img {
     display: none;
   }
+  header .additions .added .account {
+    display: none;
+  }
+  header .additions .added .lang-box a {
+    width: 45px;
+    height: 30px;
+  }
   header .additions .logout {
     margin: 0 auto;
+  }
+  header .additions .logout p {
+    display: none;
   }
   .signup.step-3 .content-part .error p {
     font-size: 12px;

@@ -9,40 +9,40 @@
 							@include('frontend.error')
 							<input type="hidden" name="phone", value="{{ $phone }}">
 							<div class="input w50">
-								<span>Имя</span>
+								<span>@lang('Имя')</span>
 								<input type="text" name="name" placeholder="Валентина" required />
 							</div>
 							<div class="input w50">
-								<span>Фамилия</span>
+								<span>@lang('Фамилия')</span>
 								<input type="text" name="second_name" placeholder="Лихачева" required />
 							</div>
 							<div class="input">
-								<span>Отчесво</span>
-								<input type="text" name="father_name" placeholder="Отчесво"/>
+								<span>@lang('Отчесво')</span>
+								<input type="text" name="father_name" placeholder="@lang('Отчесво')"/>
 							</div>
 							<div class="input">
-								<span>Паспорт серия, номер</span>
+								<span>@lang('Паспорт серия, номер')</span>
 								<input type="text" name="passport_id" placeholder="AB7777777" required/>
 							</div>
 							<div class="input">
-								<span>Дата выдачи паспорта</span>
+								<span>@lang('Дата выдачи паспорта')</span>
 								<input type="text" name="passport_date" placeholder="01.12.2001" required/>
 							</div>
 							<div class="input">
-								<span>Место выдачи ИИБ паспорта</span>
+								<span>@lang('Место выдачи ИИБ паспорта')</span>
 								<input type="text" name="passport_iib" placeholder="" required/>
 							</div>
 							<div class="input w50">
-								<span>Пароль</span>
+								<span>@lang('Пароль')</span>
 								<input type="password" name="password" required autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" />
 							</div>
 							<div class="input w50">
-								<span>Повторите пароль</span>
+								<span>@lang('Повторите пароль')</span>
 								<input type="password" name="password_confirmation" required autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" />
 							</div>
 
 							<div class="camefrom">
-								<p>Откуда вы о нас узнали?</p>
+								<p>@lang('Откуда вы о нас узнали?')</p>
 								<div class="checkboxes">
 									<label for="telegram">
 										<input type="checkbox" name="from_where_info" id="telegram" value="Telegram" />
@@ -62,7 +62,7 @@
 									<label for="Телевидение">
 										<input type="checkbox" name="from_where_info" id="Телевидение" value="Телевидение" />
 										<span></span>
-										<p>Телевидение</p>
+										<p>@lang('Телевидение')</p>
 									</label>
 									<label for="Google">
 										<input type="checkbox" name="from_where_info" id="Google" value="Google" />
@@ -72,7 +72,7 @@
 									<label for="Знакомые">
 										<input type="checkbox" name="from_where_info" id="Знакомые" value="Знакомые" />
 										<span></span>
-										<p>Знакомые</p>
+										<p>@lang('Знакомые')</p>
 									</label>
 									<label for="Youtube">
 										<input type="checkbox" name="from_where_info" id="Youtube" value="Youtube" />
@@ -82,12 +82,12 @@
 									<label for="Радио">
 										<input type="checkbox" name="from_where_info" id="Радио" value="Радио" />
 										<span></span>
-										<p>Радио</p>
+										<p>@lang('Радио')</p>
 									</label>
 								</div>
 							</div>
 
-							<button type="submit" class="default-btn">Зарегистрироваться</button>
+							<button type="submit" class="default-btn">@lang('Зарегистрироваться')</button>
 						</form>
 					</div>
 				</div>
