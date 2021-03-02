@@ -1,6 +1,6 @@
 			@if($errors->any())
 				<div class="alert alert-danger">
-					<strong>Неправильно заполнена форма</strong>
+					<strong>@lang('Неправильно заполнена форма')</strong>
 					<ul>
 						@foreach($errors->all() as $error)
 							<li>{{ $error }}</li>

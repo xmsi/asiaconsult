@@ -20,6 +20,7 @@
 						<th>Отчество</th>
 						<th>Факультет</th>
 						<th>Специальность</th>
+						<th>Оплата контракта</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -30,6 +31,7 @@
 						<th>Отчество</th>
 						<th>Факультет</th>
 						<th>Специальность</th>
+						<th>Оплата контракта</th>
 						<th></th>
 					</tr>
 				</tfoot>
@@ -42,6 +44,13 @@
 							<td>{{ $student->father_name }}</td>
 							<td>{{ $fac->name }}</td>
 							<td>{{ $student->speciality->name }}</td>
+							<td>
+				@if($student->university_pay)											
+						<a href="/stdocs/university_pay/{{ $student->university_pay }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
+                    			<i class="fas fa-download"></i> Скачать
+                  			</a>
+				@endif
+							</td>
 							<td>
 	                  			<a href="/admin/studentsU/{{ $student->id }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация">
 	                  				<i class="fas fa-info-circle"></i>

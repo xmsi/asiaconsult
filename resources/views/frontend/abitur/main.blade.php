@@ -25,10 +25,16 @@
 					<div class="item col-xl-4 col-lg-4 col-md-4 col-sm-12">
 						<div class="content">
 							<p>@lang('Приказ о поступлении:')</p>
+							@if(getStudent()->entrance_ref)
 							<a href="/stdocs/entrance_ref/{{ getStudent()->entrance_ref }}" download>
 								<img src="/assets/icons/download.svg" alt="download" />
 								<span>prikaz</span>
 							</a>
+							@else
+								<a href="#!">
+									<span>@lang('Отсутствует')</span>
+								</a>
+							@endif
 						</div>
 					</div>
 					<div class="item col-xl-4 col-lg-4 col-md-4 col-sm-12">
@@ -55,7 +61,7 @@
 									<input type="file" name="university_pay" id="invoice" required/>
 									<img src="/assets/icons/upload.svg" alt="upload" />
 									<p id="scan-invoice">@lang('Загрузить')</p>
-									<img src="/assets/icons/x-close.svg" id="close-it-invoice" alt="">
+									<!-- <img src="/assets/icons/x-close.svg" id="close-it-invoice" alt=""> -->
 								</label>
 						<span class="progressBar" style="margin-left: auto;margin-right: auto;">
 							<div class="active zero"></div>
@@ -76,7 +82,7 @@
 						</a>
 					</div> -->
 					<div class="item">
-						<p>@lang('Сканн паспорта:')</p>
+						<p>@lang('Скан паспорта:')</p>
 						<a href="/stdocs/passport/{{ getStudent()->passport }}" class="uploaded" download>
 							<img src="/assets/icons/upload.svg" alt="upload" />
 							<p>pasport</p>

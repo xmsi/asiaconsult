@@ -139,6 +139,16 @@
                   			</a>
                   	</td>
 				</tr>
+				@endif	
+				@if($student->university_pay)				
+				<tr>
+					<th scope="row">Оплата Контракта</th>
+					<td>							
+						<a href="/stdocs/university_pay/{{ $student->university_pay }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
+                    			<i class="fas fa-download"></i> Скачать
+                  			</a>
+                  	</td>
+				</tr>
 				@endif		
 				@if($student->image)				
 				<tr>

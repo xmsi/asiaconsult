@@ -75,7 +75,8 @@ class AbiturController extends Controller
 		// $sms = $phone->send_sms();
 		$phone->save();
 
-		return redirect('/sms/'.$phone->id);
+		// return redirect('/sms/'.$phone->id);
+		return redirect('/worksheet/'. \Crypt::encryptString($phone->phone));
 	}
 
 	public function sms($phone)
