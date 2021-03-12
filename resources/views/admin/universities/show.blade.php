@@ -11,13 +11,13 @@
 				<div class="col-md-3">
 					<a href="/admin/universities/{{ $university->id }}/edit"><button class="btn btn-sm btn-primary">Изменить</button></a>
 				</div>
-				<div class="col-md-2 offset-md-7" align="right">
+<!-- 				<div class="col-md-2 offset-md-7" align="right">
 					<form action="{{ route('universities.destroy', $university->id) }}" method="POST">
 						@csrf
 						@method('DELETE')
 						<button type="submit" class="btn btn-danger btn-sm">Удалить</button>
 					</form>
-				</div>
+				</div> -->
 			</div>
 		</span>
 	</div>

@@ -119,7 +119,7 @@ class SpecialityController extends Controller
 
     public function destroy(Speciality $speciality)
     {
-            $speciality->delete();
+            // $speciality->delete();
 
             return redirect('/admin/speciality');
     }

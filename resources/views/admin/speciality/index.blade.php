@@ -44,17 +44,17 @@
 						<td>{{ $speciality->faculty->name }}</td>
 						<td>{{ $speciality->contract }}</td>
 						<td width="120px">
-							<form action="{{ route('speciality.destroy', $speciality->id) }}" method="POST">
+							<!-- <form action="{{ route('speciality.destroy', $speciality->id) }}" method="POST"> -->
 							<a href="/admin/speciality/{{ $speciality->id }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация">
                     			<i class="fas fa-info-circle"></i>
                   			</a>
                   			<a href="/admin/speciality/{{ $speciality->id }}/edit" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Изменить">
                   				<i class="fas fa-pen"></i>
                   			</a>
-                  			@csrf
+<!--                   			@csrf
                   				@method('DELETE')
                   				<button type="submit" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Удалить"><i class="fas fa-trash"></i></button>
-                  			</form>
+                  			</form> -->
                   		</td>
 					</tr>
 					@endforeach

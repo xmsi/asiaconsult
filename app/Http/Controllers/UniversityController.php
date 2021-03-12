@@ -174,8 +174,8 @@ class UniversityController extends Controller
 
     public function destroy(University $university)
     {
-            \File::delete(public_path().'/images/'.$university->image);
-            $university->delete();
+            // \File::delete(public_path().'/images/'.$university->image);
+            // $university->delete();
 
             return redirect('/admin/universities');
     }

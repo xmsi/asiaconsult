@@ -129,8 +129,8 @@ class FacultyController extends Controller
 
     public function destroy(Faculty $faculty)
     {
-            \File::delete(public_path().'/images/'.$faculty->image);
-            $faculty->delete();
+            // \File::delete(public_path().'/images/'.$faculty->image);
+            // $faculty->delete();
 
             return redirect('/admin/faculty');
     }
