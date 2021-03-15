@@ -8,16 +8,18 @@
 	<div class="card-header py-3">
 		<span class="text">
 			<div class="row">
+				@can('isSuperadmin')
 				<div class="col-md-3">
 					<a href="/admin/speciality/{{ $speciality->id }}/edit"><button class="btn btn-sm btn-primary">Изменить</button></a>
 				</div>
-<!-- 				<div class="col-md-2 offset-md-7" align="right">
+				<div class="col-md-2 offset-md-7" align="right">
 					<form action="{{ route('speciality.destroy', $speciality->id) }}" method="POST">
 						@csrf
 						@method('DELETE')
 						<button type="submit" class="btn btn-danger btn-sm">Удалить</button>
 					</form>
-				</div> -->
+				</div>
+				@endcan
 			</div>
 		</span>
 	</div>
@@ -51,9 +53,16 @@
 				</tr>
 				<tr>
 					<th scope="row">Типы</th>
-					<td>@if($speciality->online) Онлайн, @endif
-					@if($speciality->full_time) Очное, @endif
-					@if($speciality->part_time) Заочное @endif</td>
+					<td>@if($speciality->online) Онлайн <br> @endif 
+					@if($speciality->full_time) Очное <br> @endif 
+					@if($speciality->part_time) Заочное <br> @endif 
+					@if($speciality->weekend_time) По выходным <br> @endif 
+					@if($speciality->night_time) Вечернее <br> @endif 
+					@if($speciality->full_part) очное-заочное <br> @endif 
+					@if($speciality->night_11) вечернее(для 11 классов) <br> @endif 
+					@if($speciality->night_collage) вечернее(для колледжей) <br> @endif 
+					@if($speciality->night_weekend_full) вечернее и выходное, очное <br> @endif 
+					@if($speciality->night_weekend_part) вечернее и выходное, заочное <br> @endif </td>
 				</tr>
 				<tr>
 					<th scope="row">Статус</th>

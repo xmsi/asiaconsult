@@ -11,7 +11,8 @@ class SpecialityController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
-        $this->middleware('role:superadmin');
+        $this->middleware('role:superadmin|admin')->except(['edit', 'update', 'destroy']);
+        $this->middleware('role:superadmin')->only(['edit', 'update', 'destroy']);
     }
 
 
@@ -110,7 +111,7 @@ class SpecialityController extends Controller
         ]);
 
 
-        $speciality->fill($request->except(['online','part_time','full_time']));
+        $speciality->fill($request->except(['online','part_time','full_time', 'full_part', 'night_11', 'night_collage', 'night_weekend_full', 'night_weekend_part']));
         $speciality->normaltype($request);
         $speciality->save();
 
@@ -119,7 +120,7 @@ class SpecialityController extends Controller
 
     public function destroy(Speciality $speciality)
     {
-            // $speciality->delete();
+            $speciality->delete();
 
             return redirect('/admin/speciality');
     }

@@ -60,6 +60,26 @@
 				<input type="checkbox" name="night_time" class="form-check-input" id="exampleCheck5" value="1" @if($speciality->night_time) checked @endif>
 				<label class="form-check-label" for="exampleCheck5">Вечернее</label>
 			</div>
+			<div class="form-check">
+				<input type="checkbox" name="full_part" class="form-check-input" id="exampleCheck6" value="1" @if($speciality->full_part) checked @endif>
+				<label class="form-check-label" for="exampleCheck6">очное-заочное</label>
+			</div>
+			<div class="form-check">
+				<input type="checkbox" name="night_11" class="form-check-input" id="exampleCheck7" value="1" @if($speciality->night_11) checked @endif>
+				<label class="form-check-label" for="exampleCheck7">вечернее(для 11 классов)</label>
+			</div>
+			<div class="form-check">
+				<input type="checkbox" name="night_collage" class="form-check-input" id="exampleCheck8" value="1" @if($speciality->night_collage) checked @endif>
+				<label class="form-check-label" for="exampleCheck8">вечернее(для колледжей)</label>
+			</div>
+			<div class="form-check">
+				<input type="checkbox" name="night_weekend_full" class="form-check-input" id="exampleCheck9" value="1" @if($speciality->night_weekend_full) checked @endif>
+				<label class="form-check-label" for="exampleCheck9">вечернее и выходное, очное</label>
+			</div>
+			<div class="form-check">
+				<input type="checkbox" name="night_weekend_part" class="form-check-input" id="exampleCheck10" value="1" @if($speciality->night_weekend_part) checked @endif>
+				<label class="form-check-label" for="exampleCheck10">вечернее и выходное, заочное</label>
+			</div>
 			<br>
 			<div class="form-group">
 				<label for="status">Статус</label>

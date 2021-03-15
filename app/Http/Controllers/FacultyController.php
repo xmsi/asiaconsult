@@ -13,7 +13,8 @@ class FacultyController extends Controller
 
     public function __construct(){
         $this->middleware('auth');
-        $this->middleware('role:superadmin');
+        $this->middleware('role:superadmin|admin')->except(['edit', 'update', 'destroy']);
+        $this->middleware('role:superadmin')->only(['edit', 'update', 'destroy']);
     }
 
 
@@ -129,8 +130,8 @@ class FacultyController extends Controller
 
     public function destroy(Faculty $faculty)
     {
-            // \File::delete(public_path().'/images/'.$faculty->image);
-            // $faculty->delete();
+            \File::delete(public_path().'/images/'.$faculty->image);
+            $faculty->delete();
 
             return redirect('/admin/faculty');
     }

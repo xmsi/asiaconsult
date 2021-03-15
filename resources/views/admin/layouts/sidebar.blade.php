@@ -64,6 +64,24 @@
           <i class="fas fa-user-lock"></i>
           <span>Босс Менеджеров</span></a>
       </li>
+      @elsecan('isAdmin')
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/universities">
+          <i class="fas fa-university"></i>
+          <span>Университеты</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/faculty">
+          <i class="fas fa-certificate"></i>
+          <span>Факультеты</span></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/speciality">
+          <i class="fas fa-briefcase"></i>
+          <span>Специальности</span></a>
+      </li>
       @elsecan('isTranslator')
       <li class="nav-item">
         <a class="nav-link" href="/admin/studentsT">
