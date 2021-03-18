@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>Asia Consult</title>
+  <title>Universities</title>
 
   <!-- Custom fonts for this template -->
   <link href="/adminassets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -52,7 +52,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Asia Consult 2020</span>
+            <span>Copyright &copy;  2020</span>
           </div>
         </div>
       </footer>
