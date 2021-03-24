@@ -6,7 +6,8 @@
 		@include('frontend.error')
 		<div class="content-part">
 			<p class="title">@lang('Восстановление пароля')</p>
-			<form action="" method="">
+			<form action="/pwdreset" method="POST" id="phoneform">
+				@csrf
 				<div class="input">
 					<span>@lang('Номер телефона')</span>
 					<input type="tel" class="phonenumber" name="phone" placeholder="+998 99 314 42 63" required />

@@ -26,7 +26,7 @@ class Phone extends Model
 		  CURLOPT_CUSTOMREQUEST => "POST",
 		  CURLOPT_POSTFIELDS => array('mobile_phone' => '998'.$this->phone,'message' => 'Код для входа: '.$this->sms_code,'from' => 'ASIACONSULT'),
 		  CURLOPT_HTTPHEADER => array(
-		    "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9ub3RpZnkuZXNraXoudXpcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2MTMwMjMzMDQsImV4cCI6MTYxNTYxNTMwNCwibmJmIjoxNjEzMDIzMzA0LCJqdGkiOiJ3RUNtNHh2dHduZHB5dTdaIiwic3ViIjozMTIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.U4fLo57RrbIB5qD3d11DqIoKs9iU2tbHVChne9PbaKY"
+		    "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9ub3RpZnkuZXNraXoudXpcL2FwaVwvYXV0aFwvbG9naW4iLCJpYXQiOjE2MTY1NTkwMTIsImV4cCI6MTYxOTE1MTAxMiwibmJmIjoxNjE2NTU5MDEyLCJqdGkiOiI4U2VjMm12c3lHQlFWdG1FIiwic3ViIjozMTIsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.RZ9u6ESUa0PWtnAKYIQff1xdF1-FaEPRGoSBLXQeKRE"
 		  ),
 		));
 

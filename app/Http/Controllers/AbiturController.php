@@ -17,7 +17,7 @@ class AbiturController extends Controller
 	{
 		$this->middleware(['auth', 'role:abiturient'])->only(['university_select', 'university_selected', 'senddocs', 'docs_receive', 'success', 'error', 'main']);
 
-		$this->middleware('guest_manager:manager')->only(['signin', 'signin_receive', 'phone', 'phone_recieve', 'sms', 'sms_recieve', 'passwordreset']);
+		$this->middleware('guest_manager:manager')->only(['signin', 'signin_receive', 'phone', 'phone_recieve', 'sms', 'sms_recieve', 'passwordreset', 'pwdreset', 'pwdresetp', 'pwdreset_last']);
 	}
 
 	public function phone()
@@ -61,6 +61,22 @@ class AbiturController extends Controller
 		return view('frontend.abitur.passwordreset.phone');
 	}
 
+	public function pwdreset(Request $request)
+	{
+		$user = User::where('name', $request->phone);
+
+		if(!$user->exists()){
+			return redirect()->back()->withErrors([__('Этот номер не зарегистрирован')]);
+		}
+
+		$phone = Phone::firstOrNew(['phone' => $request->phone]);
+		$phone->sms_code = rand(11112, 99998);
+		$sms = $phone->send_sms();
+		$phone->save();
+
+		return redirect('/sms/'.$phone->id.'/1');
+	}
+
 	public function phone_recieve(Request $request)
 	{
 		$this->validate($request, [
@@ -79,9 +95,9 @@ class AbiturController extends Controller
 		return redirect('/worksheet/'. \Crypt::encryptString($phone->phone));
 	}
 
-	public function sms($phone)
+	public function sms($phone, $pwdreset = 0)
 	{
-		return view('frontend.abitur.sms', compact('phone'));
+		return view('frontend.abitur.sms', compact('phone', 'pwdreset'));
 	}
 
 	public function sms_recieve(Request $request)
@@ -91,9 +107,34 @@ class AbiturController extends Controller
 			$phone->status = 1;
 			$phone->save();
 
+			if($request->pwdreset == 1){
+				return redirect('/pwdresetp/'. \Crypt::encryptString($phone->phone));
+			}
+
 			return redirect('/worksheet/'. \Crypt::encryptString($phone->phone));
 		} else {
-			return redirect()->back()->withErrors(['Неправильно введен код']);
+			return redirect()->back()->withErrors(['Неправильно введен код'])->with('pwdreset', 1);
+		}
+	}
+
+	public function pwdresetp($phone)
+	{
+		$phone = \Crypt::decryptString($phone); 
+
+		return view('frontend.abitur.passwordreset.pwd', compact('phone'));
+	}
+
+	public function pwdreset_last(Request $request)
+	{
+		$this->validate($request, [
+			'password' => 'required|confirmed|min:6',
+		]);
+		$user = User::where('name', $request->phone)->first();
+		$user->password = bcrypt($request->password);
+		$is_saved = $user->save();
+
+		if($is_saved){
+			return redirect('/')->with('success', 'Пароль успешно изменен');
 		}
 	}
 

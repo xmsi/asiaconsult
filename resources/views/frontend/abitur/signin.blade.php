@@ -4,6 +4,7 @@
 				<div class="content col-xl-6 col-lg-8 col-md-10 col-sm-12 col-12">
 					<x-modalbtn/>
 					@include('frontend.error')
+					@include('frontend.success')
 					<div class="content-part">
 						<form action="/signin" method="POST" id="phoneform">
 							@csrf

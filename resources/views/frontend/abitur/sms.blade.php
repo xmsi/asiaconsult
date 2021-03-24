@@ -10,6 +10,7 @@
 							<div class="input">
 								<span>@lang('Введите код из смс - сообщения')</span>
 								<input type="hidden" name="id" value="{{ $phone }}">
+								<input type="hidden" name="pwdreset" value="{{ $pwdreset }}">
 								<input type="number" name="sms_code" placeholder="12345" required />
 							</div>
 							<button type="submit" class="default-btn">@lang('Подтвердить')</button>
