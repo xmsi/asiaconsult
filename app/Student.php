@@ -14,6 +14,19 @@ class Student extends Model
         2 => '-21322'
     ];
 
+    protected $types = [
+        0 => 'Очное',
+        1 => 'Заочное',
+        2 => 'Онлайн',
+        3 => 'Вечернее',
+        4 => 'По выходным',
+        5 => 'очное-заочное',
+        6 => 'вечернее(для 11 классов)',
+        7 => 'вечернее(для колледжей)',
+        8 => 'вечернее и выходное, очное',
+        9 => 'вечернее и выходное, заочное',
+    ];
+
     public function speciality()
     {
         return $this->belongsTo(Speciality::class);
@@ -37,6 +50,11 @@ class Student extends Model
     public function getFullNameAttribute()
     {
         return $this->second_name . ' ' . $this->name . ' ' . $this->father_name;
+    }
+
+    public function getTypeNAttribute()
+    {        
+        return $this->types[$this->type];
     }
 
     public function sendtoTelegram()

@@ -15,22 +15,24 @@
 			<table class="table table-bordered" id="dataTable" data-order="[]" width="100%" cellspacing="0">
 				<thead>
 					<tr>
-						<th>Имя</th>
-						<th>Фамилия</th>
-						<th>Отчество</th>
+						<th>ФИО</th>
+						<th>Номер Телефона</th>
+						<th>Email</th>
 						<th>Факультет</th>
-						<th>Специальность</th>
+						<th>Направление</th>
+						<th>Вид обучения</th>
 						<th>Оплата контракта</th>
 						<th></th>
 					</tr>
 				</thead>
 				<tfoot>
 					<tr>
-						<th>Имя</th>
-						<th>Фамилия</th>
-						<th>Отчество</th>
+						<th>ФИО</th>
+						<th>Номер Телефона</th>
+						<th>Email</th>
 						<th>Факультет</th>
-						<th>Специальность</th>
+						<th>Направление</th>
+						<th>Вид обучения</th>
 						<th>Оплата контракта</th>
 						<th></th>
 					</tr>
@@ -39,11 +41,12 @@
 					@foreach($faculty as $fac)
 						@foreach($fac->students as $student)
 						<tr @if($student->entrance_ref) class="table-success" @else class="table-danger" @endif>
-							<td>{{ $student->name }}</td>
-							<td>{{ $student->second_name }}</td>
-							<td>{{ $student->father_name }}</td>
+							<td>{{ $student->full_name }}</td>
+							<td>{{ '+998'.getNormalPhone($student->phone) }}</td>
+							<td>{{ $student->user->email }}</td>
 							<td>{{ $fac->name }}</td>
 							<td>{{ $student->speciality->name }}</td>
+							<td>{{ $student->typeN }}</td>
 							<td>
 				@if($student->university_pay)											
 						<a href="/stdocs/university_pay/{{ $student->university_pay }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>

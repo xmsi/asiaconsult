@@ -152,6 +152,7 @@ class AbiturController extends Controller
 			'name' => 'required',
 			'second_name' => 'required',
 			'passport_id' => 'required',
+			'email' => 'required|email',
 			'passport_date' => 'required',
 			'passport_iib' => 'required',
 			'password' => 'required|confirmed|min:6',
@@ -159,6 +160,7 @@ class AbiturController extends Controller
 
 		$user = new User();
 		$user->name = $request->phone;
+		$user->email = $request->email;
 		$user->password = bcrypt($request->password); 
 		$is_saved = $user->save();
 

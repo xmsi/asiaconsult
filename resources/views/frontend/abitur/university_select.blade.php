@@ -202,6 +202,11 @@
 				})
 				.done(function(data) {
 					setdisp(data);
+					check_dropdown(data.night_weekend_part, 'вечернее и выходное, заочное', 9);
+					check_dropdown(data.night_weekend_full, 'вечернее и выходное, очное', 8);
+					check_dropdown(data.night_collage, 'вечернее(для колледжей)', 7);
+					check_dropdown(data.night_11, 'вечернее(для 11 классов)', 6);
+					check_dropdown(data.full_part, 'очное-заочное', 5);
 					check_dropdown(data.weekend_time, 'По выходным', 4);
 					check_dropdown(data.night_time, 'Вечернее', 3);
 					check_dropdown(data.online, 'Онлайн', 2);

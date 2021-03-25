@@ -40,7 +40,10 @@
 								<span>@lang('Повторите пароль')</span>
 								<input type="password" name="password_confirmation" required autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" />
 							</div>
-
+							<div class="input">
+								<span>@lang('Email')</span>
+								<input type="email" name="email" placeholder="test@gmail.com" required/>
+							</div>
 							<div class="camefrom">
 								<p>@lang('Откуда вы о нас узнали?')</p>
 								<div class="checkboxes">

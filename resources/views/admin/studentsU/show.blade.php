@@ -31,12 +31,24 @@
 					<td>{{ $student->father_name }}</td>
 				</tr>
 				<tr>
+					<th scope="row">Номер телефона</th>
+					<td>{{ '+998'.getNormalPhone($student->phone) }}</td>
+				</tr>
+				<tr>
+					<th scope="row">Email</th>
+					<td>{{ $student->user->email }}</td>
+				</tr>
+				<tr>
 					<th scope="row">Факультет</th>
 					<td>{{ $student->speciality->faculty->name }}</td>
 				</tr>
 				<tr>
-					<th scope="row">Специальность</th>
+					<th scope="row">Направление</th>
 					<td>{{ $student->speciality->name }}</td>
+				</tr>
+				<tr>
+					<th scope="row">Вид обучения</th>
+					<td>{{ $student->typeN }}</td>
 				</tr>
 				<tr>
 					<th scope="row">Номер телефона</th>
