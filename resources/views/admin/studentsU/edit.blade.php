@@ -11,10 +11,14 @@
 			@csrf
 			@method('PUT')
 			<div class="form-group">
-				<label for="entrance_ref">Справка о зачислении</label><br>
+				<label for="comments">Коментарии</label><br>
+				<input class="form-control" type="text" name="comments" value="{{ $student->comments }}">
+			</div>
+			<div class="form-group">
+				<label for="entrance_ref">Выписка из приказа</label><br>
 				<input type="file" name="entrance_ref">
 			</div>
-			<br>
+
 			<div class="form-group">
 				<label for="university_contract">Контракт на оплату</label><br>
 				<input type="file" name="university_contract">

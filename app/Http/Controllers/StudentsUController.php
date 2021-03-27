@@ -56,6 +56,8 @@ class StudentsUController extends Controller
             $student->university_contract = $imageName;
         }
 
+        $student->comments = $request->comments;
+
 
         $student->save();
 

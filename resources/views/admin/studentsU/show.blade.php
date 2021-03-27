@@ -51,8 +51,8 @@
 					<td>{{ $student->typeN }}</td>
 				</tr>
 				<tr>
-					<th scope="row">Номер телефона</th>
-					<td>{{ '+998 '.getNormalPhone($student->phone) }}</td>
+					<th scope="row">Коментарии</th>
+					<td>{{ $student->comments }}</td>
 				</tr>
 				<tr>
 					<th scope="row">Паспорт (перевод)</th>
@@ -154,7 +154,7 @@
 				@endif	
 				@if($student->university_pay)				
 				<tr>
-					<th scope="row">Оплата Контракта</th>
+					<th scope="row">Квитанция об оплате</th>
 					<td>							
 						<a href="/stdocs/university_pay/{{ $student->university_pay }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация" download>
                     			<i class="fas fa-download"></i> Скачать
@@ -186,7 +186,7 @@
                   			</a>
                   	</td>
 				</tr> -->
-				@if($student->entrance_ref)
+<!-- 				@if($student->entrance_ref)
 				<tr>
 					<th scope="row">Справка о зачислении</th>
 					<td>							
@@ -195,7 +195,7 @@
                   			</a>
                   	</td>
 				</tr>
-				@endif
+				@endif -->
 			</tbody>
 		</table>
 	</div>
