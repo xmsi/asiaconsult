@@ -294,11 +294,10 @@ class AbiturController extends Controller
 	public function dogovor()
 	{
 		$pdf = \PDF::loadView('frontend.testing');
-		$check = $pdf->save(public_path('/stdocs/service_shartnoma_file/'.getStudent()->id. 'dogovor.pdf'));
 
-		if($check){
-			return $pdf->download('dogovor.pdf');
-		}
+		return $pdf->download('dogovor.pdf');
+
+		// $check = $pdf->save(public_path('/stdocs/service_shartnoma_file/'.getStudent()->id. 'dogovor.pdf'));
 
 		// return view('frontend.testing');
 	}
