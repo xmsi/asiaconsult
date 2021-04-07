@@ -34,7 +34,7 @@
 </head>
 <body>
 	<main>
-			<h4 align="center">Ахборот – маълумот  хизматлари кўрсатиш <br> шартномаси № P/{{ getStudent()->id }}</h4>
+			<h4 align="center">Ахборот – маълумот  хизматлари кўрсатиш <br> шартномаси № C/{{ getStudent()->id }}</h4>
 
 			<p style="margin-left: 20px;float: left;">{{ date('« d» m Y', strtotime(getStudent()->service_date)) }} й.</p><p style="margin-right: 20px;float: right;">Тошкент  ш. </p>
 			<br><br>

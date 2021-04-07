@@ -115,6 +115,13 @@
           <i class="fas fa-file"></i>
           <span>Квитанции</span></a>
       </li>
+
+      @elsecan('isShartnoma')
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/studentsSh">
+          <i class="fas fa-users"></i>
+          <span>Студенты</span></a>
+        </li>
       @endcan
 
       <!-- Nav Item - Tables -->

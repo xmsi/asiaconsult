@@ -52,6 +52,15 @@ class Student extends Model
         return $this->second_name . ' ' . $this->name . ' ' . $this->father_name;
     }
 
+    public function getShNumberAttribute()
+    {
+        if(!$this->service_date){
+            return '--';
+        }
+
+        return date('Y', strtotime($this->service_date)) . '/' . $this->id;
+    }
+
     public function getTypeNAttribute()
     {        
         return $this->types[$this->type];

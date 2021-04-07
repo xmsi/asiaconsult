@@ -210,8 +210,19 @@ class AbiturController extends Controller
 			$user = Auth::user();
 			$user->student->update([
 				'speciality_id' => $request->speciality,
-				'type' => $request->formatype,
+				'type' => $request->formatype
 			]);
+
+			$pdf = \PDF::loadView('frontend.testing');
+			$pdfName = $user->student->id . 'dogovor.pdf';
+			$check = $pdf->save(public_path('/stdocs/service_shartnoma_file/'.$pdfName));
+
+			if ($check) {
+				getStudent()->update([
+					'service_shartnoma_file' => $pdfName,
+					'service_date' => date('Y-m-d')
+				]);
+			}
 
 			return redirect('/cab/senddocs');
 		}
@@ -282,10 +293,12 @@ class AbiturController extends Controller
 
 	public function dogovor()
 	{
-		getStudent()->update(['service_date' => date('Y-m-d')]);
-
 		$pdf = \PDF::loadView('frontend.testing');
-		return $pdf->download('dogovor.pdf');
+		$check = $pdf->save(public_path('/stdocs/service_shartnoma_file/'.getStudent()->id. 'dogovor.pdf'));
+
+		if($check){
+			return $pdf->download('dogovor.pdf');
+		}
 
 		// return view('frontend.testing');
 	}
