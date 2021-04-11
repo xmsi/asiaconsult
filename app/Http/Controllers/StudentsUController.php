@@ -18,7 +18,10 @@ class StudentsUController extends Controller
     public function index()
     {
     	$faculty = Faculty::where('university_id', Auth::user()->university_id)->with(['students' => function($q){
-    		$q->where('perevod_status', '=', 1);
+    		$q->where('service_contract_check', '=', 1);
+            if (Auth::user()->checkRussia()) {
+                $q->where('perevod_status', '=', 1);
+            }
     		$q->orderBy('perevod_date', 'desc');
     	}])->get();
 

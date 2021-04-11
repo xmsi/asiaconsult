@@ -54,6 +54,7 @@
 					<th scope="row">Коментарии</th>
 					<td>{{ $student->comments }}</td>
 				</tr>
+				@if(auth()->user()->checkRussia())
 				<tr>
 					<th scope="row">Паспорт (перевод)</th>
 					<td>							
@@ -102,6 +103,7 @@
                   	</td>
 				</tr>
 				@endif	
+				@endif
 				@if($student->passport)				
 				<tr>
 					<th scope="row">Паспорт</th>

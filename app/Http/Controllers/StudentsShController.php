@@ -47,6 +47,13 @@ class StudentsShController extends Controller
     {
         return view('admin.studentsT.show', compact('student'));
     }
+
+    public function download(Student $student)
+    {
+        $pdf = \PDF::loadView('frontend.testing', compact('student'));
+
+        return $pdf->download('dogovor.pdf');
+    }
 }
 
 ?>

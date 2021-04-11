@@ -51,12 +51,15 @@
 						<td>@if($student->speciality){{ $student->speciality->name }}@endif</td>
 						<td>@if($student->perevod_status == 1) Tarjima qilindi @else Tarjimaga berildi  @endif</td>
 						<td>{{ '+998'. getNormalPhone($student->phone) }}</td>
-						<td>
+						<td style="width: 80px;">
 <!-- 							<a href="/admin/studentsSh/{{ $student->id }}/show" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация">
                     			<i class="fas fa-info-circle"></i>
                   			</a> -->
                   			<a href="{{ route('studentsSh.edit', $student->id) }}" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Изменить">
                   				<i class="fas fa-pen"></i>
+                  			</a>
+                  			<a href="/admin/studentsSh1/download/{{ $student->id }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Изменить">
+                  				<i class="fas fa-download"></i>
                   			</a>
                   		</td>
 					</tr>

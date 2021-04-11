@@ -91,4 +91,13 @@ class Student extends Model
 
         return $response;
     }
+
+    public function checkRussia()
+    {
+        if($this->speciality->faculty->university->country->currency == 'RUB'){
+            return true;
+        }
+
+        return false;
+    }
 }

@@ -44,6 +44,20 @@ class User extends Authenticatable
         return $this->hasOne(Student::class);
     }
 
+    public function university()
+    {
+        return $this->belongsTo(University::class);
+    }
+
+    public function checkRussia()
+    {
+        if($this->university->country->currency == 'RUB'){
+            return true;
+        }
+
+        return false;
+    }
+
     public function manager()
     {
         return $this->hasOne(Manager::class);

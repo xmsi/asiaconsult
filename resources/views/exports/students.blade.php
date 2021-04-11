@@ -35,7 +35,7 @@
                     @endif
                 </td>
                 <td>{{ $student->type_n }}</td>
-                <td>переводга берилди</td>
+                <td>@if($student->service_contract_check)переводга берилди @endif</td>
                 <td>@if($student->perevod_status) перевод булди @endif</td>
                 <td>
                     @if(isset($student->manager->boss_manager->filial))
