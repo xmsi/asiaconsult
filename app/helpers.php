@@ -46,7 +46,7 @@ function getNormalPhone($phone){
 	return preg_replace('/(.{2})(.{3})(..)(..)/', '$1 $2 $3 $4', $phone);
 }
 
-function documents_receive($name, $request){
+function documents_receive($name, $request, $student = null){
 	if ($request->hasFile($name)) {
 		// \File::delete(public_path().'/stdocs/'.$name.'/'.$request->diplom);
 

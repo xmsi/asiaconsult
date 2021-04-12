@@ -1,0 +1,10 @@
+#if not work apt
+echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null
+
+
+#small icons and text
+
+sleep 5s
+gsettings set org.gnome.desktop.interface text-scaling-factor 1.3
+chmod +x ~/.local/bin/fix-font-size.sh
+bash -c "/home/username/.local/bin/fix-font-size.sh" 

@@ -64,6 +64,12 @@
           <i class="fas fa-user-lock"></i>
           <span>Босс Менеджеров</span></a>
       </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/studentsSh">
+          <i class="fas fa-users"></i>
+          <span>Студенты</span></a>
+        </li>
       @elsecan('isAdmin')
       <li class="nav-item">
         <a class="nav-link" href="/admin/universities">

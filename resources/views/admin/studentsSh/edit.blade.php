@@ -33,9 +33,111 @@
 			<div class="form-group">
 				<label for="title">Passport berilgan joy IIB</label>
 				<input type="text" name="passport_iib" value="{{ $student->passport_iib }}" class="form-control" required>
-			</div>			
+			</div>
+			<div class="form-group">
+				<label for="country">Universitet</label>
+				<div class="input-group mb-3">
+					<select id="university" class="form-control">
+						<option value="">Universitetni tanlash......</option>
+						@foreach($universities as $value => $key)
+							<option value="{{ $value }}">{{ $key }}</option>
+						@endforeach
+					</select>
+				</div>	
+			</div> 
+			<div class="form-group">
+				<label for="country">Fakultet</label>
+				<div class="input-group mb-3">
+					<select id="faculty" class="form-control">
+						<option value="">tanlash......</option>
+					</select>
+				</div>	
+			</div>
+			<div class="form-group">
+				<label for="country">Mutaxassisligi</label>
+				<div class="input-group mb-3">
+					<select name="speciality_id" id="speciality" class="form-control">
+						<option value="">tanlash......</option>
+					</select>
+				</div>	
+			</div> 	 	
+			<div class="form-group">
+				<label for="diplom_per">Pasport</label><br>
+				<input type="file" name="passport" id="passport"/>
+			</div>
+			<div class="form-group">
+				<label for="diplom_per">Diplom</label><br>
+				<input type="file" name="diplom" id="diploma"/>
+			</div>
+			<div class="form-group">
+				<label for="diplom_per">Attestat</label><br>
+				<input type="file" name="attestat" id="attestat"/>
+			</div>
+			<div class="form-group">
+				<label for="diplom_per">Zags</label><br>
+				<input type="file" name="zags" id="zags" />
+			</div>
+			<div class="form-group">
+				<label for="diplom_per">Otasini yoki Onasini passport skani</label><br>
+				<input type="file" name="parent_passport" id="parent_passport"/>
+			</div>
+			<div class="form-group">
+				<label for="diplom_per">Rasm</label><br>
+				<input type="file" name="image" id="image"/>
+			</div>		
 			<button type="submit" class="btn btn-primary">Изменить</button>
 		</form>
 	</div>
 </div>
+@endsection
+
+@section('extra_js')
+	<script>
+		jQuery(document).ready(function($) {
+			$("#university").on('change', function(event) {
+				$.ajax({
+					url: '/admin/speciality/faculty',
+					type: 'POST',
+					dataType: 'json',
+					data: {
+						_token: "{{ csrf_token() }}",
+						university_id: this.value
+					},
+				})
+				.done(function(data) {
+					$("#faculty").empty();
+					$("#faculty").append(new Option('Tanlash...', ''));
+					$.each(data, function(index, val) {
+						$("#faculty").append(new Option(val, index));
+					});
+				})
+				.fail(function() {
+					console.log("error");
+				})
+				
+			});
+			$("#faculty").on('change', function(event) {
+				$.ajax({
+					url: '/admin/studentsSh1/speciality',
+					type: 'POST',
+					dataType: 'json',
+					data: {
+						_token: "{{ csrf_token() }}",
+						faculty_id: this.value
+					},
+				})
+				.done(function(data) {
+					$("#speciality").empty();
+					$("#speciality").append(new Option('Tanlash...', ''));
+					$.each(data, function(index, val) {
+						$("#speciality").append(new Option(val, index));
+					});
+				})
+				.fail(function() {
+					console.log("error");
+				})
+				
+			});
+		});
+	</script>
 @endsection

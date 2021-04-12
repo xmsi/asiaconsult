@@ -1,0 +1,9 @@
+docs_date in db student
+manager in roles 5
+manager_id for student for managers
+user name unique
+
+managers_boss in roles 6
+boss_managers
+managers
+filials

@@ -11,8 +11,9 @@ class SpecialityController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
-        $this->middleware('role:superadmin|admin')->except(['edit', 'update', 'destroy']);
+        $this->middleware('role:superadmin|admin')->except(['edit', 'update', 'destroy', 'faculty']);
         $this->middleware('role:superadmin')->only(['edit', 'update', 'destroy']);
+        $this->middleware('role:superadmin|shartnoma')->only('faculty');
     }
 
 
