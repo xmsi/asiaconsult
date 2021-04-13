@@ -30,6 +30,7 @@ Route::prefix('/admin')->group(function(){
 	Route::post('/check/contract_true', 'CheckServiceController@contract_true')->name('contract_true');
 	Route::get('/studentsM', 'StudentsMController@index');
 	Route::resource('/studentsSh', 'StudentsShController');
+	Route::resource('/studentsSA', 'StudentsSAController', ['only' => ['index', 'destroy']]);
 	Route::get('/studentsSh1/download/{student}', 'StudentsShController@download');
 	Route::get('/studentsSh1/export', 'StudentsShController@export');
 	Route::post('/studentsSh1/speciality', 'StudentsShController@speciality');

@@ -66,7 +66,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/admin/studentsSh">
+        <a class="nav-link" href="/admin/studentsSA">
           <i class="fas fa-users"></i>
           <span>Студенты</span></a>
         </li>

@@ -137,4 +137,11 @@ class BossManagersController extends Controller
 
         return redirect('/admin/bossManager/')->with('success', 'изменен успешно');
     }
+
+    public function destroy(BossManager $bossManager)
+    {
+            $bossManager->delete();
+
+            return redirect('/admin/bossManager');
+    }
 }

@@ -92,4 +92,12 @@ class FilialsController extends Controller
 
         return redirect('/admin/filial/')->with('success', 'изменен успешно');
     }
+
+    public function destroy(Filial $filial)
+    {
+            $filial->delete();
+
+            return redirect('/admin/filial');
+    }
+
 }
