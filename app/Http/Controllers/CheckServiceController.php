@@ -23,7 +23,9 @@ class CheckServiceController extends Controller
     {
     	$student = Student::find($request->id);
     	$student->update(['service_contract_check' => 1]);
-    	$student->sendtoTelegram();
+        if ($student->checkRussia()) {
+            $student->sendtoTelegram();
+        }
 
     	return redirect()->back()->with('success', 'Успешно изменен');
     }

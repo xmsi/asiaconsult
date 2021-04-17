@@ -34,6 +34,7 @@ Route::prefix('/admin')->group(function(){
 	Route::get('/studentsSh1/download/{student}', 'StudentsShController@download');
 	Route::get('/studentsSh1/export', 'StudentsShController@export');
 	Route::post('/studentsSh1/speciality', 'StudentsShController@speciality');
+	// Route::post('/studentsSh1/type', 'StudentsShController@type');
 	Route::resource('/countries', 'CountriesController');
 	Route::resource('/universities', 'UniversityController');
 	Route::resource('/filial', 'FilialsController');

@@ -39,6 +39,13 @@ class StudentsShController extends Controller
         return json_encode($speciality);
     }
 
+    // public function speciality(Request $request)
+    // {   
+    //     $speciality = Speciality::where('faculty_id', $request->faculty_id)->pluck('name', 'id')->toArray();
+
+    //     return json_encode($speciality);
+    // }
+
     public function update(Request $request, $student)
     {
         $student = Student::find($student);

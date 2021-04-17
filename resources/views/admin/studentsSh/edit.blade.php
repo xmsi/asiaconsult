@@ -62,6 +62,14 @@
 				</div>	
 			</div> 	 	
 			<div class="form-group">
+				<label for="country">O'qish turi</label>
+				<div class="input-group mb-3">
+					<select name="type" id="type" class="form-control">
+						<option value="">tanlash......</option>
+					</select>
+				</div>	
+			</div> 	 	
+			<div class="form-group">
 				<label for="diplom_per">Pasport</label><br>
 				<input type="file" name="passport" id="passport"/>
 			</div>
@@ -136,6 +144,45 @@
 				.fail(function() {
 					console.log("error");
 				})
+				
+			});
+			$("#speciality").on('change', function(event) {
+				$.ajax({
+					url: '/api/gets',
+					type: 'POST',
+					dataType: 'json',
+					data: {
+						_token: "{{ csrf_token() }}",
+						speciality_id: this.value
+					},
+				})
+				.done(function(data) {
+					$("#type").empty();
+					$("#type").append(new Option('Tanlash...', ''));
+					check_dropdown(data.night_weekend_part, 'вечернее и выходное, заочное', 9);
+					check_dropdown(data.night_weekend_full, 'вечернее и выходное, очное', 8);
+					check_dropdown(data.night_collage, 'вечернее(для колледжей)', 7);
+					check_dropdown(data.night_11, 'вечернее(для 11 классов)', 6);
+					check_dropdown(data.full_part, 'очное-заочное', 5);
+					check_dropdown(data.weekend_time, 'По выходным', 4);
+					check_dropdown(data.night_time, 'Вечернее', 3);
+					check_dropdown(data.online, 'Онлайн', 2);
+					check_dropdown(data.part_time, 'Заочное', 1);
+					check_dropdown(data.full_time, 'Очное', 0);
+
+					$("#loading-image").hide();
+					$("section").css('opacity', 1);
+				})
+				.fail(function() {
+					console.log("error");
+				})
+
+				function check_dropdown(status, name, orig){
+					if(status == 1){
+						// $("#speciality").append('<li class="inputselector1" data-id="'+ orig +'">'+name+'</li>');
+						$("#type").append(new Option(name, orig));
+					}
+				}
 				
 			});
 		});

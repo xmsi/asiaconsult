@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-	public $timestamps = false;
+    public $timestamps = false;
 
     protected $guarded = ['password'];
 
@@ -34,7 +34,7 @@ class Student extends Model
 
     public function validateDocs()
     {
-    	return $this->speciality->validateDocs();
+        return $this->speciality->validateDocs();
     }
 
     public function user()
@@ -63,7 +63,9 @@ class Student extends Model
 
     public function getTypeNAttribute()
     {        
-        return $this->types[$this->type];
+        if($this->type){
+            return $this->types[$this->type];
+        }
     }
 
     public function sendtoTelegram()
