@@ -6,6 +6,7 @@
             <th style="background-color: yellow;" width="20">шартнома санаси</th>
             <th style="background-color: yellow;" width="20">Ф.И.Ш</th>
             <th style="background-color: yellow;" width="20">Тел раками</th>
+            <th style="background-color: yellow;" width="20">Компания тулови</th>
             <th style="background-color: yellow;" width="20">Институт</th>
             <th style="background-color: yellow;" width="20">Мутахассислиги</th>
             <th style="background-color: yellow;" width="20">Ўқиш тури</th>
@@ -24,6 +25,11 @@
                 <td>{{ date('m/d/Y', strtotime($student->service_date)) }}</td>
                 <td>{{ $student->full_name }}</td>
                 <td>{{ $student->phone }}</td>
+                <td>
+                    @if(isset($student->speciality->service_sum))
+                        {{ $student->speciality->service_sum }}
+                    @endif
+                </td>
                 <td>
                     @if(isset($student->speciality->faculty->university->name))
                         {{ $student->speciality->faculty->university->name }}
