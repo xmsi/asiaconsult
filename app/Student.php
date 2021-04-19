@@ -63,7 +63,7 @@ class Student extends Model
 
     public function getTypeNAttribute()
     {        
-        if($this->type){
+        if($this->type != null){
             return $this->types[$this->type];
         }
     }

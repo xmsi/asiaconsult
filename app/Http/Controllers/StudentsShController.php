@@ -49,9 +49,12 @@ class StudentsShController extends Controller
     public function update(Request $request, $student)
     {
         $student = Student::find($student);
-        $student->fill($request->except(['speciality_id']));
+        $student->fill($request->except(['speciality_id', 'type']));
         if ($request->speciality_id) {
             $student->speciality_id = $request->speciality_id;
+        }
+        if ($request->type != null) {
+            $student->type = $request->type;
         }
 
         if ($request->hasFile('diplom')) {
