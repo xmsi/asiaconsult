@@ -34,6 +34,12 @@
 				<label for="title">Passport berilgan joy IIB</label>
 				<input type="text" name="passport_iib" value="{{ $student->passport_iib }}" class="form-control" required>
 			</div>
+			@can('isSuperadmin')
+				<div class="form-group">
+					<label for="title">Shartnoma sanasi</label>
+					<input type="text" name="service_date" value="{{ date('d.m.Y', strtotime($student->service_date)) }}" class="form-control" required>
+				</div>
+			@endcan
 			<div class="form-group">
 				<label for="country">Universitet</label>
 				<div class="input-group mb-3">

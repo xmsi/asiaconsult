@@ -49,9 +49,12 @@ class StudentsShController extends Controller
     public function update(Request $request, $student)
     {
         $student = Student::find($student);
-        $student->fill($request->except(['speciality_id', 'type']));
+        $student->fill($request->except(['speciality_id', 'type', 'service_date']));
         if ($request->speciality_id) {
             $student->speciality_id = $request->speciality_id;
+        }
+        if ($request->service_date) {
+            $student->service_date = date('Y-m-d', strtotime($request->service_date));
         }
         if ($request->type != null) {
             $student->type = $request->type;
