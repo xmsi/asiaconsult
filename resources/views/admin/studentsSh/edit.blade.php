@@ -37,7 +37,11 @@
 			@can('isSuperadmin')
 				<div class="form-group">
 					<label for="title">Shartnoma sanasi</label>
-					<input type="text" name="service_date" value="{{ date('d.m.Y', strtotime($student->service_date)) }}" class="form-control" required>
+					<input type="text" name="service_date" value="{{ date('d.m.Y', strtotime($student->service_date)) }}" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="title">Shartnoma puli</label>
+					<input type="text" name="service_amount" value="{{ $student->service_amount }}" class="form-control">
 				</div>
 			@endcan
 			<div class="form-group">

@@ -26,8 +26,8 @@
                 <td>{{ $student->full_name }}</td>
                 <td>{{ $student->phone }}</td>
                 <td>
-                    @if(isset($student->speciality->service_sum))
-                        {{ $student->speciality->service_sum }}
+                    @if(isset($student->service_amount))
+                        {{ $student->service_amount }}
                     @endif
                 </td>
                 <td>

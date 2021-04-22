@@ -228,6 +228,7 @@ class AbiturController extends Controller
 			if ($check) {
 				getStudent()->update([
 					'service_shartnoma_file' => $pdfName,
+					'service_amount' => $student->speciality->service_sum,
 				]);
 			}
 
@@ -301,6 +302,14 @@ class AbiturController extends Controller
 	public function dogovor()
 	{
 		$student = getStudent();
+
+		if ($sh = $student->service_shartnoma_file) {
+			$headers = [
+              'Content-Type' => 'application/pdf',
+           	];
+
+			return response()->download(public_path().'/stdocs/service_shartnoma_file/'.$sh, $sh, $headers);
+		}
 
 		$pdf = \PDF::loadView('frontend.testing', compact('student'));
 
