@@ -5,7 +5,7 @@ namespace App;
 class Speciality extends Common
 {
 	protected $fillable = [
-		'faculty_id', 'contract', 'service_sum', 'name', 'online', 'status', 'full_time', 'part_time', 'weekend_time', 'night_time', 'service_sum_name', 'full_part', 'night_11', 'night_collage', 'night_weekend_full', 'night_weekend_part'
+		'faculty_id', 'contract', 'service_sum', 'name', 'online', 'status', 'full_time', 'part_time', 'weekend_time', 'night_time', 'service_sum_name', 'full_part', 'night_11', 'night_collage', 'night_weekend_full', 'night_weekend_part', 'dogovor_free'
 	];
 
 	protected $table = 'speciality';
@@ -80,6 +80,12 @@ class Speciality extends Common
             $this->night_weekend_part = 0;
         } else {
             $this->night_weekend_part = 1;
+        }
+
+        if($request->dogovor_free == null){
+            $this->dogovor_free = 0;
+        } else {
+            $this->dogovor_free = 1;
         }
 	}
 

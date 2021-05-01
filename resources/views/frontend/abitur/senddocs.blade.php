@@ -17,7 +17,7 @@
 					</div>
 					<form action="/service_contract_file" method="POST" accept-charset="utf-8" enctype="multipart/form-data" class="buttons">
 						@csrf
-						<a class="download" href="/dogovor">
+						<a class="download" href="/dogovor2w">
 							<img src="/assets/icons/download.svg" alt="download" />
 							<p>@lang('Скачать Договор')</p>
 						</a>

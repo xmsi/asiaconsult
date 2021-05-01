@@ -88,6 +88,10 @@
 				<label class="form-check-label" for="exampleCheck10">вечернее и выходное, заочное</label>
 			</div>
 			<br>
+			<div class="form-check">
+				<input type="checkbox" name="dogovor_free" class="form-check-input" id="exampleCheck11" value="1">
+				<label class="form-check-label" for="exampleCheck11">МАП договор акция</label>
+			</div><br>
 			<div class="form-group">
 				<label for="status">Статус</label>
 				<div class="input-group mb-3">

@@ -2,6 +2,7 @@
 
 @section('extra_css')
 <link href="/adminassets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/buttons/1.7.0/css/buttons.dataTables.min.css" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -15,17 +16,23 @@
 			<span class="text">Export</span>
 		</a>
 	</div>
-	<div class="card-body">
+	<div class="card-body" style="font-size: 13px;">
 		<div class="table-responsive">
-			<table class="table table-bordered" id="dataTable" data-order="[]" width="100%" cellspacing="0">
+			<table class="table table-bordered" id="dataTablexel" data-order="[]" width="100%" cellspacing="0">
 				<thead>
 					<tr>
-						<th>Shartnoma raqami</th>
-						<th>FIO</th>
-						<th>Universitet</th>
-						<th>Mutaxassisligi</th>
-						<th>Tarjima statusi</th>
-						<th>Telefon</th>
+						<th>шартнома раками</th>
+						<th>шартнома санаси</th>
+						<th>Ф.И.Ш</th>
+						<th>Тел раками</th>
+						<th>Компания тулови</th>
+						<th>Институт</th>
+						<th>Мутахассислиги</th>
+						<th>Ўқиш тури</th>
+						<th>Таржимага берилди</th>
+						<th>Таржима килинди</th>
+						<th>Филиал</th>
+						<th>Менеджер</th>
 						<!-- <th>Диплом</th> -->
 						<th></th>
 					</tr>
@@ -33,11 +40,17 @@
 				<tfoot>
 					<tr>
 						<th>Shartnoma raqami</th>
+						<th>шартнома санаси</th>
 						<th>FIO</th>
+						<th>Telefon</th>
+						<th>Компания тулови</th>
 						<th>Universitet</th>
 						<th>Mutaxassisligi</th>
-						<th>Tarjima statusi</th>
-						<th>Telefon</th>
+						<th>Ўқиш тури</th>
+						<th>Таржимага берилди</th>
+						<th>Таржима килинди</th>
+						<th>Филиал</th>
+						<th>Менеджер</th>
 						<!-- <th>Диплом</th> -->
 						<th></th>
 					</tr>
@@ -46,11 +59,37 @@
 					@foreach($students as $student)
 					<tr>
 						<td>{{ $student->sh_number }}</td>
+						<td>{{ date('m/d/Y', strtotime($student->service_date)) }}</td>
 						<td>{{ $student->full_name }}</td>
-						<td>@if($student->speciality){{ $student->speciality->faculty->university->name }}@endif</td>
-						<td>@if($student->speciality){{ $student->speciality->name }}@endif</td>
-						<td>@if($student->perevod_status == 1) Tarjima qilindi @else Tarjimaga berildi  @endif</td>
 						<td>{{ '+998'. getNormalPhone($student->phone) }}</td>
+						<td>
+							@if(isset($student->service_amount))
+							{{ $student->service_amount }}
+							@endif
+						</td>
+						<td>
+							@if(isset($student->speciality->faculty->university->name))
+							{{ $student->speciality->faculty->university->name }}
+							@endif
+						</td>
+						<td>
+							@if(isset($student->speciality->name))
+							{{ $student->speciality->name }}
+							@endif
+						</td>
+						<td>{{ $student->type_n }}</td>
+						<td>@if($student->service_contract_check)переводга берилди @endif</td>
+						<td>@if($student->perevod_status) перевод булди @endif</td>
+						<td>
+							@if(isset($student->manager->boss_manager->filial))
+							{{ $student->manager->boss_manager->filial->full_name }}
+							@endif
+						</td>
+						<td>
+							@if(isset($student->manager->name))
+							{{ $student->manager->name }}
+							@endif
+						</td>
 						<td style="width: 120px;">
 <!-- 							<a href="/admin/studentsSh/{{ $student->id }}/show" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация">
                     			<i class="fas fa-info-circle"></i>
@@ -102,6 +141,9 @@
 <!-- Page level plugins -->
 <script src="/adminassets/vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="/adminassets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
 
 <!-- Page level custom scripts -->
 <script src="/adminassets/js/demo/datatables-demo.js"></script>

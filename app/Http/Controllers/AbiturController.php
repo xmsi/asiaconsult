@@ -216,6 +216,9 @@ class AbiturController extends Controller
 
 			$student = getStudent();
 			$pdf = \PDF::loadView('frontend.testing', compact('student'));
+			if ($student->speciality->dogovor_free) {
+				$pdf = \PDF::loadView('frontend.dogovor_free', compact('student'));
+			}
 			$pdfName = $user->student->id . 'dogovor.pdf';
 			$check = $pdf->save(public_path('/stdocs/service_shartnoma_file/'.$pdfName));
 
@@ -312,6 +315,9 @@ class AbiturController extends Controller
 		}
 
 		$pdf = \PDF::loadView('frontend.testing', compact('student'));
+		if ($student->speciality->dogovor_free) {
+			$pdf = \PDF::loadView('frontend.dogovor_free', compact('student'));
+		}
 
 		return $pdf->download('dogovor.pdf');
 

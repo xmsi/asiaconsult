@@ -81,7 +81,7 @@ Route::post('/pwdreset', 'AbiturController@pwdreset');
 Route::post('/pwdreset_last', 'AbiturController@pwdreset_last');
 Route::get('/docs_success', 'AbiturController@success');
 Route::get('/docs_error', 'AbiturController@error');
-Route::get('/dogovor', 'AbiturController@dogovor');
+Route::get('/dogovor2w', 'AbiturController@dogovor');
 Route::get('/passwordreset', 'AbiturController@passwordreset');
 Route::get('/pwdresetp/{phone}', 'AbiturController@pwdresetp');
 Route::get('/lang/{lang}', 'LanguageController@index')->name('lang');

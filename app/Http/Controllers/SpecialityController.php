@@ -112,7 +112,7 @@ class SpecialityController extends Controller
         ]);
 
 
-        $speciality->fill($request->except(['online','part_time','full_time', 'full_part', 'night_11', 'night_collage', 'night_weekend_full', 'night_weekend_part']));
+        $speciality->fill($request->except(['online','part_time','full_time', 'full_part', 'night_11', 'night_collage', 'night_weekend_full', 'night_weekend_part', 'dogovor_free']));
         $speciality->normaltype($request);
         $speciality->save();
 
