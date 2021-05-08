@@ -26,15 +26,16 @@
 							</div>
 							<div class="input">
 								<span>@lang('Дата выдачи паспорта')</span>
-								<input type="text" name="passport_date" placeholder="01.12.2001" required/>
+								<input type="text" class="maskdate" name="passport_date" placeholder="01.12.2001" required/>
 							</div>
 							<div class="input">
 								<span>@lang('Место выдачи ИИБ паспорта')</span>
 								<input type="text" name="passport_iib" placeholder="" required/>
 							</div>
-							<div class="input w50">
+							<div class="input w50 qw">
 								<span>@lang('Пароль')</span>
-								<input type="password" name="password" required autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" />
+								<input type="password" name="password" id="password" required autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" />
+								<i class="far fa-eye" id="togglePassword"></i>
 							</div>
 							<div class="input w50">
 								<span>@lang('Повторите пароль')</span>
@@ -95,4 +96,37 @@
 					</div>
 				</div>
 			</section>
+@endsection
+
+@section('extra_css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+<style type="text/css">
+	.qw{
+		position: relative;
+	}
+	.qw i {
+		position: absolute;
+		right: 5%;
+		cursor: pointer;
+		bottom: 22%;
+	}
+</style>
+
+@endsection
+
+@section('extra_js')
+<script type="text/javascript">
+	const togglePassword = document.querySelector('#togglePassword');
+	const password = document.querySelector('#password');
+
+	togglePassword.addEventListener('click', function (e) {
+	    // toggle the type attribute
+	    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+	    password.setAttribute('type', type);
+	    // toggle the eye slash icon
+	    this.classList.toggle('fa-eye-slash');
+	});
+
+	$('.maskdate').mask('00.00.0000');
+</script>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Phone;
 use App\User;
@@ -150,6 +151,7 @@ class AbiturController extends Controller
 	{
 		$this->validate($request, [
 			'name' => 'required',
+			'phone' => 'required|unique:users,name',
 			'second_name' => 'required',
 			'passport_id' => 'required',
 			'email' => 'required|email',
@@ -157,6 +159,8 @@ class AbiturController extends Controller
 			'passport_iib' => 'required',
 			'password' => 'required|confirmed|min:6',
 		]);
+
+		DB::beginTransaction();
 
 		$user = new User();
 		$user->name = $request->phone;
@@ -181,6 +185,12 @@ class AbiturController extends Controller
         	}
         	
         	$student->save();
+        }
+
+        if (!$user || !$student) {
+        	DB::rollBack();
+        } else {
+        	DB::commit();
         }
 
         $user_data = array(

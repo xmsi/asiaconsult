@@ -4,9 +4,13 @@ $(document).ready(function() {
   // -------------------------OUR--------------------------
   $('#dataTablexel').DataTable( {
         dom: 'Bfrtip',
+        lengthMenu: [
+            [ 10, 25, 50, 100, 200, -1 ],
+            [ '10 student', '25 student', '50 student', '100 student', '200 student', 'Hammasi' ]
+        ],
         "columnDefs": [
             {
-                "targets": [ 7,8,9 ],
+                "targets": [ 8,9 ],
                 "visible": false,
                 "searchable": false
             },
@@ -15,9 +19,10 @@ $(document).ready(function() {
  			{
                 extend: 'excel',
                 exportOptions: {
-                    columns: [':visible',7,8,9]
+                    columns: [':visible',8,9]
                 }
-            }
+            },
+              'pageLength'
         ],
         "footerCallback": function ( row, data, start, end, display ) {
             var api = this.api(), data;

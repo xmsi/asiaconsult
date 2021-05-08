@@ -38,6 +38,7 @@ class StudentsSAController extends Controller
         \File::delete(public_path().'/stdocs/university_pay/'.$student->university_pay);
         \File::delete(public_path().'/stdocs/university_contract/'.$student->university_contract);
 
+        $student->user->delete();
         $student->delete();
         
         return redirect('/admin/studentsSA');

@@ -17,6 +17,8 @@
             </div>
           </form> -->
 
+          <img src="/img/logo.png" style="width: 80px;">
+
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
