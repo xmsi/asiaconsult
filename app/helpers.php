@@ -46,13 +46,18 @@ function getNormalPhone($phone){
 	return preg_replace('/(.{2})(.{3})(..)(..)/', '$1 $2 $3 $4', $phone);
 }
 
-function documents_receive($name, $request, $student = null){
+function documents_receive($name, $request, $id = null){
 	if ($request->hasFile($name)) {
 		// \File::delete(public_path().'/stdocs/'.$name.'/'.$request->diplom);
+		if ($id) {
+			$stid = $id;
+		} else {
+			$stid = getStudent()->id;
+		}
 
 		$file = $request->file($name);
 		$fileName = $file->getClientOriginalName();
-		$fileName = getStudent()->id . '__' . Carbon::now()->timestamp.$fileName;
+		$fileName = $stid . '__' . Carbon::now()->timestamp.$fileName;
 		$file->move('stdocs/'.$name.'/', $fileName);
 
 		return $fileName;

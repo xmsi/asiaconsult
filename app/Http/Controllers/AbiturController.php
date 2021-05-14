@@ -158,6 +158,7 @@ class AbiturController extends Controller
 			'passport_date' => 'required',
 			'passport_iib' => 'required',
 			'password' => 'required|confirmed|min:6',
+			'sale_document' => 'file|mimes:pdf,doc,docx,jpeg,jpg,png,bmp,gif,svg,webp'
 		]);
 
 		DB::beginTransaction();
@@ -172,9 +173,10 @@ class AbiturController extends Controller
 
         if($is_saved){
         	$student = new Student();
-        	$student->fill($request->except(['password_confirmation']));
+        	$student->fill($request->except(['password_confirmation', 'sale_document']));
         	$student->user_id = $user->id;
         	$student->created_date = time(); 
+
         	if (Auth::check()) {
         		$role = Auth::user()->roles->first()->name;
         		if($role == 'manager'){
@@ -183,9 +185,14 @@ class AbiturController extends Controller
         			$student->manager_id = Auth::id();
         		}
         	}
-        	
         	$student->save();
         }
+
+        $sale_document = documents_receive('sale_document', $request, $student->id);
+
+        $student->update([
+        	'sale_document' => $sale_document
+        ]);
 
         if (!$user || !$student) {
         	DB::rollBack();

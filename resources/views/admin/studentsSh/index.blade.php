@@ -90,16 +90,21 @@
 							{{ $student->manager->name }}
 							@endif
 						</td>
-						<td style="width: 120px;">
+						<td style="width: 140px;">
 <!-- 							<a href="/admin/studentsSh/{{ $student->id }}/show" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Информация">
                     			<i class="fas fa-info-circle"></i>
                   			</a> -->
                   			<a href="{{ route('studentsSh.edit', $student->id) }}" class="btn btn-warning btn-sm" data-toggle="tooltip" data-placement="top" title="Изменить">
                   				<i class="fas fa-pen"></i>
                   			</a>
-                  			<a href="/admin/studentsSh1/download/{{ $student->id }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Изменить">
+                  			<a href="/admin/studentsSh1/download/{{ $student->id }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Shartnoma">
                   				<i class="fas fa-download"></i>
                   			</a>
+                  			@if($student->sale_document)
+                  			<a href="/stdocs/sale_document/{{ $student->sale_document }}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Скидка" download>
+                  				<i class="fas fa-file-alt"></i>
+                  			</a>
+                  			@endif
                   			@can('isSuperadmin')
 								<button  type="submit" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#logoutModal{{ $student->id }}" data-placement="top" title="Удалить"><i class="fas fa-trash"></i></button>
                   			@endcan

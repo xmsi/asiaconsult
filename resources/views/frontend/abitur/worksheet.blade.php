@@ -45,6 +45,23 @@
 								<span>@lang('Email')</span>
 								<input type="email" name="email" placeholder="test@gmail.com" required/>
 							</div>
+							<div class="choose-before-app" style="padding: 0">
+							<div class="documents">
+							<div class="item">
+								<p style="color: #828282;">@lang('Основание на скидку (сканер):')</p>
+								<label for="zags">
+									<input type="file" name="sale_document" id="zags" />
+									<img src="/assets/icons/upload.svg" alt="upload" />
+									<p style="color: #828282;" id="scan-zags">@lang('загрузить')</p>
+									<!-- <img src="/assets/icons/x-close.svg" id="close-it-zags" alt=""> -->
+								</label>
+								<span class="progressBar">
+									<div class="active zags"></div>
+								</span>
+								<br>
+							</div>
+							</div>
+							</div>
 							<div class="camefrom">
 								<p>@lang('Откуда вы о нас узнали?')</p>
 								<div class="checkboxes">
@@ -128,5 +145,20 @@
 	});
 
 	$('.maskdate').mask('00.00.0000');
+
+	setInterval(function () {
+		if (document.getElementById("zags").files.length == 0) {
+		} else {
+			$(".active.zags").width("100%");
+			document.getElementById("scan-zags").innerHTML = "zags.pdf";
+			document.getElementById("close-it-zags").style.display = 'block';
+		}
+	});
+
+	document.getElementById("close-it-zags").addEventListener('click', function () {
+		$(".active.zags").width("5px");
+		document.getElementById("scan-zags").innerHTML = "ЗАГРУЗИТЬ";
+		document.getElementById("close-it-zags").style.display = 'none';
+	});
 </script>
 @endsection
