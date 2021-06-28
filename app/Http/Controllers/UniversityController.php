@@ -185,6 +185,20 @@ class UniversityController extends Controller
         return redirect('/admin/universities/')->with('success', 'изменен успешно');
     }
 
+    public function allstatuses($universityid)
+    {
+        $university = University::where('id', $universityid)->with('faculties.specialities')->first();
+
+        $university->faculties()->each(function($item){
+            $item->update(['status' => 1]);
+            $item->specialities()->update([
+                'status' => 1
+            ]);
+        });
+
+        return redirect()->back()->with('success', 'Успешно');
+    }
+
     public function destroy(University $university)
     {
             \File::delete(public_path().'/images/'.$university->image);

@@ -37,6 +37,7 @@ Route::prefix('/admin')->group(function(){
 	// Route::post('/studentsSh1/type', 'StudentsShController@type');
 	Route::resource('/countries', 'CountriesController');
 	Route::resource('/universities', 'UniversityController');
+	Route::post('/universities/{universityid}/allstatuses/', 'UniversityController@allstatuses');
 	Route::resource('/filial', 'FilialsController');
 	Route::resource('/faculty', 'FacultyController');
 	Route::resource('/bossManager', 'BossManagersController');
