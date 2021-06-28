@@ -27,6 +27,13 @@ class Student extends Model
         9 => 'вечернее и выходное, заочное',
     ];
 
+    protected $sale_codes = [
+        0 => 'Yo\'q',
+        1 => '25%',
+        2 => '50%',
+        3 => '500 000 сум'
+    ];  
+
     public function speciality()
     {
         return $this->belongsTo(Speciality::class);
@@ -68,6 +75,11 @@ class Student extends Model
         }
     }
 
+    public function getSaleCodeNAttribute()
+    {        
+        return $this->sale_codes;
+    }
+
     public function sendtoTelegram()
     {
         $message = 'Подготовлен к переводу '. $this->fullName.' +998'. $this->phone;
@@ -101,5 +113,21 @@ class Student extends Model
         }
 
         return false;
+    }
+
+    public function saleCheck()
+    {
+        /*25%*/      
+        if ($this->sale_code == 1) {
+            $this->service_amount -= 0.25 * $this->service_amount;
+        } /* 50 % */ 
+        elseif ($this->sale_code == 2) {
+            $this->service_amount -= 0.50 * $this->service_amount;
+        } /* 500 000 sum */ 
+        elseif ($this->sale_code == 3) {
+            $this->service_amount -= 500000;
+        }
+
+        intval($this->service_amount);
     }
 }

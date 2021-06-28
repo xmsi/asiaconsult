@@ -128,21 +128,17 @@ class StudentsShController extends Controller
             $student->image = $fileName;
         }
 
-        // $diplomName = documents_receive('diplom', $request);
-        // $attestatName = documents_receive('attestat', $request);
-        // $passportName = documents_receive('passport', $request);
-        // $parent_passportName = documents_receive('parent_passport', $request);
-        // $zagsName = documents_receive('zags', $request);
-        // $imageName = documents_receive('image', $request);
-
-        //     $student->diplom = $diplomName;
-        //     $student->passport = $passportName;
-        //     $student->parent_passport = $parent_passportName;
-        //     $student->attestat = $attestatName;
-        //     $student->zags = $zagsName;
-        //     $student->image = $imageName;
+        $student->saleCheck();
 
         $student->save();
+
+        //  saving to pdf
+        $pdf = \PDF::loadView('frontend.testing', compact('student'));
+        if ($student->speciality->dogovor_free) {
+            $pdf = \PDF::loadView('frontend.dogovor_free', compact('student'));
+        }
+        $pdfName = $student->id . 'dogovor.pdf';
+        $check = $pdf->save(public_path('/stdocs/service_shartnoma_file/'.$pdfName));
 
         return redirect('/admin/studentsSh/')->with('success', 'изменен успешно');
     }

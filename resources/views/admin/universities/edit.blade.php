@@ -47,6 +47,14 @@
 				<input type="text" name="link" value="{{ $university->link }}" class="form-control">
 			</div>
 			<div class="form-group">
+				<label for="title">Стоимость (всех специальностей)</label>
+				<input type="text" name="university_pay" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="title">Стоимость (всех специальностей) словами</label>
+				<input type="text" name="university_pay_name" class="form-control">
+			</div>
+			<div class="form-group">
 				<label for="title">Логин (для админки вуза)</label>
 				<input type="text" name="login" value="@if($university_user){{ $university_user->name }}@endif" class="form-control">
 			</div>

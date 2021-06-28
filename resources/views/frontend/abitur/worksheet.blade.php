@@ -9,12 +9,12 @@
 							@include('frontend.error')
 							<input type="hidden" name="phone", value="{{ $phone }}">
 							<div class="input w50">
-								<span>@lang('Имя')</span>
-								<input type="text" name="name" placeholder="Валентина" required />
-							</div>
-							<div class="input w50">
 								<span>@lang('Фамилия')</span>
 								<input type="text" name="second_name" placeholder="Лихачева" required />
+							</div>
+							<div class="input w50">
+								<span>@lang('Имя')</span>
+								<input type="text" name="name" placeholder="Валентина" required />
 							</div>
 							<div class="input">
 								<span>@lang('Отчесво')</span>

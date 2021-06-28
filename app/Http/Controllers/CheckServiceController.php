@@ -9,7 +9,7 @@ class CheckServiceController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
-        $this->middleware('role:service_cheker');
+        $this->middleware('role:service_cheker|superadmin');
     }
 
     public function index()

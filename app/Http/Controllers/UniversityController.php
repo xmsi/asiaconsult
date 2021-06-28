@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\University;
 use App\Countries;
+use App\Faculty;
 use App\User;
 use Carbon\Carbon;
 use File;
@@ -129,7 +130,6 @@ class UniversityController extends Controller
             'image' => 'image|mimes:jpeg,jpg,png,bmp,gif,svg,webp',
         ]);
 
-
         $university->fill($request->except(['deadline', 'image', 'login', 'password']));
 
         if ($request->hasFile('image')) {
@@ -167,6 +167,18 @@ class UniversityController extends Controller
 
             if($user->roles->isEmpty()){
                 $user->roles()->attach(3);
+            }
+        }
+
+        // edit all specialities
+        if ($request->university_pay && $request->university_pay_name) {
+            $faculties = Faculty::where('university_id', $university->id)->with('specialities')->get();
+
+            foreach ($faculties as $faculty) {
+                $faculty->specialities()->update([
+                    'service_sum' => $request->university_pay,
+                    'service_sum_name' => $request->university_pay_name
+                ]);
             }
         }
 

@@ -70,6 +70,18 @@
           <i class="fas fa-users"></i>
           <span>Студенты</span></a>
         </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/check">
+          <i class="fas fa-money-check"></i>
+          <span>Бухгалтер</span></a>
+        </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/studentsT">
+          <i class="fas fa-file"></i>
+          <span>Нотариус</span></a>
+      </li>
       @elsecan('isAdmin')
       <li class="nav-item">
         <a class="nav-link" href="/admin/universities">
