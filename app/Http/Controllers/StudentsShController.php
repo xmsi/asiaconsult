@@ -128,17 +128,9 @@ class StudentsShController extends Controller
             $student->image = $fileName;
         }
 
-        $student->saleCheck();
-
         $student->save();
 
-        //  saving to pdf
-        $pdf = \PDF::loadView('frontend.testing', compact('student'));
-        if ($student->speciality->dogovor_free) {
-            $pdf = \PDF::loadView('frontend.dogovor_free', compact('student'));
-        }
-        $pdfName = $student->id . 'dogovor.pdf';
-        $check = $pdf->save(public_path('/stdocs/service_shartnoma_file/'.$pdfName));
+        pdfDogovor($student);
 
         return redirect('/admin/studentsSh/')->with('success', 'изменен успешно');
     }
@@ -151,6 +143,29 @@ class StudentsShController extends Controller
     public function show(Student $student)
     {
         return view('admin.studentsT.show', compact('student'));
+    }
+
+    public function edit_sale($student)
+    {
+        $student = Student::find($student);
+
+        return view('admin.studentsSh.edit_sale', compact('student'));
+    }
+
+    public function update_sale(Request $request, Student $student)
+    {
+        $request->validate([
+            'sale_code' => 'required'
+        ]);
+
+        $student->sale_code =  $request->sale_code;
+        $student->sale_sum_name =  $request->sale_sum_name;
+        $student->saleCheck();
+        $student->save();
+
+        pdfDogovor($student);
+
+        return redirect('/admin/studentsSh/')->with('success', 'изменен успешно');
     }
 
     public function download(Student $student)

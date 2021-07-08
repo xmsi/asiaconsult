@@ -117,17 +117,11 @@ class Student extends Model
 
     public function saleCheck()
     {
-        /*25%*/      
-        if ($this->sale_code == 1) {
-            $this->service_amount -= 0.25 * $this->service_amount;
-        } /* 50 % */ 
-        elseif ($this->sale_code == 2) {
-            $this->service_amount -= 0.50 * $this->service_amount;
-        } /* 500 000 sum */ 
-        elseif ($this->sale_code == 3) {
-            $this->service_amount -= 500000;
+        $sum = $this->service_amount;
+        if (!$sum) {
+            $sum = $this->speciality->service_sum;
         }
 
-        intval($this->service_amount);
+        $this->service_amount_sale = saleAlghoritm($this->sale_code, $sum);
     }
 }

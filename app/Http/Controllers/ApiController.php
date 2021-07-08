@@ -43,6 +43,20 @@ class ApiController extends Controller
 
 		return response($speciality->jsonSerialize(), Response::HTTP_OK);
 	}
+
+	public function getsale(Request $request)
+	{
+		$sum = $request->service_amount;
+
+		if (!$sum) {
+			$speciality = Speciality::find($request->speciality);
+			$sum = $speciality->service_sum;
+		}
+
+		$sale = saleAlghoritm($request->sale_code, $sum);
+
+		return response($sale, Response::HTTP_OK);
+	}
 }
 
 ?>

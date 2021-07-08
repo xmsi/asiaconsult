@@ -22,3 +22,4 @@ Route::post('/getu', 'ApiController@university');
 Route::post('/getf', 'ApiController@faculty');
 Route::post('/getd', 'ApiController@facultydata');
 Route::post('/gets', 'ApiController@speciality');
+Route::post('/getsale', 'ApiController@getsale');

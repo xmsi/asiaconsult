@@ -66,4 +66,31 @@ function documents_receive($name, $request, $id = null){
 	return null;
 }
 
+function saleAlghoritm($code, $sum){
+	$sale = $sum;
+
+	/*25%*/      
+	if ($code == 1) {
+		$sale = $sum - (0.25 * $sum);
+	} /* 50 % */ 
+	elseif ($code == 2) {
+		$sale = $sum - (0.50 * $sum);
+	} /* 500 000 sum */ 
+	elseif ($code == 3) {
+		$sale = $sum - 500000;
+	}
+
+	return intval($sale);
+}
+
+function pdfDogovor($student){
+	//  saving to pdf
+	$pdf = \PDF::loadView('frontend.testing', compact('student'));
+	if ($student->speciality->dogovor_free) {
+		$pdf = \PDF::loadView('frontend.dogovor_free', compact('student'));
+	}
+	$pdfName = $student->id . 'dogovor.pdf';
+	$check = $pdf->save(public_path('/stdocs/service_shartnoma_file/'.$pdfName));
+}
+
  ?>

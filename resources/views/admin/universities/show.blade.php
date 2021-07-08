@@ -59,8 +59,7 @@
 				</tr>
 			</tbody>
 		</table>
-					<form action="/admin/universities/{{$university->id}}/allstatuses/" method="post">
-					@csrf
+					<form method="GET" action="/admin/universities/{{$university->id}}/allstatuses/">
 					<button class="btn btn-success">Открыть все направления</button>
 				</form>
 	</div>

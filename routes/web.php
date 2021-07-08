@@ -33,11 +33,13 @@ Route::prefix('/admin')->group(function(){
 	Route::resource('/studentsSA', 'StudentsSAController', ['only' => ['index', 'destroy']]);
 	Route::get('/studentsSh1/download/{student}', 'StudentsShController@download');
 	Route::get('/studentsSh1/export', 'StudentsShController@export');
+	Route::get('/studentsSh1/edit_sale/{student}', 'StudentsShController@edit_sale');
+	Route::match(['put', 'patch'], '/studentsSh1/update_sale/{student}', 'StudentsShController@update_sale')->name('studentsSh1.update_sale');
 	Route::post('/studentsSh1/speciality', 'StudentsShController@speciality');
 	// Route::post('/studentsSh1/type', 'StudentsShController@type');
 	Route::resource('/countries', 'CountriesController');
 	Route::resource('/universities', 'UniversityController');
-	Route::post('/universities/{universityid}/allstatuses/', 'UniversityController@allstatuses');
+	Route::get('/universities/{universityid}/allstatuses/', 'UniversityController@allstatuses');
 	Route::resource('/filial', 'FilialsController');
 	Route::resource('/faculty', 'FacultyController');
 	Route::resource('/bossManager', 'BossManagersController');

@@ -101,7 +101,7 @@
                   				<i class="fas fa-download"></i>
                   			</a>
                   			@if($student->sale_document)
-                  			<a href="/stdocs/sale_document/{{ $student->sale_document }}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Скидка" download>
+                  			<a href="/admin/studentsSh1/edit_sale/{{ $student->id }}" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" title="Скидка">
                   				<i class="fas fa-file-alt"></i>
                   			</a>
                   			@endif
