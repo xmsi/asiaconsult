@@ -25,7 +25,7 @@
 				</div>	
 			</div> 
 			<div class="form-group">
-				<label for="country">Факультеты</label>
+				<label for="country">Факультет</label>
 				<div class="input-group mb-3">
 					<select name="faculty_id" id="faculty" class="form-control" required>
 						<option value="">Выбрать......</option>
@@ -86,6 +86,11 @@
 			<div class="form-check">
 				<input type="checkbox" name="night_weekend_part" class="form-check-input" id="exampleCheck10" value="1">
 				<label class="form-check-label" for="exampleCheck10">вечернее и выходное, заочное</label>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="title">Кол-во принимаемых студентов</label>
+				<input type="number" name="volume" class="form-control">
 			</div>
 			<br>
 			<div class="form-check">

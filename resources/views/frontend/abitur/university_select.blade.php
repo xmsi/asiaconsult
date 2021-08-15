@@ -167,7 +167,6 @@
 					},
 				})
 				.done(function(data) {
-					console.log(data[0].volumeofspeciality);
 					$("#specialityul").empty();
 					$("#specialityul").prev().text(function(){
 						return $(this).data('name');
@@ -212,7 +211,11 @@
 					check_dropdown(data.online, 'Онлайн', 2);
 					check_dropdown(data.part_time, 'Заочное', 1);
 					check_dropdown(data.full_time, 'Очное', 0);
-
+					if (data.volumeOfOneSpeciality !== null && data.volumeofspeciality !== 0) {
+						$('#volume').text(data.volumeOfOneSpeciality);
+					} else {
+						$('#volume').text(data.volumeofspeciality);
+					}
 					$("#loading-image").hide();
 					$("section").css('opacity', 1);
 				})

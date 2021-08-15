@@ -65,6 +65,10 @@
 					@if($speciality->night_weekend_part) вечернее и выходное, заочное <br> @endif </td>
 				</tr>
 				<tr>
+					<th scope="row">Кол-во принимаемых студентов</th>
+					<td>{{ $speciality->volume }}</td>
+				</tr>
+				<tr>
 					<th scope="row">Статус</th>
 					<td>{{ $speciality->statusn }}</td>
 				</tr>

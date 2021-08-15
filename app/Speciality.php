@@ -5,7 +5,7 @@ namespace App;
 class Speciality extends Common
 {
 	protected $fillable = [
-		'faculty_id', 'contract', 'service_sum', 'name', 'online', 'status', 'full_time', 'part_time', 'weekend_time', 'night_time', 'service_sum_name', 'full_part', 'night_11', 'night_collage', 'night_weekend_full', 'night_weekend_part', 'dogovor_free'
+		'faculty_id', 'contract', 'service_sum', 'name', 'online', 'status', 'full_time', 'part_time', 'weekend_time', 'night_time', 'service_sum_name', 'full_part', 'night_11', 'night_collage', 'night_weekend_full', 'night_weekend_part', 'dogovor_free', 'volume'
 	];
 
 	protected $table = 'speciality';
@@ -100,7 +100,7 @@ class Speciality extends Common
 
     public function validateSelection()
     {
-        if ($this->faculty->university->status && $this->faculty->status && $this->status && $this->volumeofspeciality) {
+        if ($this->faculty->university->status && $this->faculty->status && $this->status && $this->volumeofspeciality && ($this->volumeOfOneSpeciality !== 0) ) {
             return true;
         }
 
@@ -122,5 +122,19 @@ class Speciality extends Common
         $result = $faculty->volume - $volume;
 
         return $result;
+    }
+
+    public function getVolumeOfOneSpecialityAttribute()
+    {
+        $students_count = $this->students->count();
+
+        if (!is_null($this->volume)) {
+            $result = $this->volume - $students_count;
+        } else {
+            $result = null;
+        }
+
+        return $result;
+
     }
 }
