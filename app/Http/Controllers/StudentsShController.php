@@ -178,7 +178,7 @@ class StudentsShController extends Controller
             return response()->download(public_path().'/stdocs/service_shartnoma_file/'.$sh, $sh, $headers);
         }
         
-        $pdf = \PDF::loadView('frontend.testing', compact('student'));
+        $pdf = getConditionOfDogovor($student);
 
         return $pdf->download('dogovor.pdf');
     }

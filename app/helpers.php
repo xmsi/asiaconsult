@@ -93,4 +93,17 @@ function pdfDogovor($student){
 	$check = $pdf->save(public_path('/stdocs/service_shartnoma_file/'.$pdfName));
 }
 
+function getConditionOfDogovor($student)
+{
+	if ($student->speciality->dogovor_free) {
+		$pdf = \PDF::loadView('frontend.dogovor_free', compact('student'));
+	} elseif ($student->speciality->faculty->university->country->currency == 'TJS') {
+		$pdf = \PDF::loadView('frontend.dogovor_tjs', compact('student'));
+	} else {
+		$pdf = \PDF::loadView('frontend.testing', compact('student'));
+	}
+
+	return $pdf;
+}
+
  ?>

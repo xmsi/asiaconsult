@@ -224,27 +224,17 @@ class AbiturController extends Controller
 			'formatype' => 'required|integer'
 		]);	
 		if(Speciality::find($request->speciality)->validateSelection()){
-			$user = Auth::user();
-			$user->student->update([
+			$student = getStudent();
+
+			$student->update([
 				'speciality_id' => $request->speciality,
 				'type' => $request->formatype,
 				'service_date' => date('Y-m-d')
 			]);
 
-			$student = getStudent();
-			if ($student->speciality->dogovor_free) {
-				$pdf = \PDF::loadView('frontend.dogovor_free', compact('student'));
-			} else {
-				$pdf = \PDF::loadView('frontend.testing', compact('student'));
-			}
-			$pdfName = $user->student->id . 'dogovor.pdf';
+			$pdf = getConditionOfDogovor($student);
+			$pdfName = $student->id . 'dogovor.pdf';
 			$check = $pdf->save(public_path('/stdocs/service_shartnoma_file/'.$pdfName));
-
-			// if (getStudent()->checkRussia()) {
-			// 	getStudent()->update([
-			// 		'perevod_status' => 0,
-			// 	]);
-			// }
 
 			if ($check) {
 				getStudent()->update([
@@ -332,11 +322,7 @@ class AbiturController extends Controller
 			return response()->download(public_path().'/stdocs/service_shartnoma_file/'.$sh, $sh, $headers);
 		}
 
-		if ($student->speciality->dogovor_free) {
-			$pdf = \PDF::loadView('frontend.dogovor_free', compact('student'));
-		} else {
-			$pdf = \PDF::loadView('frontend.testing', compact('student'));
-		}
+		$pdf = getConditionOfDogovor($student);
 
 		return $pdf->download('dogovor.pdf');
 
