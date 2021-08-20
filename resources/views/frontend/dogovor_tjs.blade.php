@@ -35,7 +35,7 @@
 <body>
 	<main>
 			<img src="img/dogovorlogo2.jpg" align="right" style="width: 72px;">
-			<h4 align="center">Маслаҳат хизматлари кўрсатиш <br> шартномаси № AS/{{ $student->id }}</h4>
+			<h4 align="center">Маслаҳат хизматлари кўрсатиш <br> шартномаси № AS/{{ $student->service_tj_number }}</h4>
 			<p style="margin-left: 20px;float: left;">{{ date('« d» m Y', strtotime($student->service_date)) }} й.</p><p style="margin-right: 20px;float: right;">Тошкент  ш. </p>
 			<br><br>
 			<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"AC TOSHKENT SILVER"  МЧЖ  Бош директори Илкузиев Д.И. Устав асосида фаолият юритувчи, келгусида «БАЖАРУВЧИ» деб номланувчи, бир томондан ва жисмоний шахс сифатида {{ $student->fullName }} паспорт серияси  {{ $student->passport_id }} {{ $student->passport_date }}й {{ $student->passport_iib }} томонидан берилган,  келгусида «БУЮРТМАЧИ» деб номланувчи иккинчи томондан,  умумий тартибда «Томонлар» деб номланувчилар,  алоҳида эса «Томон» деб  номланувчи,  мазкур шартномани қуйидагилар юзасидан туздик:</p>

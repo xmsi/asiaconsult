@@ -232,8 +232,20 @@ class AbiturController extends Controller
 				'service_date' => date('Y-m-d')
 			]);
 
-			$pdf = getConditionOfDogovor($student);
 			$pdfName = $student->id . 'dogovor.pdf';
+
+			if ($student->speciality->dogovor_free) {
+				$pdf = \PDF::loadView('frontend.dogovor_free', compact('student'));
+			} elseif ($student->speciality->faculty->university->country->currency == 'TJS') {
+				$number = Student::whereNotNull('service_tj_number')->latest('service_tj_number')->pluck('service_tj_number')->first();
+				$number++;
+				$student->update(['service_tj_number' => $number]);
+				$pdfName = $student->service_tj_number . 'dogovor.pdf';
+				$pdf = \PDF::loadView('frontend.dogovor_tjs', compact('student'));
+			} else {
+				$pdf = \PDF::loadView('frontend.testing', compact('student'));
+			}	
+
 			$check = $pdf->save(public_path('/stdocs/service_shartnoma_file/'.$pdfName));
 
 			if ($check) {
