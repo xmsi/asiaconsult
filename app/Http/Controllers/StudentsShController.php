@@ -169,15 +169,7 @@ class StudentsShController extends Controller
     }
 
     public function download(Student $student)
-    {
-        if ($sh = $student->service_shartnoma_file) {
-            $headers = [
-              'Content-Type' => 'application/pdf',
-            ];
-
-            return response()->download(public_path().'/stdocs/service_shartnoma_file/'.$sh, $sh, $headers);
-        }
-        
+    {   
         $pdf = getConditionOfDogovor($student);
 
         return $pdf->download('dogovor.pdf');
